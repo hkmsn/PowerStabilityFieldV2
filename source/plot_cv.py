@@ -90,6 +90,11 @@ def plot_cv_data(df: pd.DataFrame, filename: str = 'cv_plot1.png'):
     ax1.legend(lines + lines2, labels + labels2, loc='upper right')
 
     plt.tight_layout()
+    
+    # Ensure the directory for the output file exists
+    output_path = Path(filename)
+    if output_path.parent != Path('.'):
+        output_path.parent.mkdir(parents=True, exist_ok=True)
 
     plt.savefig(filename)  # Save the plot to a file
     plt.close()  # Close the plot to free memory

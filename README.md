@@ -1,4 +1,3 @@
-# PowerStabilityFieldV2
 # Power Stability Field V2
 
 A Garmin Connect IQ Data Field that calculates and visualizes Power Stability using the Coefficient of Variation (CV).
