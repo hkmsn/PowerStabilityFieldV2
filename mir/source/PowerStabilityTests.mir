@@ -1,0 +1,62 @@
+[ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityTests.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
+import Toybox.Lang;
+[ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityTests.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [Test,2,14,18]; ]
+import Toybox.Test;
+[ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityTests.mc"; @line = 5; @symbol_moduledef = [PowerStabilityTests,5,7,26]; ]
+module PowerStabilityTests {
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityTests.mc"; @line = 5; ]
+    <init> {
+    }
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityTests.mc"; @line = 9; test = true; @symbol_functiondef = [testBasicLogic,9,13,27]; @symbol_param<0> = [logger,9,28,34]; @symbol_param<0>_type<0> = [Test,9,38,42]; @symbol_param<0>_type<1> = [Logger,9,43,49]; @symbol_return<0> = [Boolean,9,54,61]; ]
+    function testBasicLogic(logger as Test.Logger) as Boolean {
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityTests_mc_9_62_25_4_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityTests.mc" 10 8 ]
+        %tmp.1 = lgetv %logger;
+        symbol [ logger %tmp.1 10 8 14 ];
+        symbol [ debug %tmp.2 10 15 20 ];
+        %tmp.2 = getv function %tmp.1 :debug;
+        %tmp.3 = "Starting basic logic test";
+        invoke %tmp.1 %tmp.2(%tmp.3);
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityTests.mc" 13 8 ]
+        [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityTests_mc_9_62_25_4_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityTests_mc_9_62_25_4_stop" ]
+        %input.1 = local;
+        symbol [ input %input.1 13 12 17 ];
+        %tmp.4 = 100;
+        lputv %input.1 %tmp.4;
+        symbol [ input %input.1 13 12 17 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityTests.mc" 14 8 ]
+        [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityTests_mc_9_62_25_4_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityTests_mc_9_62_25_4_stop" ]
+        %expected.2 = local;
+        symbol [ expected %expected.2 14 12 20 ];
+        %tmp.5 = 100;
+        lputv %expected.2 %tmp.5;
+        symbol [ expected %expected.2 14 12 20 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityTests.mc" 18 8 ]
+        [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityTests_mc_9_62_25_4_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityTests_mc_9_62_25_4_stop" ]
+        %result.3 = local;
+        symbol [ result %result.3 18 12 18 ];
+        %tmp.6 = lgetv %input.1;
+        symbol [ input %tmp.6 18 21 26 ];
+        lputv %result.3 %tmp.6;
+        symbol [ result %result.3 18 12 18 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityTests.mc" 21 8 ]
+        symbol [ Test %tmp.7 21 8 12 ];
+        %tmp.7 = getm $.Toybox.Test;
+        symbol [ assertMessage %tmp.8 21 13 26 ];
+        %tmp.8 = getv function %tmp.7 :assertMessage;
+        %tmp.9 = lgetv %result.3;
+        symbol [ result %tmp.9 21 27 33 ];
+        %tmp.10 = lgetv %expected.2;
+        symbol [ expected %tmp.10 21 37 45 ];
+        %tmp.11 = eq %tmp.9 %tmp.10;
+        %tmp.12 = "Result should match expected value";
+        invoke %tmp.7 %tmp.8(%tmp.11, %tmp.12);
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityTests.mc" 24 8 ]
+        %tmp.13 = true;
+        ret %tmp.13;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityTests_mc_9_62_25_4_stop:
+    }
+}
+[ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityTests.mc"; @line = 1; ]
+<init> {
+}

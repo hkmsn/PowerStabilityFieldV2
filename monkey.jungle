@@ -1,0 +1,6 @@
+project.manifest = manifest.xml
+
+# Default for most devices
+base.resourcePath = resources;resources-modern
+# Override for Edge 530 - must include BOTH the main resources AND the legacy folder
+edge530.resourcePath = resources;resources-legacy

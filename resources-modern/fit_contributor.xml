@@ -1,0 +1,21 @@
+<resources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
+    <fitContributions>
+        <fitField id="0"
+                  displayInActivitySummary="true"
+                  displayInChart="true"
+                  sortOrder="0"
+                  precision="1"
+                  dataLabel="@Strings.GraphLabel_CV"
+                  chartTitle="@Strings.GraphLabel_CV"
+                  unitLabel="@Strings.percent_symbol"
+                  fillColor="#5500FF" />
+        <fitField id="1"
+                  displayInChart="true"
+                  sortOrder="1"
+                  precision="1"
+                  dataLabel="@Strings.CV_Summary"
+                  chartTitle="@Strings.CV_Summary"
+                  unitLabel="@Strings.percent_symbol"
+                  fillColor="#00FF00" />
+    </fitContributions>
+</resources>

@@ -1,0 +1,11 @@
+<resources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
+    <string id="AppName">PowerStabilityField</string>
+    <string id="label">3S PWR+ </string>
+    <string id="HighThresholdPercentageX_Title">High PWR difference - Red (%)</string>
+    <string id="LowThresholdPercentageX_Title">Low  PWR difference - Blue(%)</string>
+    <string id="IgnorePowerWattsX_Title">Ignore when PWR below (Watts)</string>
+    <string id="CV">CV</string>
+    <string id="GraphLabel_CV">Power Stability</string>
+    <string id="percent_symbol">%</string>
+    <string id="CV_Summary">Avg Power Stability</string>
+</resources>

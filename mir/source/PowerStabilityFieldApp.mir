@@ -1,0 +1,80 @@
+[ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldApp.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Application,1,14,25]; ]
+import Toybox.Application;
+[ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldApp.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [Lang,2,14,18]; ]
+import Toybox.Lang;
+[ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldApp.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [WatchUi,3,14,21]; ]
+import Toybox.WatchUi;
+[ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldApp.mc"; @line = 5; @symbol_classdef = [PowerStabilityFieldApp,5,6,28]; @symbol_extends<0> = [Application,5,37,48]; @symbol_extends<1> = [AppBase,5,49,56]; ]
+class PowerStabilityFieldApp extends Application.AppBase {
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldApp.mc"; @line = 5; ]
+    <init> {
+    }
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldApp.mc"; @line = 5; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldApp.mc"; @line = 7; @position = 8; @symbol_vardef = [settingsChanged,7,8,23]; @symbol_type<0> = [Boolean,7,27,34]; ]
+    var settingsChanged as Boolean = false;
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldApp.mc"; @line = 9; @symbol_functiondef = [initialize,9,13,23]; ]
+    function initialize() as Void {
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldApp_mc_9_26_11_4_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldApp.mc" 10 8 ]
+        symbol [ AppBase %tmp.2 10 8 15 ];
+        %tmp.2 = getv ? :AppBase;
+        symbol [ initialize %tmp.3 10 16 26 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldApp_mc_9_26_11_4_stop:
+    }
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldApp.mc"; @line = 14; @symbol_functiondef = [onStart,14,13,20]; @symbol_param<0> = [state,14,21,26]; @symbol_param<0>_type<0> = [Dictionary,14,30,40]; ]
+    function onStart(state as Dictionary or Null) as Void {
+    }
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldApp.mc"; @line = 18; @symbol_functiondef = [onStop,18,13,19]; @symbol_param<0> = [state,18,20,25]; @symbol_param<0>_type<0> = [Dictionary,18,29,39]; ]
+    function onStop(state as Dictionary or Null) as Void {
+    }
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldApp.mc"; @line = 22; @symbol_functiondef = [getInitialView,22,13,27]; ]
+    function getInitialView() {
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldApp_mc_22_30_24_4_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldApp.mc" 23 8 ]
+        %tmp.1 = newa 1;
+        symbol [ PowerStabilityFieldView %tmp.5 23 21 44 ];
+        %tmp.5 = getv ? :PowerStabilityFieldView;
+        %tmp.2 = newc %tmp.5 ();
+        %tmp.6 = dup %tmp.1;
+        %tmp.7 = aputv %tmp.6 0 %tmp.2;
+        ret %tmp.7;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldApp_mc_22_30_24_4_stop:
+    }
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldApp.mc"; @line = 26; @symbol_functiondef = [onSettingsChanged,26,13,30]; ]
+    function onSettingsChanged() as Void {
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldApp_mc_26_41_29_4_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldApp.mc" 27 8 ]
+        %tmp.1 = true;
+        symbol [ settingsChanged ? 27 8 23 ];
+        putv self :settingsChanged %tmp.1;
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldApp.mc" 28 8 ]
+        symbol [ WatchUi %tmp.2 28 8 15 ];
+        %tmp.2 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.3 28 16 29 ];
+        %tmp.3 = getv function %tmp.2 :requestUpdate;
+        invoke %tmp.2 %tmp.3();
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldApp_mc_26_41_29_4_stop:
+    }
+}
+[ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldApp.mc"; @line = 32; @symbol_functiondef = [getApp,32,9,15]; @symbol_return<0> = [PowerStabilityFieldApp,32,21,43]; ]
+function getApp() as PowerStabilityFieldApp {
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldApp_mc_32_44_34_0_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldApp.mc" 33 4 ]
+    symbol [ Application %tmp.1 33 11 22 ];
+    %tmp.1 = getm $.Toybox.Application;
+    symbol [ getApp %tmp.2 33 23 29 ];
+    %tmp.2 = getv function %tmp.1 :getApp;
+    %tmp.3 = invoke %tmp.1 %tmp.2();
+    %tmp.4 = as %tmp.3 PowerStabilityFieldApp;
+    symbol [ PowerStabilityFieldApp %tmp.4 33 35 57 ];
+    ret %tmp.4;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldApp_mc_32_44_34_0_stop:
+}
+[ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldApp.mc"; @line = 1; ]
+<init> {
+}

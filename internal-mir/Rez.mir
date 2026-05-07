@@ -1,0 +1,2220 @@
+[ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
+import Toybox.Lang;
+[ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 2; @symbol_usingdef<0> = [Toybox,2,6,12]; @symbol_usingdef<1> = [WatchUi,2,13,20]; ]
+using Toybox.WatchUi;
+[ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 3; @symbol_usingdef<0> = [Toybox,3,6,12]; @symbol_usingdef<1> = [WatchUi,3,13,20]; @symbol_usingAlias = [Ui,3,24,26]; ]
+using Toybox.WatchUi as :Ui;
+[ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 4; @symbol_usingdef<0> = [Toybox,4,6,12]; @symbol_usingdef<1> = [Graphics,4,13,21]; ]
+using Toybox.Graphics;
+[ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 5; @symbol_usingdef<0> = [Toybox,5,6,12]; @symbol_usingdef<1> = [Graphics,5,13,21]; @symbol_usingAlias = [Gfx,5,25,28]; ]
+using Toybox.Graphics as :Gfx;
+[ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 7; @symbol_moduledef = [Rez,7,7,10]; ]
+module Rez {
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 7; ]
+    <init> {
+    }
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 8; @symbol_moduledef = [Drawables,8,11,20]; ]
+    module Drawables {
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 8; ]
+        <init> {
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 9; @position = 27; initialized = true; @symbol_vardef = [LauncherIcon,9,27,39]; @symbol_type<0> = [ResourceId,9,43,53]; ]
+        var LauncherIcon as ResourceId;
+    }
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 12; @symbol_moduledef = [Layouts,12,11,18]; ]
+    module Layouts {
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 12; ]
+        <init> {
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 13; @symbol_functiondef = [MainLayout,13,17,27]; @symbol_param<0> = [dc,13,28,30]; @symbol_param<0>_type<0> = [Graphics,13,34,42]; @symbol_param<0>_type<1> = [Dc,13,43,45]; @symbol_return<0> = [Array,13,50,55]; @symbol_return<1> = [WatchUi,13,56,63]; @symbol_return<2> = [Drawable,13,64,72]; ]
+        function MainLayout(dc as Graphics.Dc) as Array<WatchUi.Drawable> {
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_13_74_25_8_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 14 12 ]
+            [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_13_74_25_8_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_13_74_25_8_stop" ]
+            %rez_cmp_local_var_dc_getHeight.1 = local;
+            symbol [ rez_cmp_local_var_dc_getHeight %rez_cmp_local_var_dc_getHeight.1 14 16 46 ];
+            %tmp.1 = lgetv %dc;
+            symbol [ dc %tmp.1 14 49 51 ];
+            symbol [ getHeight %tmp.2 14 52 61 ];
+            %tmp.2 = getv function %tmp.1 :getHeight;
+            %tmp.3 = invoke %tmp.1 %tmp.2();
+            lputv %rez_cmp_local_var_dc_getHeight.1 %tmp.3;
+            symbol [ rez_cmp_local_var_dc_getHeight %rez_cmp_local_var_dc_getHeight.1 14 16 46 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 16 12 ]
+            [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_13_74_25_8_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_13_74_25_8_stop" ]
+            %rez_cmp_local_var_dc_getWidth.2 = local;
+            symbol [ rez_cmp_local_var_dc_getWidth %rez_cmp_local_var_dc_getWidth.2 16 16 45 ];
+            %tmp.4 = lgetv %dc;
+            symbol [ dc %tmp.4 16 48 50 ];
+            symbol [ getWidth %tmp.5 16 51 59 ];
+            %tmp.5 = getv function %tmp.4 :getWidth;
+            %tmp.6 = invoke %tmp.4 %tmp.5();
+            lputv %rez_cmp_local_var_dc_getWidth.2 %tmp.6;
+            symbol [ rez_cmp_local_var_dc_getWidth %rez_cmp_local_var_dc_getWidth.2 16 16 45 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 18 12 ]
+            [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_13_74_25_8_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_13_74_25_8_stop" ]
+            %rez_cmp_local_custom_drawable_11939594661139614796.3 = local;
+            symbol [ rez_cmp_local_custom_drawable_11939594661139614796 %rez_cmp_local_custom_drawable_11939594661139614796.3 18 16 66 ];
+            symbol [ Background %tmp.10 18 73 83 ];
+            %tmp.10 = getv ? :Background;
+            %tmp.7 = newc %tmp.10 ();
+            lputv %rez_cmp_local_custom_drawable_11939594661139614796.3 %tmp.7;
+            symbol [ rez_cmp_local_custom_drawable_11939594661139614796 %rez_cmp_local_custom_drawable_11939594661139614796.3 18 16 66 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 20 12 ]
+            [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_13_74_25_8_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_13_74_25_8_stop" ]
+            %rez_cmp_local_text_label.4 = local;
+            symbol [ rez_cmp_local_text_label %rez_cmp_local_text_label.4 20 16 40 ];
+            symbol [ WatchUi %tmp.13 20 47 54 ];
+            %tmp.13 = getm $.Toybox.WatchUi;
+            symbol [ Text %tmp.14 20 55 59 ];
+            %tmp.14 = getv function ? %tmp.13 :Text;
+            %tmp.15 = newd 6;
+            %tmp.17 = const :identifier;
+            symbol [ identifier %tmp.17 20 62 72 const ];
+            %tmp.18 = "label";
+            %tmp.19 = dup %tmp.15;
+            %tmp.20 = aputv %tmp.19 %tmp.17 %tmp.18;
+            %tmp.22 = const :color;
+            symbol [ color %tmp.22 20 84 89 const ];
+            symbol [ Graphics %tmp.23 20 91 99 ];
+            %tmp.23 = getm $.Toybox.Graphics;
+            symbol [ COLOR_BLACK %tmp.24 20 100 111 ];
+            %tmp.24 = getv %tmp.23 :COLOR_BLACK;
+            %tmp.25 = dup %tmp.20;
+            %tmp.26 = aputv %tmp.25 %tmp.22 %tmp.24;
+            %tmp.28 = const :locX;
+            symbol [ locX %tmp.28 20 114 118 const ];
+            %tmp.29 = lgetv %rez_cmp_local_var_dc_getWidth.2;
+            symbol [ rez_cmp_local_var_dc_getWidth %tmp.29 20 121 150 ];
+            %tmp.30 = 0.5;
+            %tmp.31 = mul %tmp.29 %tmp.30;
+            %tmp.32 = dup %tmp.26;
+            %tmp.33 = aputv %tmp.32 %tmp.28 %tmp.31;
+            %tmp.35 = const :locY;
+            symbol [ locY %tmp.35 20 160 164 const ];
+            %tmp.36 = lgetv %rez_cmp_local_var_dc_getHeight.1;
+            symbol [ rez_cmp_local_var_dc_getHeight %tmp.36 20 168 198 ];
+            %tmp.37 = lgetv %dc;
+            symbol [ dc %tmp.37 20 201 203 ];
+            symbol [ getFontHeight %tmp.38 20 204 217 ];
+            %tmp.38 = getv function %tmp.37 :getFontHeight;
+            symbol [ Graphics %tmp.39 20 218 226 ];
+            %tmp.39 = getm $.Toybox.Graphics;
+            symbol [ FONT_TINY %tmp.40 20 227 236 ];
+            %tmp.40 = getv %tmp.39 :FONT_TINY;
+            %tmp.41 = invoke %tmp.37 %tmp.38(%tmp.40);
+            %tmp.42 = sub %tmp.36 %tmp.41;
+            %tmp.43 = 0.5;
+            %tmp.44 = mul %tmp.42 %tmp.43;
+            %tmp.45 = dup %tmp.33;
+            %tmp.46 = aputv %tmp.45 %tmp.35 %tmp.44;
+            %tmp.48 = const :justification;
+            symbol [ justification %tmp.48 20 248 261 const ];
+            symbol [ Graphics %tmp.49 20 263 271 ];
+            %tmp.49 = getm $.Toybox.Graphics;
+            symbol [ TEXT_JUSTIFY_CENTER %tmp.50 20 272 291 ];
+            %tmp.50 = getv %tmp.49 :TEXT_JUSTIFY_CENTER;
+            %tmp.51 = dup %tmp.46;
+            %tmp.52 = aputv %tmp.51 %tmp.48 %tmp.50;
+            %tmp.54 = const :font;
+            symbol [ font %tmp.54 20 294 298 const ];
+            symbol [ Graphics %tmp.55 20 300 308 ];
+            %tmp.55 = getm $.Toybox.Graphics;
+            symbol [ FONT_TINY %tmp.56 20 309 318 ];
+            %tmp.56 = getv %tmp.55 :FONT_TINY;
+            %tmp.57 = dup %tmp.52;
+            %tmp.58 = aputv %tmp.57 %tmp.54 %tmp.56;
+            %tmp.11 = newc %tmp.14 (%tmp.58);
+            lputv %rez_cmp_local_text_label.4 %tmp.11;
+            symbol [ rez_cmp_local_text_label %rez_cmp_local_text_label.4 20 16 40 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 22 12 ]
+            [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_13_74_25_8_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_13_74_25_8_stop" ]
+            %rez_cmp_local_text_value.5 = local;
+            symbol [ rez_cmp_local_text_value %rez_cmp_local_text_value.5 22 16 40 ];
+            symbol [ WatchUi %tmp.61 22 47 54 ];
+            %tmp.61 = getm $.Toybox.WatchUi;
+            symbol [ Text %tmp.62 22 55 59 ];
+            %tmp.62 = getv function ? %tmp.61 :Text;
+            %tmp.63 = newd 6;
+            %tmp.65 = const :identifier;
+            symbol [ identifier %tmp.65 22 62 72 const ];
+            %tmp.66 = "value";
+            %tmp.67 = dup %tmp.63;
+            %tmp.68 = aputv %tmp.67 %tmp.65 %tmp.66;
+            %tmp.70 = const :color;
+            symbol [ color %tmp.70 22 84 89 const ];
+            symbol [ Graphics %tmp.71 22 91 99 ];
+            %tmp.71 = getm $.Toybox.Graphics;
+            symbol [ COLOR_BLACK %tmp.72 22 100 111 ];
+            %tmp.72 = getv %tmp.71 :COLOR_BLACK;
+            %tmp.73 = dup %tmp.68;
+            %tmp.74 = aputv %tmp.73 %tmp.70 %tmp.72;
+            %tmp.76 = const :locX;
+            symbol [ locX %tmp.76 22 114 118 const ];
+            %tmp.77 = lgetv %rez_cmp_local_var_dc_getWidth.2;
+            symbol [ rez_cmp_local_var_dc_getWidth %tmp.77 22 121 150 ];
+            %tmp.78 = 0.5;
+            %tmp.79 = mul %tmp.77 %tmp.78;
+            %tmp.80 = dup %tmp.74;
+            %tmp.81 = aputv %tmp.80 %tmp.76 %tmp.79;
+            %tmp.83 = const :locY;
+            symbol [ locY %tmp.83 22 160 164 const ];
+            %tmp.84 = lgetv %rez_cmp_local_var_dc_getHeight.1;
+            symbol [ rez_cmp_local_var_dc_getHeight %tmp.84 22 168 198 ];
+            %tmp.85 = lgetv %dc;
+            symbol [ dc %tmp.85 22 201 203 ];
+            symbol [ getFontHeight %tmp.86 22 204 217 ];
+            %tmp.86 = getv function %tmp.85 :getFontHeight;
+            symbol [ Graphics %tmp.87 22 218 226 ];
+            %tmp.87 = getm $.Toybox.Graphics;
+            symbol [ FONT_NUMBER_THAI_HOT %tmp.88 22 227 247 ];
+            %tmp.88 = getv %tmp.87 :FONT_NUMBER_THAI_HOT;
+            %tmp.89 = invoke %tmp.85 %tmp.86(%tmp.88);
+            %tmp.90 = sub %tmp.84 %tmp.89;
+            %tmp.91 = 0.5;
+            %tmp.92 = mul %tmp.90 %tmp.91;
+            %tmp.93 = dup %tmp.81;
+            %tmp.94 = aputv %tmp.93 %tmp.83 %tmp.92;
+            %tmp.96 = const :justification;
+            symbol [ justification %tmp.96 22 259 272 const ];
+            symbol [ Graphics %tmp.97 22 274 282 ];
+            %tmp.97 = getm $.Toybox.Graphics;
+            symbol [ TEXT_JUSTIFY_CENTER %tmp.98 22 283 302 ];
+            %tmp.98 = getv %tmp.97 :TEXT_JUSTIFY_CENTER;
+            %tmp.99 = dup %tmp.94;
+            %tmp.100 = aputv %tmp.99 %tmp.96 %tmp.98;
+            %tmp.102 = const :font;
+            symbol [ font %tmp.102 22 305 309 const ];
+            symbol [ Graphics %tmp.103 22 311 319 ];
+            %tmp.103 = getm $.Toybox.Graphics;
+            symbol [ FONT_NUMBER_THAI_HOT %tmp.104 22 320 340 ];
+            %tmp.104 = getv %tmp.103 :FONT_NUMBER_THAI_HOT;
+            %tmp.105 = dup %tmp.100;
+            %tmp.106 = aputv %tmp.105 %tmp.102 %tmp.104;
+            %tmp.59 = newc %tmp.62 (%tmp.106);
+            lputv %rez_cmp_local_text_value.5 %tmp.59;
+            symbol [ rez_cmp_local_text_value %rez_cmp_local_text_value.5 22 16 40 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 24 12 ]
+            %tmp.107 = newa 3 Array<WatchUi.Drawable>;
+            symbol [ Array %tmp.107 24 127 132 ];
+            symbol [ WatchUi %tmp.107 24 133 140 ];
+            symbol [ Drawable %tmp.107 24 141 149 ];
+            %tmp.108 = lgetv %rez_cmp_local_custom_drawable_11939594661139614796.3;
+            symbol [ rez_cmp_local_custom_drawable_11939594661139614796 %tmp.108 24 20 70 ];
+            %tmp.109 = dup %tmp.107;
+            %tmp.110 = aputv %tmp.109 0 %tmp.108;
+            %tmp.111 = lgetv %rez_cmp_local_text_label.4;
+            symbol [ rez_cmp_local_text_label %tmp.111 24 72 96 ];
+            %tmp.112 = dup %tmp.110;
+            %tmp.113 = aputv %tmp.112 1 %tmp.111;
+            %tmp.114 = lgetv %rez_cmp_local_text_value.5;
+            symbol [ rez_cmp_local_text_value %tmp.114 24 98 122 ];
+            %tmp.115 = dup %tmp.113;
+            %tmp.116 = aputv %tmp.115 2 %tmp.114;
+            ret %tmp.116;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_13_74_25_8_stop:
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 27; @symbol_functiondef = [TopLeftLayout,27,17,30]; @symbol_param<0> = [dc,27,31,33]; @symbol_param<0>_type<0> = [Graphics,27,37,45]; @symbol_param<0>_type<1> = [Dc,27,46,48]; @symbol_return<0> = [Array,27,53,58]; @symbol_return<1> = [WatchUi,27,59,66]; @symbol_return<2> = [Drawable,27,67,75]; ]
+        function TopLeftLayout(dc as Graphics.Dc) as Array<WatchUi.Drawable> {
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_27_77_35_8_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 28 12 ]
+            [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_27_77_35_8_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_27_77_35_8_stop" ]
+            %rez_cmp_local_custom_drawable_83741574912206153191.1 = local;
+            symbol [ rez_cmp_local_custom_drawable_83741574912206153191 %rez_cmp_local_custom_drawable_83741574912206153191.1 28 16 66 ];
+            symbol [ Background %tmp.4 28 73 83 ];
+            %tmp.4 = getv ? :Background;
+            %tmp.1 = newc %tmp.4 ();
+            lputv %rez_cmp_local_custom_drawable_83741574912206153191.1 %tmp.1;
+            symbol [ rez_cmp_local_custom_drawable_83741574912206153191 %rez_cmp_local_custom_drawable_83741574912206153191.1 28 16 66 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 30 12 ]
+            [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_27_77_35_8_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_27_77_35_8_stop" ]
+            %rez_cmp_local_text_label.2 = local;
+            symbol [ rez_cmp_local_text_label %rez_cmp_local_text_label.2 30 16 40 ];
+            symbol [ WatchUi %tmp.7 30 47 54 ];
+            %tmp.7 = getm $.Toybox.WatchUi;
+            symbol [ Text %tmp.8 30 55 59 ];
+            %tmp.8 = getv function ? %tmp.7 :Text;
+            %tmp.9 = newd 6;
+            %tmp.11 = const :identifier;
+            symbol [ identifier %tmp.11 30 62 72 const ];
+            %tmp.12 = "label";
+            %tmp.13 = dup %tmp.9;
+            %tmp.14 = aputv %tmp.13 %tmp.11 %tmp.12;
+            %tmp.16 = const :color;
+            symbol [ color %tmp.16 30 84 89 const ];
+            symbol [ Graphics %tmp.17 30 91 99 ];
+            %tmp.17 = getm $.Toybox.Graphics;
+            symbol [ COLOR_LT_GRAY %tmp.18 30 100 113 ];
+            %tmp.18 = getv %tmp.17 :COLOR_LT_GRAY;
+            %tmp.19 = dup %tmp.14;
+            %tmp.20 = aputv %tmp.19 %tmp.16 %tmp.18;
+            %tmp.22 = const :locX;
+            symbol [ locX %tmp.22 30 116 120 const ];
+            %tmp.23 = 95;
+            %tmp.24 = dup %tmp.20;
+            %tmp.25 = aputv %tmp.24 %tmp.22 %tmp.23;
+            %tmp.27 = const :locY;
+            symbol [ locY %tmp.27 30 127 131 const ];
+            %tmp.28 = 75;
+            %tmp.29 = dup %tmp.25;
+            %tmp.30 = aputv %tmp.29 %tmp.27 %tmp.28;
+            %tmp.32 = const :justification;
+            symbol [ justification %tmp.32 30 138 151 const ];
+            symbol [ Graphics %tmp.33 30 153 161 ];
+            %tmp.33 = getm $.Toybox.Graphics;
+            symbol [ TEXT_JUSTIFY_RIGHT %tmp.34 30 162 180 ];
+            %tmp.34 = getv %tmp.33 :TEXT_JUSTIFY_RIGHT;
+            %tmp.35 = dup %tmp.30;
+            %tmp.36 = aputv %tmp.35 %tmp.32 %tmp.34;
+            %tmp.38 = const :font;
+            symbol [ font %tmp.38 30 183 187 const ];
+            symbol [ Graphics %tmp.39 30 189 197 ];
+            %tmp.39 = getm $.Toybox.Graphics;
+            symbol [ FONT_TINY %tmp.40 30 198 207 ];
+            %tmp.40 = getv %tmp.39 :FONT_TINY;
+            %tmp.41 = dup %tmp.36;
+            %tmp.42 = aputv %tmp.41 %tmp.38 %tmp.40;
+            %tmp.5 = newc %tmp.8 (%tmp.42);
+            lputv %rez_cmp_local_text_label.2 %tmp.5;
+            symbol [ rez_cmp_local_text_label %rez_cmp_local_text_label.2 30 16 40 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 32 12 ]
+            [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_27_77_35_8_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_27_77_35_8_stop" ]
+            %rez_cmp_local_text_value.3 = local;
+            symbol [ rez_cmp_local_text_value %rez_cmp_local_text_value.3 32 16 40 ];
+            symbol [ WatchUi %tmp.45 32 47 54 ];
+            %tmp.45 = getm $.Toybox.WatchUi;
+            symbol [ Text %tmp.46 32 55 59 ];
+            %tmp.46 = getv function ? %tmp.45 :Text;
+            %tmp.47 = newd 6;
+            %tmp.49 = const :identifier;
+            symbol [ identifier %tmp.49 32 62 72 const ];
+            %tmp.50 = "value";
+            %tmp.51 = dup %tmp.47;
+            %tmp.52 = aputv %tmp.51 %tmp.49 %tmp.50;
+            %tmp.54 = const :color;
+            symbol [ color %tmp.54 32 84 89 const ];
+            symbol [ Graphics %tmp.55 32 91 99 ];
+            %tmp.55 = getm $.Toybox.Graphics;
+            symbol [ COLOR_WHITE %tmp.56 32 100 111 ];
+            %tmp.56 = getv %tmp.55 :COLOR_WHITE;
+            %tmp.57 = dup %tmp.52;
+            %tmp.58 = aputv %tmp.57 %tmp.54 %tmp.56;
+            %tmp.60 = const :locX;
+            symbol [ locX %tmp.60 32 114 118 const ];
+            %tmp.61 = 95;
+            %tmp.62 = dup %tmp.58;
+            %tmp.63 = aputv %tmp.62 %tmp.60 %tmp.61;
+            %tmp.65 = const :locY;
+            symbol [ locY %tmp.65 32 125 129 const ];
+            %tmp.66 = 42;
+            %tmp.67 = dup %tmp.63;
+            %tmp.68 = aputv %tmp.67 %tmp.65 %tmp.66;
+            %tmp.70 = const :justification;
+            symbol [ justification %tmp.70 32 136 149 const ];
+            symbol [ Graphics %tmp.71 32 151 159 ];
+            %tmp.71 = getm $.Toybox.Graphics;
+            symbol [ TEXT_JUSTIFY_RIGHT %tmp.72 32 160 178 ];
+            %tmp.72 = getv %tmp.71 :TEXT_JUSTIFY_RIGHT;
+            %tmp.73 = dup %tmp.68;
+            %tmp.74 = aputv %tmp.73 %tmp.70 %tmp.72;
+            %tmp.76 = const :font;
+            symbol [ font %tmp.76 32 181 185 const ];
+            symbol [ Graphics %tmp.77 32 187 195 ];
+            %tmp.77 = getm $.Toybox.Graphics;
+            symbol [ FONT_LARGE %tmp.78 32 196 206 ];
+            %tmp.78 = getv %tmp.77 :FONT_LARGE;
+            %tmp.79 = dup %tmp.74;
+            %tmp.80 = aputv %tmp.79 %tmp.76 %tmp.78;
+            %tmp.43 = newc %tmp.46 (%tmp.80);
+            lputv %rez_cmp_local_text_value.3 %tmp.43;
+            symbol [ rez_cmp_local_text_value %rez_cmp_local_text_value.3 32 16 40 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 34 12 ]
+            %tmp.81 = newa 3 Array<WatchUi.Drawable>;
+            symbol [ Array %tmp.81 34 127 132 ];
+            symbol [ WatchUi %tmp.81 34 133 140 ];
+            symbol [ Drawable %tmp.81 34 141 149 ];
+            %tmp.82 = lgetv %rez_cmp_local_custom_drawable_83741574912206153191.1;
+            symbol [ rez_cmp_local_custom_drawable_83741574912206153191 %tmp.82 34 20 70 ];
+            %tmp.83 = dup %tmp.81;
+            %tmp.84 = aputv %tmp.83 0 %tmp.82;
+            %tmp.85 = lgetv %rez_cmp_local_text_label.2;
+            symbol [ rez_cmp_local_text_label %tmp.85 34 72 96 ];
+            %tmp.86 = dup %tmp.84;
+            %tmp.87 = aputv %tmp.86 1 %tmp.85;
+            %tmp.88 = lgetv %rez_cmp_local_text_value.3;
+            symbol [ rez_cmp_local_text_value %tmp.88 34 98 122 ];
+            %tmp.89 = dup %tmp.87;
+            %tmp.90 = aputv %tmp.89 2 %tmp.88;
+            ret %tmp.90;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_27_77_35_8_stop:
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 37; @symbol_functiondef = [TopRightLayout,37,17,31]; @symbol_param<0> = [dc,37,32,34]; @symbol_param<0>_type<0> = [Graphics,37,38,46]; @symbol_param<0>_type<1> = [Dc,37,47,49]; @symbol_return<0> = [Array,37,54,59]; @symbol_return<1> = [WatchUi,37,60,67]; @symbol_return<2> = [Drawable,37,68,76]; ]
+        function TopRightLayout(dc as Graphics.Dc) as Array<WatchUi.Drawable> {
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_37_78_45_8_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 38 12 ]
+            [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_37_78_45_8_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_37_78_45_8_stop" ]
+            %rez_cmp_local_custom_drawable_11824933295158922413.1 = local;
+            symbol [ rez_cmp_local_custom_drawable_11824933295158922413 %rez_cmp_local_custom_drawable_11824933295158922413.1 38 16 66 ];
+            symbol [ Background %tmp.4 38 73 83 ];
+            %tmp.4 = getv ? :Background;
+            %tmp.1 = newc %tmp.4 ();
+            lputv %rez_cmp_local_custom_drawable_11824933295158922413.1 %tmp.1;
+            symbol [ rez_cmp_local_custom_drawable_11824933295158922413 %rez_cmp_local_custom_drawable_11824933295158922413.1 38 16 66 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 40 12 ]
+            [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_37_78_45_8_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_37_78_45_8_stop" ]
+            %rez_cmp_local_text_label.2 = local;
+            symbol [ rez_cmp_local_text_label %rez_cmp_local_text_label.2 40 16 40 ];
+            symbol [ WatchUi %tmp.7 40 47 54 ];
+            %tmp.7 = getm $.Toybox.WatchUi;
+            symbol [ Text %tmp.8 40 55 59 ];
+            %tmp.8 = getv function ? %tmp.7 :Text;
+            %tmp.9 = newd 6;
+            %tmp.11 = const :identifier;
+            symbol [ identifier %tmp.11 40 62 72 const ];
+            %tmp.12 = "label";
+            %tmp.13 = dup %tmp.9;
+            %tmp.14 = aputv %tmp.13 %tmp.11 %tmp.12;
+            %tmp.16 = const :color;
+            symbol [ color %tmp.16 40 84 89 const ];
+            symbol [ Graphics %tmp.17 40 91 99 ];
+            %tmp.17 = getm $.Toybox.Graphics;
+            symbol [ COLOR_LT_GRAY %tmp.18 40 100 113 ];
+            %tmp.18 = getv %tmp.17 :COLOR_LT_GRAY;
+            %tmp.19 = dup %tmp.14;
+            %tmp.20 = aputv %tmp.19 %tmp.16 %tmp.18;
+            %tmp.22 = const :locX;
+            symbol [ locX %tmp.22 40 116 120 const ];
+            %tmp.23 = 14;
+            %tmp.24 = dup %tmp.20;
+            %tmp.25 = aputv %tmp.24 %tmp.22 %tmp.23;
+            %tmp.27 = const :locY;
+            symbol [ locY %tmp.27 40 127 131 const ];
+            %tmp.28 = 75;
+            %tmp.29 = dup %tmp.25;
+            %tmp.30 = aputv %tmp.29 %tmp.27 %tmp.28;
+            %tmp.32 = const :justification;
+            symbol [ justification %tmp.32 40 138 151 const ];
+            symbol [ Graphics %tmp.33 40 153 161 ];
+            %tmp.33 = getm $.Toybox.Graphics;
+            symbol [ TEXT_JUSTIFY_LEFT %tmp.34 40 162 179 ];
+            %tmp.34 = getv %tmp.33 :TEXT_JUSTIFY_LEFT;
+            %tmp.35 = dup %tmp.30;
+            %tmp.36 = aputv %tmp.35 %tmp.32 %tmp.34;
+            %tmp.38 = const :font;
+            symbol [ font %tmp.38 40 182 186 const ];
+            symbol [ Graphics %tmp.39 40 188 196 ];
+            %tmp.39 = getm $.Toybox.Graphics;
+            symbol [ FONT_TINY %tmp.40 40 197 206 ];
+            %tmp.40 = getv %tmp.39 :FONT_TINY;
+            %tmp.41 = dup %tmp.36;
+            %tmp.42 = aputv %tmp.41 %tmp.38 %tmp.40;
+            %tmp.5 = newc %tmp.8 (%tmp.42);
+            lputv %rez_cmp_local_text_label.2 %tmp.5;
+            symbol [ rez_cmp_local_text_label %rez_cmp_local_text_label.2 40 16 40 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 42 12 ]
+            [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_37_78_45_8_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_37_78_45_8_stop" ]
+            %rez_cmp_local_text_value.3 = local;
+            symbol [ rez_cmp_local_text_value %rez_cmp_local_text_value.3 42 16 40 ];
+            symbol [ WatchUi %tmp.45 42 47 54 ];
+            %tmp.45 = getm $.Toybox.WatchUi;
+            symbol [ Text %tmp.46 42 55 59 ];
+            %tmp.46 = getv function ? %tmp.45 :Text;
+            %tmp.47 = newd 6;
+            %tmp.49 = const :identifier;
+            symbol [ identifier %tmp.49 42 62 72 const ];
+            %tmp.50 = "value";
+            %tmp.51 = dup %tmp.47;
+            %tmp.52 = aputv %tmp.51 %tmp.49 %tmp.50;
+            %tmp.54 = const :color;
+            symbol [ color %tmp.54 42 84 89 const ];
+            symbol [ Graphics %tmp.55 42 91 99 ];
+            %tmp.55 = getm $.Toybox.Graphics;
+            symbol [ COLOR_WHITE %tmp.56 42 100 111 ];
+            %tmp.56 = getv %tmp.55 :COLOR_WHITE;
+            %tmp.57 = dup %tmp.52;
+            %tmp.58 = aputv %tmp.57 %tmp.54 %tmp.56;
+            %tmp.60 = const :locX;
+            symbol [ locX %tmp.60 42 114 118 const ];
+            %tmp.61 = 14;
+            %tmp.62 = dup %tmp.58;
+            %tmp.63 = aputv %tmp.62 %tmp.60 %tmp.61;
+            %tmp.65 = const :locY;
+            symbol [ locY %tmp.65 42 125 129 const ];
+            %tmp.66 = 42;
+            %tmp.67 = dup %tmp.63;
+            %tmp.68 = aputv %tmp.67 %tmp.65 %tmp.66;
+            %tmp.70 = const :justification;
+            symbol [ justification %tmp.70 42 136 149 const ];
+            symbol [ Graphics %tmp.71 42 151 159 ];
+            %tmp.71 = getm $.Toybox.Graphics;
+            symbol [ TEXT_JUSTIFY_LEFT %tmp.72 42 160 177 ];
+            %tmp.72 = getv %tmp.71 :TEXT_JUSTIFY_LEFT;
+            %tmp.73 = dup %tmp.68;
+            %tmp.74 = aputv %tmp.73 %tmp.70 %tmp.72;
+            %tmp.76 = const :font;
+            symbol [ font %tmp.76 42 180 184 const ];
+            symbol [ Graphics %tmp.77 42 186 194 ];
+            %tmp.77 = getm $.Toybox.Graphics;
+            symbol [ FONT_LARGE %tmp.78 42 195 205 ];
+            %tmp.78 = getv %tmp.77 :FONT_LARGE;
+            %tmp.79 = dup %tmp.74;
+            %tmp.80 = aputv %tmp.79 %tmp.76 %tmp.78;
+            %tmp.43 = newc %tmp.46 (%tmp.80);
+            lputv %rez_cmp_local_text_value.3 %tmp.43;
+            symbol [ rez_cmp_local_text_value %rez_cmp_local_text_value.3 42 16 40 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 44 12 ]
+            %tmp.81 = newa 3 Array<WatchUi.Drawable>;
+            symbol [ Array %tmp.81 44 127 132 ];
+            symbol [ WatchUi %tmp.81 44 133 140 ];
+            symbol [ Drawable %tmp.81 44 141 149 ];
+            %tmp.82 = lgetv %rez_cmp_local_custom_drawable_11824933295158922413.1;
+            symbol [ rez_cmp_local_custom_drawable_11824933295158922413 %tmp.82 44 20 70 ];
+            %tmp.83 = dup %tmp.81;
+            %tmp.84 = aputv %tmp.83 0 %tmp.82;
+            %tmp.85 = lgetv %rez_cmp_local_text_label.2;
+            symbol [ rez_cmp_local_text_label %tmp.85 44 72 96 ];
+            %tmp.86 = dup %tmp.84;
+            %tmp.87 = aputv %tmp.86 1 %tmp.85;
+            %tmp.88 = lgetv %rez_cmp_local_text_value.3;
+            symbol [ rez_cmp_local_text_value %tmp.88 44 98 122 ];
+            %tmp.89 = dup %tmp.87;
+            %tmp.90 = aputv %tmp.89 2 %tmp.88;
+            ret %tmp.90;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_37_78_45_8_stop:
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 47; @symbol_functiondef = [BottomLeftLayout,47,17,33]; @symbol_param<0> = [dc,47,34,36]; @symbol_param<0>_type<0> = [Graphics,47,40,48]; @symbol_param<0>_type<1> = [Dc,47,49,51]; @symbol_return<0> = [Array,47,56,61]; @symbol_return<1> = [WatchUi,47,62,69]; @symbol_return<2> = [Drawable,47,70,78]; ]
+        function BottomLeftLayout(dc as Graphics.Dc) as Array<WatchUi.Drawable> {
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_47_80_55_8_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 48 12 ]
+            [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_47_80_55_8_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_47_80_55_8_stop" ]
+            %rez_cmp_local_custom_drawable_16380678501279751870.1 = local;
+            symbol [ rez_cmp_local_custom_drawable_16380678501279751870 %rez_cmp_local_custom_drawable_16380678501279751870.1 48 16 66 ];
+            symbol [ Background %tmp.4 48 73 83 ];
+            %tmp.4 = getv ? :Background;
+            %tmp.1 = newc %tmp.4 ();
+            lputv %rez_cmp_local_custom_drawable_16380678501279751870.1 %tmp.1;
+            symbol [ rez_cmp_local_custom_drawable_16380678501279751870 %rez_cmp_local_custom_drawable_16380678501279751870.1 48 16 66 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 50 12 ]
+            [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_47_80_55_8_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_47_80_55_8_stop" ]
+            %rez_cmp_local_text_label.2 = local;
+            symbol [ rez_cmp_local_text_label %rez_cmp_local_text_label.2 50 16 40 ];
+            symbol [ WatchUi %tmp.7 50 47 54 ];
+            %tmp.7 = getm $.Toybox.WatchUi;
+            symbol [ Text %tmp.8 50 55 59 ];
+            %tmp.8 = getv function ? %tmp.7 :Text;
+            %tmp.9 = newd 6;
+            %tmp.11 = const :identifier;
+            symbol [ identifier %tmp.11 50 62 72 const ];
+            %tmp.12 = "label";
+            %tmp.13 = dup %tmp.9;
+            %tmp.14 = aputv %tmp.13 %tmp.11 %tmp.12;
+            %tmp.16 = const :color;
+            symbol [ color %tmp.16 50 84 89 const ];
+            symbol [ Graphics %tmp.17 50 91 99 ];
+            %tmp.17 = getm $.Toybox.Graphics;
+            symbol [ COLOR_LT_GRAY %tmp.18 50 100 113 ];
+            %tmp.18 = getv %tmp.17 :COLOR_LT_GRAY;
+            %tmp.19 = dup %tmp.14;
+            %tmp.20 = aputv %tmp.19 %tmp.16 %tmp.18;
+            %tmp.22 = const :locX;
+            symbol [ locX %tmp.22 50 116 120 const ];
+            %tmp.23 = 95;
+            %tmp.24 = dup %tmp.20;
+            %tmp.25 = aputv %tmp.24 %tmp.22 %tmp.23;
+            %tmp.27 = const :locY;
+            symbol [ locY %tmp.27 50 127 131 const ];
+            %tmp.28 = 10;
+            %tmp.29 = dup %tmp.25;
+            %tmp.30 = aputv %tmp.29 %tmp.27 %tmp.28;
+            %tmp.32 = const :justification;
+            symbol [ justification %tmp.32 50 138 151 const ];
+            symbol [ Graphics %tmp.33 50 153 161 ];
+            %tmp.33 = getm $.Toybox.Graphics;
+            symbol [ TEXT_JUSTIFY_RIGHT %tmp.34 50 162 180 ];
+            %tmp.34 = getv %tmp.33 :TEXT_JUSTIFY_RIGHT;
+            %tmp.35 = dup %tmp.30;
+            %tmp.36 = aputv %tmp.35 %tmp.32 %tmp.34;
+            %tmp.38 = const :font;
+            symbol [ font %tmp.38 50 183 187 const ];
+            symbol [ Graphics %tmp.39 50 189 197 ];
+            %tmp.39 = getm $.Toybox.Graphics;
+            symbol [ FONT_TINY %tmp.40 50 198 207 ];
+            %tmp.40 = getv %tmp.39 :FONT_TINY;
+            %tmp.41 = dup %tmp.36;
+            %tmp.42 = aputv %tmp.41 %tmp.38 %tmp.40;
+            %tmp.5 = newc %tmp.8 (%tmp.42);
+            lputv %rez_cmp_local_text_label.2 %tmp.5;
+            symbol [ rez_cmp_local_text_label %rez_cmp_local_text_label.2 50 16 40 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 52 12 ]
+            [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_47_80_55_8_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_47_80_55_8_stop" ]
+            %rez_cmp_local_text_value.3 = local;
+            symbol [ rez_cmp_local_text_value %rez_cmp_local_text_value.3 52 16 40 ];
+            symbol [ WatchUi %tmp.45 52 47 54 ];
+            %tmp.45 = getm $.Toybox.WatchUi;
+            symbol [ Text %tmp.46 52 55 59 ];
+            %tmp.46 = getv function ? %tmp.45 :Text;
+            %tmp.47 = newd 6;
+            %tmp.49 = const :identifier;
+            symbol [ identifier %tmp.49 52 62 72 const ];
+            %tmp.50 = "value";
+            %tmp.51 = dup %tmp.47;
+            %tmp.52 = aputv %tmp.51 %tmp.49 %tmp.50;
+            %tmp.54 = const :color;
+            symbol [ color %tmp.54 52 84 89 const ];
+            symbol [ Graphics %tmp.55 52 91 99 ];
+            %tmp.55 = getm $.Toybox.Graphics;
+            symbol [ COLOR_WHITE %tmp.56 52 100 111 ];
+            %tmp.56 = getv %tmp.55 :COLOR_WHITE;
+            %tmp.57 = dup %tmp.52;
+            %tmp.58 = aputv %tmp.57 %tmp.54 %tmp.56;
+            %tmp.60 = const :locX;
+            symbol [ locX %tmp.60 52 114 118 const ];
+            %tmp.61 = 95;
+            %tmp.62 = dup %tmp.58;
+            %tmp.63 = aputv %tmp.62 %tmp.60 %tmp.61;
+            %tmp.65 = const :locY;
+            symbol [ locY %tmp.65 52 125 129 const ];
+            %tmp.66 = 27;
+            %tmp.67 = dup %tmp.63;
+            %tmp.68 = aputv %tmp.67 %tmp.65 %tmp.66;
+            %tmp.70 = const :justification;
+            symbol [ justification %tmp.70 52 136 149 const ];
+            symbol [ Graphics %tmp.71 52 151 159 ];
+            %tmp.71 = getm $.Toybox.Graphics;
+            symbol [ TEXT_JUSTIFY_RIGHT %tmp.72 52 160 178 ];
+            %tmp.72 = getv %tmp.71 :TEXT_JUSTIFY_RIGHT;
+            %tmp.73 = dup %tmp.68;
+            %tmp.74 = aputv %tmp.73 %tmp.70 %tmp.72;
+            %tmp.76 = const :font;
+            symbol [ font %tmp.76 52 181 185 const ];
+            symbol [ Graphics %tmp.77 52 187 195 ];
+            %tmp.77 = getm $.Toybox.Graphics;
+            symbol [ FONT_LARGE %tmp.78 52 196 206 ];
+            %tmp.78 = getv %tmp.77 :FONT_LARGE;
+            %tmp.79 = dup %tmp.74;
+            %tmp.80 = aputv %tmp.79 %tmp.76 %tmp.78;
+            %tmp.43 = newc %tmp.46 (%tmp.80);
+            lputv %rez_cmp_local_text_value.3 %tmp.43;
+            symbol [ rez_cmp_local_text_value %rez_cmp_local_text_value.3 52 16 40 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 54 12 ]
+            %tmp.81 = newa 3 Array<WatchUi.Drawable>;
+            symbol [ Array %tmp.81 54 127 132 ];
+            symbol [ WatchUi %tmp.81 54 133 140 ];
+            symbol [ Drawable %tmp.81 54 141 149 ];
+            %tmp.82 = lgetv %rez_cmp_local_custom_drawable_16380678501279751870.1;
+            symbol [ rez_cmp_local_custom_drawable_16380678501279751870 %tmp.82 54 20 70 ];
+            %tmp.83 = dup %tmp.81;
+            %tmp.84 = aputv %tmp.83 0 %tmp.82;
+            %tmp.85 = lgetv %rez_cmp_local_text_label.2;
+            symbol [ rez_cmp_local_text_label %tmp.85 54 72 96 ];
+            %tmp.86 = dup %tmp.84;
+            %tmp.87 = aputv %tmp.86 1 %tmp.85;
+            %tmp.88 = lgetv %rez_cmp_local_text_value.3;
+            symbol [ rez_cmp_local_text_value %tmp.88 54 98 122 ];
+            %tmp.89 = dup %tmp.87;
+            %tmp.90 = aputv %tmp.89 2 %tmp.88;
+            ret %tmp.90;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_47_80_55_8_stop:
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 57; @symbol_functiondef = [BottomRightLayout,57,17,34]; @symbol_param<0> = [dc,57,35,37]; @symbol_param<0>_type<0> = [Graphics,57,41,49]; @symbol_param<0>_type<1> = [Dc,57,50,52]; @symbol_return<0> = [Array,57,57,62]; @symbol_return<1> = [WatchUi,57,63,70]; @symbol_return<2> = [Drawable,57,71,79]; ]
+        function BottomRightLayout(dc as Graphics.Dc) as Array<WatchUi.Drawable> {
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_57_81_65_8_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 58 12 ]
+            [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_57_81_65_8_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_57_81_65_8_stop" ]
+            %rez_cmp_local_custom_drawable_16187860511068497434.1 = local;
+            symbol [ rez_cmp_local_custom_drawable_16187860511068497434 %rez_cmp_local_custom_drawable_16187860511068497434.1 58 16 66 ];
+            symbol [ Background %tmp.4 58 73 83 ];
+            %tmp.4 = getv ? :Background;
+            %tmp.1 = newc %tmp.4 ();
+            lputv %rez_cmp_local_custom_drawable_16187860511068497434.1 %tmp.1;
+            symbol [ rez_cmp_local_custom_drawable_16187860511068497434 %rez_cmp_local_custom_drawable_16187860511068497434.1 58 16 66 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 60 12 ]
+            [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_57_81_65_8_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_57_81_65_8_stop" ]
+            %rez_cmp_local_text_label.2 = local;
+            symbol [ rez_cmp_local_text_label %rez_cmp_local_text_label.2 60 16 40 ];
+            symbol [ WatchUi %tmp.7 60 47 54 ];
+            %tmp.7 = getm $.Toybox.WatchUi;
+            symbol [ Text %tmp.8 60 55 59 ];
+            %tmp.8 = getv function ? %tmp.7 :Text;
+            %tmp.9 = newd 6;
+            %tmp.11 = const :identifier;
+            symbol [ identifier %tmp.11 60 62 72 const ];
+            %tmp.12 = "label";
+            %tmp.13 = dup %tmp.9;
+            %tmp.14 = aputv %tmp.13 %tmp.11 %tmp.12;
+            %tmp.16 = const :color;
+            symbol [ color %tmp.16 60 84 89 const ];
+            symbol [ Graphics %tmp.17 60 91 99 ];
+            %tmp.17 = getm $.Toybox.Graphics;
+            symbol [ COLOR_LT_GRAY %tmp.18 60 100 113 ];
+            %tmp.18 = getv %tmp.17 :COLOR_LT_GRAY;
+            %tmp.19 = dup %tmp.14;
+            %tmp.20 = aputv %tmp.19 %tmp.16 %tmp.18;
+            %tmp.22 = const :locX;
+            symbol [ locX %tmp.22 60 116 120 const ];
+            %tmp.23 = 14;
+            %tmp.24 = dup %tmp.20;
+            %tmp.25 = aputv %tmp.24 %tmp.22 %tmp.23;
+            %tmp.27 = const :locY;
+            symbol [ locY %tmp.27 60 127 131 const ];
+            %tmp.28 = 10;
+            %tmp.29 = dup %tmp.25;
+            %tmp.30 = aputv %tmp.29 %tmp.27 %tmp.28;
+            %tmp.32 = const :justification;
+            symbol [ justification %tmp.32 60 138 151 const ];
+            symbol [ Graphics %tmp.33 60 153 161 ];
+            %tmp.33 = getm $.Toybox.Graphics;
+            symbol [ TEXT_JUSTIFY_LEFT %tmp.34 60 162 179 ];
+            %tmp.34 = getv %tmp.33 :TEXT_JUSTIFY_LEFT;
+            %tmp.35 = dup %tmp.30;
+            %tmp.36 = aputv %tmp.35 %tmp.32 %tmp.34;
+            %tmp.38 = const :font;
+            symbol [ font %tmp.38 60 182 186 const ];
+            symbol [ Graphics %tmp.39 60 188 196 ];
+            %tmp.39 = getm $.Toybox.Graphics;
+            symbol [ FONT_TINY %tmp.40 60 197 206 ];
+            %tmp.40 = getv %tmp.39 :FONT_TINY;
+            %tmp.41 = dup %tmp.36;
+            %tmp.42 = aputv %tmp.41 %tmp.38 %tmp.40;
+            %tmp.5 = newc %tmp.8 (%tmp.42);
+            lputv %rez_cmp_local_text_label.2 %tmp.5;
+            symbol [ rez_cmp_local_text_label %rez_cmp_local_text_label.2 60 16 40 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 62 12 ]
+            [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_57_81_65_8_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_57_81_65_8_stop" ]
+            %rez_cmp_local_text_value.3 = local;
+            symbol [ rez_cmp_local_text_value %rez_cmp_local_text_value.3 62 16 40 ];
+            symbol [ WatchUi %tmp.45 62 47 54 ];
+            %tmp.45 = getm $.Toybox.WatchUi;
+            symbol [ Text %tmp.46 62 55 59 ];
+            %tmp.46 = getv function ? %tmp.45 :Text;
+            %tmp.47 = newd 6;
+            %tmp.49 = const :identifier;
+            symbol [ identifier %tmp.49 62 62 72 const ];
+            %tmp.50 = "value";
+            %tmp.51 = dup %tmp.47;
+            %tmp.52 = aputv %tmp.51 %tmp.49 %tmp.50;
+            %tmp.54 = const :color;
+            symbol [ color %tmp.54 62 84 89 const ];
+            symbol [ Graphics %tmp.55 62 91 99 ];
+            %tmp.55 = getm $.Toybox.Graphics;
+            symbol [ COLOR_WHITE %tmp.56 62 100 111 ];
+            %tmp.56 = getv %tmp.55 :COLOR_WHITE;
+            %tmp.57 = dup %tmp.52;
+            %tmp.58 = aputv %tmp.57 %tmp.54 %tmp.56;
+            %tmp.60 = const :locX;
+            symbol [ locX %tmp.60 62 114 118 const ];
+            %tmp.61 = 14;
+            %tmp.62 = dup %tmp.58;
+            %tmp.63 = aputv %tmp.62 %tmp.60 %tmp.61;
+            %tmp.65 = const :locY;
+            symbol [ locY %tmp.65 62 125 129 const ];
+            %tmp.66 = 27;
+            %tmp.67 = dup %tmp.63;
+            %tmp.68 = aputv %tmp.67 %tmp.65 %tmp.66;
+            %tmp.70 = const :justification;
+            symbol [ justification %tmp.70 62 136 149 const ];
+            symbol [ Graphics %tmp.71 62 151 159 ];
+            %tmp.71 = getm $.Toybox.Graphics;
+            symbol [ TEXT_JUSTIFY_LEFT %tmp.72 62 160 177 ];
+            %tmp.72 = getv %tmp.71 :TEXT_JUSTIFY_LEFT;
+            %tmp.73 = dup %tmp.68;
+            %tmp.74 = aputv %tmp.73 %tmp.70 %tmp.72;
+            %tmp.76 = const :font;
+            symbol [ font %tmp.76 62 180 184 const ];
+            symbol [ Graphics %tmp.77 62 186 194 ];
+            %tmp.77 = getm $.Toybox.Graphics;
+            symbol [ FONT_LARGE %tmp.78 62 195 205 ];
+            %tmp.78 = getv %tmp.77 :FONT_LARGE;
+            %tmp.79 = dup %tmp.74;
+            %tmp.80 = aputv %tmp.79 %tmp.76 %tmp.78;
+            %tmp.43 = newc %tmp.46 (%tmp.80);
+            lputv %rez_cmp_local_text_value.3 %tmp.43;
+            symbol [ rez_cmp_local_text_value %rez_cmp_local_text_value.3 62 16 40 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 64 12 ]
+            %tmp.81 = newa 3 Array<WatchUi.Drawable>;
+            symbol [ Array %tmp.81 64 127 132 ];
+            symbol [ WatchUi %tmp.81 64 133 140 ];
+            symbol [ Drawable %tmp.81 64 141 149 ];
+            %tmp.82 = lgetv %rez_cmp_local_custom_drawable_16187860511068497434.1;
+            symbol [ rez_cmp_local_custom_drawable_16187860511068497434 %tmp.82 64 20 70 ];
+            %tmp.83 = dup %tmp.81;
+            %tmp.84 = aputv %tmp.83 0 %tmp.82;
+            %tmp.85 = lgetv %rez_cmp_local_text_label.2;
+            symbol [ rez_cmp_local_text_label %tmp.85 64 72 96 ];
+            %tmp.86 = dup %tmp.84;
+            %tmp.87 = aputv %tmp.86 1 %tmp.85;
+            %tmp.88 = lgetv %rez_cmp_local_text_value.3;
+            symbol [ rez_cmp_local_text_value %tmp.88 64 98 122 ];
+            %tmp.89 = dup %tmp.87;
+            %tmp.90 = aputv %tmp.89 2 %tmp.88;
+            ret %tmp.90;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_gen_006_B4061_00_source_Rez_mcgen_57_81_65_8_stop:
+        }
+    }
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 68; @symbol_moduledef = [Strings,68,11,18]; ]
+    module Strings {
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 68; ]
+        <init> {
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 69; @position = 27; initialized = true; @symbol_vardef = [IgnorePowerWattsX_Title,69,27,50]; @symbol_type<0> = [ResourceId,69,54,64]; ]
+        var IgnorePowerWattsX_Title as ResourceId;
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 70; @position = 27; initialized = true; @symbol_vardef = [LowThresholdPercentageX_Title,70,27,56]; @symbol_type<0> = [ResourceId,70,60,70]; ]
+        var LowThresholdPercentageX_Title as ResourceId;
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 71; @position = 27; initialized = true; @symbol_vardef = [CV,71,27,29]; @symbol_type<0> = [ResourceId,71,33,43]; ]
+        var CV as ResourceId;
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 72; @position = 27; initialized = true; @symbol_vardef = [HighThresholdPercentageX_Title,72,27,57]; @symbol_type<0> = [ResourceId,72,61,71]; ]
+        var HighThresholdPercentageX_Title as ResourceId;
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 73; @position = 27; initialized = true; @symbol_vardef = [GraphLabel_CV,73,27,40]; @symbol_type<0> = [ResourceId,73,44,54]; ]
+        var GraphLabel_CV as ResourceId;
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 74; @position = 27; initialized = true; @symbol_vardef = [label,74,27,32]; @symbol_type<0> = [ResourceId,74,36,46]; ]
+        var label as ResourceId;
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 75; @position = 27; initialized = true; @symbol_vardef = [percent_symbol,75,27,41]; @symbol_type<0> = [ResourceId,75,45,55]; ]
+        var percent_symbol as ResourceId;
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 76; @position = 27; initialized = true; @symbol_vardef = [CV_Summary,76,27,37]; @symbol_type<0> = [ResourceId,76,41,51]; ]
+        var CV_Summary as ResourceId;
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 77; @position = 27; initialized = true; @symbol_vardef = [AppName,77,27,34]; @symbol_type<0> = [ResourceId,77,38,48]; ]
+        var AppName as ResourceId;
+    }
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 80; @symbol_moduledef = [Styles,80,11,17]; ]
+    module Styles {
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 80; ]
+        <init> {
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 81; @symbol_moduledef = [prompt_font_enhanced_readability__body_with_title,81,15,64]; ]
+        module prompt_font_enhanced_readability__body_with_title {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 81; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 82; @position = 18; @symbol_constdef = [exclude,82,18,25]; @symbol_type<0> = [Boolean,82,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 85; @symbol_moduledef = [system_size__menu_header,85,15,39]; ]
+        module system_size__menu_header {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 85; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 86; @position = 18; @symbol_constdef = [height,86,18,24]; @symbol_type<0> = [Number,86,28,34]; ]
+            const height as Number = 0;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 89; @symbol_moduledef = [system_loc__hint_button_left_bottom,89,15,50]; ]
+        module system_loc__hint_button_left_bottom {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 89; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 90; @position = 18; @symbol_constdef = [exclude,90,18,25]; @symbol_type<0> = [Boolean,90,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 93; @symbol_moduledef = [prompt_font_enhanced_readability__body_no_title,93,15,62]; ]
+        module prompt_font_enhanced_readability__body_no_title {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 93; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 94; @position = 18; @symbol_constdef = [exclude,94,18,25]; @symbol_type<0> = [Boolean,94,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 97; @symbol_moduledef = [prompt_loc__body_no_title,97,15,40]; ]
+        module prompt_loc__body_no_title {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 97; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 98; @position = 18; @symbol_constdef = [x,98,18,19]; @symbol_type<0> = [Number,98,23,29]; ]
+            const x as Number = 8;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 99; @position = 18; @symbol_constdef = [y,99,18,19]; @symbol_type<0> = [Number,99,23,29]; ]
+            const y as Number = 14;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 102; @symbol_moduledef = [system_icon_dark__about,102,15,38]; ]
+        module system_icon_dark__about {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 102; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 103; @position = 18; @symbol_constdef = [filename,103,18,26]; @symbol_type<0> = [String,103,30,36]; ]
+            const filename as String = "/Users/marknelson/Library/Application Support/Garmin/ConnectIQ/Devices/edge540/system_icon_dark__about.svg";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 104; @position = 18; @symbol_constdef = [disableTransparency,104,18,37]; @symbol_type<0> = [Boolean,104,41,48]; ]
+            const disableTransparency as Boolean = true;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 105; @position = 18; @symbol_constdef = [dithering,105,18,27]; @symbol_type<0> = [String,105,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 106; @position = 18; @symbol_constdef = [automaticPalette,106,18,34]; @symbol_type<0> = [Boolean,106,38,45]; ]
+            const automaticPalette as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 109; @symbol_moduledef = [system_icon_light__question,109,15,42]; ]
+        module system_icon_light__question {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 109; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 110; @position = 18; @symbol_constdef = [filename,110,18,26]; @symbol_type<0> = [String,110,30,36]; ]
+            const filename as String = "/Users/marknelson/Library/Application Support/Garmin/ConnectIQ/Devices/edge540/system_icon_light__question.svg";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 111; @position = 18; @symbol_constdef = [disableTransparency,111,18,37]; @symbol_type<0> = [Boolean,111,41,48]; ]
+            const disableTransparency as Boolean = true;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 112; @position = 18; @symbol_constdef = [dithering,112,18,27]; @symbol_type<0> = [String,112,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 113; @position = 18; @symbol_constdef = [automaticPalette,113,18,34]; @symbol_type<0> = [Boolean,113,38,45]; ]
+            const automaticPalette as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 116; @symbol_moduledef = [system_loc__hint_button_left_top,116,15,47]; ]
+        module system_loc__hint_button_left_top {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 116; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 117; @position = 18; @symbol_constdef = [exclude,117,18,25]; @symbol_type<0> = [Boolean,117,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 120; @symbol_moduledef = [prompt_font__title,120,15,33]; ]
+        module prompt_font__title {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 120; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 121; @position = 18; @symbol_constdef = [exclude,121,18,25]; @symbol_type<0> = [Boolean,121,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 124; @symbol_moduledef = [system_icon_dark__discard,124,15,40]; ]
+        module system_icon_dark__discard {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 124; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 125; @position = 18; @symbol_constdef = [filename,125,18,26]; @symbol_type<0> = [String,125,30,36]; ]
+            const filename as String = "/Users/marknelson/Library/Application Support/Garmin/ConnectIQ/Devices/edge540/system_icon_dark__discard.svg";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 126; @position = 18; @symbol_constdef = [disableTransparency,126,18,37]; @symbol_type<0> = [Boolean,126,41,48]; ]
+            const disableTransparency as Boolean = true;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 127; @position = 18; @symbol_constdef = [dithering,127,18,27]; @symbol_type<0> = [String,127,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 128; @position = 18; @symbol_constdef = [automaticPalette,128,18,34]; @symbol_type<0> = [Boolean,128,38,45]; ]
+            const automaticPalette as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 131; @symbol_moduledef = [system_size__menu_item,131,15,37]; ]
+        module system_size__menu_item {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 131; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 132; @position = 18; @symbol_constdef = [width,132,18,23]; @symbol_type<0> = [Number,132,27,33]; ]
+            const width as Number = 246;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 133; @position = 18; @symbol_constdef = [height,133,18,24]; @symbol_type<0> = [Number,133,28,34]; ]
+            const height as Number = 70;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 136; @symbol_moduledef = [system_color_dark__text,136,15,38]; ]
+        module system_color_dark__text {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 136; ]
+            <init> {
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 138 18 ]
+                symbol [ Graphics %tmp.91 138 31 39 ];
+                %tmp.91 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.92 138 40 57 ];
+                %tmp.92 = getv %tmp.91 :COLOR_TRANSPARENT;
+                putv self :background %tmp.92;
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 137; @position = 18; @symbol_constdef = [color,137,18,23]; @symbol_type<0> = [Number,137,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 138; @position = 18; @symbol_constdef = [background,138,18,28]; ]
+            const background;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 141; @symbol_moduledef = [system_icon_destructive__discard,141,15,47]; ]
+        module system_icon_destructive__discard {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 141; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 142; @position = 18; @symbol_constdef = [filename,142,18,26]; @symbol_type<0> = [String,142,30,36]; ]
+            const filename as String = "/Users/marknelson/Library/Application Support/Garmin/ConnectIQ/Devices/edge540/system_icon_destructive__discard.svg";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 143; @position = 18; @symbol_constdef = [disableTransparency,143,18,37]; @symbol_type<0> = [Boolean,143,41,48]; ]
+            const disableTransparency as Boolean = true;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 144; @position = 18; @symbol_constdef = [dithering,144,18,27]; @symbol_type<0> = [String,144,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 145; @position = 18; @symbol_constdef = [automaticPalette,145,18,34]; @symbol_type<0> = [Boolean,145,38,45]; ]
+            const automaticPalette as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 148; @symbol_moduledef = [system_icon_dark__hint_action_menu,148,15,49]; ]
+        module system_icon_dark__hint_action_menu {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 148; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 149; @position = 18; @symbol_constdef = [exclude,149,18,25]; @symbol_type<0> = [Boolean,149,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 152; @symbol_moduledef = [prompt_size__title,152,15,33]; ]
+        module prompt_size__title {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 152; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 153; @position = 18; @symbol_constdef = [exclude,153,18,25]; @symbol_type<0> = [Boolean,153,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 156; @symbol_moduledef = [confirmation_font__body,156,15,38]; ]
+        module confirmation_font__body {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 156; ]
+            <init> {
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 157 18 ]
+                symbol [ Graphics %tmp.93 157 34 42 ];
+                %tmp.93 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_CENTER %tmp.94 157 43 62 ];
+                %tmp.94 = getv %tmp.93 :TEXT_JUSTIFY_CENTER;
+                symbol [ Graphics %tmp.95 157 63 71 ];
+                %tmp.95 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_VCENTER %tmp.96 157 72 92 ];
+                %tmp.96 = getv %tmp.95 :TEXT_JUSTIFY_VCENTER;
+                %tmp.97 = bitor %tmp.94 %tmp.96;
+                putv self :justification %tmp.97;
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 158 18 ]
+                symbol [ Graphics %tmp.98 158 25 33 ];
+                %tmp.98 = getm $.Toybox.Graphics;
+                symbol [ FONT_MEDIUM %tmp.99 158 34 45 ];
+                %tmp.99 = getv %tmp.98 :FONT_MEDIUM;
+                putv self :font %tmp.99;
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 157; @position = 18; @symbol_constdef = [justification,157,18,31]; ]
+            const justification;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 158; @position = 18; @symbol_constdef = [font,158,18,22]; ]
+            const font;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 161; @symbol_moduledef = [system_color_dark__background,161,15,44]; ]
+        module system_color_dark__background {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 161; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 162; @position = 18; @symbol_constdef = [color,162,18,23]; @symbol_type<0> = [Number,162,27,33]; ]
+            const color as Number = 0x000000;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 163; @position = 18; @symbol_constdef = [background,163,18,28]; @symbol_type<0> = [Number,163,32,38]; ]
+            const background as Number = 0x000000;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 166; @symbol_moduledef = [system_icon_destructive__hint_button_left_top,166,15,60]; ]
+        module system_icon_destructive__hint_button_left_top {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 166; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 167; @position = 18; @symbol_constdef = [exclude,167,18,25]; @symbol_type<0> = [Boolean,167,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 170; @symbol_moduledef = [system_size__launch_icon,170,15,39]; ]
+        module system_size__launch_icon {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 170; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 171; @position = 18; @symbol_constdef = [scaleX,171,18,24]; @symbol_type<0> = [Number,171,28,34]; ]
+            const scaleX as Number = 35;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 172; @position = 18; @symbol_constdef = [scaleY,172,18,24]; @symbol_type<0> = [Number,172,28,34]; ]
+            const scaleY as Number = 35;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 173; @position = 18; @symbol_constdef = [scaleRelativeTo,173,18,33]; @symbol_type<0> = [String,173,37,43]; ]
+            const scaleRelativeTo as String = "screen";
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 176; @symbol_moduledef = [confirmation_input__confirm,176,15,42]; ]
+        module confirmation_input__confirm {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 176; ]
+            <init> {
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 177 18 ]
+                symbol [ WatchUi %tmp.100 177 27 34 ];
+                %tmp.100 = getm $.Toybox.WatchUi;
+                symbol [ KEY_ENTER %tmp.101 177 35 44 ];
+                %tmp.101 = getv %tmp.100 :KEY_ENTER;
+                putv self :button %tmp.101;
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 177; @position = 18; @symbol_constdef = [button,177,18,24]; ]
+            const button;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 180; @symbol_moduledef = [prompt_font__body_with_title,180,15,43]; ]
+        module prompt_font__body_with_title {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 180; ]
+            <init> {
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 181 18 ]
+                symbol [ Graphics %tmp.102 181 34 42 ];
+                %tmp.102 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_CENTER %tmp.103 181 43 62 ];
+                %tmp.103 = getv %tmp.102 :TEXT_JUSTIFY_CENTER;
+                symbol [ Graphics %tmp.104 181 63 71 ];
+                %tmp.104 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_VCENTER %tmp.105 181 72 92 ];
+                %tmp.105 = getv %tmp.104 :TEXT_JUSTIFY_VCENTER;
+                %tmp.106 = bitor %tmp.103 %tmp.105;
+                putv self :justification %tmp.106;
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 182 18 ]
+                symbol [ Graphics %tmp.107 182 25 33 ];
+                %tmp.107 = getm $.Toybox.Graphics;
+                symbol [ FONT_MEDIUM %tmp.108 182 34 45 ];
+                %tmp.108 = getv %tmp.107 :FONT_MEDIUM;
+                putv self :font %tmp.108;
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 181; @position = 18; @symbol_constdef = [justification,181,18,31]; ]
+            const justification;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 182; @position = 18; @symbol_constdef = [font,182,18,22]; ]
+            const font;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 185; @symbol_moduledef = [confirmation_loc__body,185,15,37]; ]
+        module confirmation_loc__body {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 185; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 186; @position = 18; @symbol_constdef = [x,186,18,19]; @symbol_type<0> = [Number,186,23,29]; ]
+            const x as Number = 1;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 187; @position = 18; @symbol_constdef = [y,187,18,19]; @symbol_type<0> = [Number,187,23,29]; ]
+            const y as Number = 23;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 190; @symbol_moduledef = [system_icon_destructive__hint_button_left_bottom,190,15,63]; ]
+        module system_icon_destructive__hint_button_left_bottom {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 190; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 191; @position = 18; @symbol_constdef = [exclude,191,18,25]; @symbol_type<0> = [Boolean,191,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 194; @symbol_moduledef = [prompt_color_dark__background,194,15,44]; ]
+        module prompt_color_dark__background {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 194; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 195; @position = 18; @symbol_constdef = [color,195,18,23]; @symbol_type<0> = [Number,195,27,33]; ]
+            const color as Number = 0x000000;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 196; @position = 18; @symbol_constdef = [background,196,18,28]; @symbol_type<0> = [Number,196,32,38]; ]
+            const background as Number = 0x000000;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 199; @symbol_moduledef = [system_icon_destructive__hint_action_menu,199,15,56]; ]
+        module system_icon_destructive__hint_action_menu {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 199; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 200; @position = 18; @symbol_constdef = [exclude,200,18,25]; @symbol_type<0> = [Boolean,200,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 203; @symbol_moduledef = [system_loc__hint_action_menu,203,15,43]; ]
+        module system_loc__hint_action_menu {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 203; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 204; @position = 18; @symbol_constdef = [exclude,204,18,25]; @symbol_type<0> = [Boolean,204,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 207; @symbol_moduledef = [confirmation_icon__hint_confirm,207,15,46]; ]
+        module confirmation_icon__hint_confirm {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 207; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 208; @position = 18; @symbol_constdef = [filename,208,18,26]; @symbol_type<0> = [String,208,30,36]; ]
+            const filename as String = "/Users/marknelson/Library/Application Support/Garmin/ConnectIQ/Devices/edge540/confirmation_icon__hint_completion.svg";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 209; @position = 18; @symbol_constdef = [disableTransparency,209,18,37]; @symbol_type<0> = [Boolean,209,41,48]; ]
+            const disableTransparency as Boolean = true;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 210; @position = 18; @symbol_constdef = [dithering,210,18,27]; @symbol_type<0> = [String,210,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 211; @position = 18; @symbol_constdef = [automaticPalette,211,18,34]; @symbol_type<0> = [Boolean,211,38,45]; ]
+            const automaticPalette as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 214; @symbol_moduledef = [system_loc__hint_button_left_middle,214,15,50]; ]
+        module system_loc__hint_button_left_middle {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 214; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 215; @position = 18; @symbol_constdef = [exclude,215,18,25]; @symbol_type<0> = [Boolean,215,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 218; @symbol_moduledef = [prompt_size__body_no_title,218,15,41]; ]
+        module prompt_size__body_no_title {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 218; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 219; @position = 18; @symbol_constdef = [width,219,18,23]; @symbol_type<0> = [Number,219,27,33]; ]
+            const width as Number = 230;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 220; @position = 18; @symbol_constdef = [height,220,18,24]; @symbol_type<0> = [Number,220,28,34]; ]
+            const height as Number = 225;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 223; @symbol_moduledef = [system_icon_light__hint_button_left_top,223,15,54]; ]
+        module system_icon_light__hint_button_left_top {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 223; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 224; @position = 18; @symbol_constdef = [exclude,224,18,25]; @symbol_type<0> = [Boolean,224,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 227; @symbol_moduledef = [prompt_color_light__background,227,15,45]; ]
+        module prompt_color_light__background {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 227; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 228; @position = 18; @symbol_constdef = [color,228,18,23]; @symbol_type<0> = [Number,228,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 229; @position = 18; @symbol_constdef = [background,229,18,28]; @symbol_type<0> = [Number,229,32,38]; ]
+            const background as Number = 0xFFFFFF;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 232; @symbol_moduledef = [confirmation_input__delete,232,15,41]; ]
+        module confirmation_input__delete {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 232; ]
+            <init> {
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 233 18 ]
+                symbol [ WatchUi %tmp.109 233 27 34 ];
+                %tmp.109 = getm $.Toybox.WatchUi;
+                symbol [ KEY_ESC %tmp.110 233 35 42 ];
+                %tmp.110 = getv %tmp.109 :KEY_ESC;
+                putv self :button %tmp.110;
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 233; @position = 18; @symbol_constdef = [button,233,18,24]; ]
+            const button;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 236; @symbol_moduledef = [system_icon_dark__hint_button_left_top,236,15,53]; ]
+        module system_icon_dark__hint_button_left_top {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 236; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 237; @position = 18; @symbol_constdef = [exclude,237,18,25]; @symbol_type<0> = [Boolean,237,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 240; @symbol_moduledef = [system_input__action_menu,240,15,40]; ]
+        module system_input__action_menu {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 240; ]
+            <init> {
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 241 18 ]
+                symbol [ WatchUi %tmp.111 241 27 34 ];
+                %tmp.111 = getm $.Toybox.WatchUi;
+                symbol [ KEY_MENU %tmp.112 241 35 43 ];
+                %tmp.112 = getv %tmp.111 :KEY_MENU;
+                putv self :button %tmp.112;
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 241; @position = 18; @symbol_constdef = [button,241,18,24]; ]
+            const button;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 244; @symbol_moduledef = [system_icon_light__save,244,15,38]; ]
+        module system_icon_light__save {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 244; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 245; @position = 18; @symbol_constdef = [filename,245,18,26]; @symbol_type<0> = [String,245,30,36]; ]
+            const filename as String = "/Users/marknelson/Library/Application Support/Garmin/ConnectIQ/Devices/edge540/system_icon_light__save.svg";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 246; @position = 18; @symbol_constdef = [disableTransparency,246,18,37]; @symbol_type<0> = [Boolean,246,41,48]; ]
+            const disableTransparency as Boolean = true;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 247; @position = 18; @symbol_constdef = [dithering,247,18,27]; @symbol_type<0> = [String,247,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 248; @position = 18; @symbol_constdef = [automaticPalette,248,18,34]; @symbol_type<0> = [Boolean,248,38,45]; ]
+            const automaticPalette as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 251; @symbol_moduledef = [prompt_color_light__body,251,15,39]; ]
+        module prompt_color_light__body {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 251; ]
+            <init> {
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 253 18 ]
+                symbol [ Graphics %tmp.113 253 31 39 ];
+                %tmp.113 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.114 253 40 57 ];
+                %tmp.114 = getv %tmp.113 :COLOR_TRANSPARENT;
+                putv self :background %tmp.114;
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 252; @position = 18; @symbol_constdef = [color,252,18,23]; @symbol_type<0> = [Number,252,27,33]; ]
+            const color as Number = 0x000000;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 253; @position = 18; @symbol_constdef = [background,253,18,28]; ]
+            const background;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 256; @symbol_moduledef = [system_loc__subwindow,256,15,36]; ]
+        module system_loc__subwindow {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 256; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 257; @position = 18; @symbol_constdef = [exclude,257,18,25]; @symbol_type<0> = [Boolean,257,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 260; @symbol_moduledef = [system_icon_light__warning,260,15,41]; ]
+        module system_icon_light__warning {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 260; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 261; @position = 18; @symbol_constdef = [filename,261,18,26]; @symbol_type<0> = [String,261,30,36]; ]
+            const filename as String = "/Users/marknelson/Library/Application Support/Garmin/ConnectIQ/Devices/edge540/system_icon_light__warning.svg";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 262; @position = 18; @symbol_constdef = [disableTransparency,262,18,37]; @symbol_type<0> = [Boolean,262,41,48]; ]
+            const disableTransparency as Boolean = true;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 263; @position = 18; @symbol_constdef = [dithering,263,18,27]; @symbol_type<0> = [String,263,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 264; @position = 18; @symbol_constdef = [automaticPalette,264,18,34]; @symbol_type<0> = [Boolean,264,38,45]; ]
+            const automaticPalette as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 267; @symbol_moduledef = [confirmation_color_light__body,267,15,45]; ]
+        module confirmation_color_light__body {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 267; ]
+            <init> {
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 269 18 ]
+                symbol [ Graphics %tmp.115 269 31 39 ];
+                %tmp.115 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.116 269 40 57 ];
+                %tmp.116 = getv %tmp.115 :COLOR_TRANSPARENT;
+                putv self :background %tmp.116;
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 268; @position = 18; @symbol_constdef = [color,268,18,23]; @symbol_type<0> = [Number,268,27,33]; ]
+            const color as Number = 0x000000;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 269; @position = 18; @symbol_constdef = [background,269,18,28]; ]
+            const background;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 272; @symbol_moduledef = [confirmation_icon_light__hint_keep,272,15,49]; ]
+        module confirmation_icon_light__hint_keep {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 272; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 273; @position = 18; @symbol_constdef = [filename,273,18,26]; @symbol_type<0> = [String,273,30,36]; ]
+            const filename as String = "/Users/marknelson/Library/Application Support/Garmin/ConnectIQ/Devices/edge540/confirmation_icon__hint_completion.svg";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 274; @position = 18; @symbol_constdef = [disableTransparency,274,18,37]; @symbol_type<0> = [Boolean,274,41,48]; ]
+            const disableTransparency as Boolean = false;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 275; @position = 18; @symbol_constdef = [dithering,275,18,27]; @symbol_type<0> = [String,275,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 276; @position = 18; @symbol_constdef = [automaticPalette,276,18,34]; @symbol_type<0> = [Boolean,276,38,45]; ]
+            const automaticPalette as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 279; @symbol_moduledef = [activity_color_light__background,279,15,47]; ]
+        module activity_color_light__background {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 279; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 280; @position = 18; @symbol_constdef = [color,280,18,23]; @symbol_type<0> = [Number,280,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 281; @position = 18; @symbol_constdef = [background,281,18,28]; @symbol_type<0> = [Number,281,32,38]; ]
+            const background as Number = 0xFFFFFF;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 284; @symbol_moduledef = [system_icon_positive__hint_button_right_top,284,15,58]; ]
+        module system_icon_positive__hint_button_right_top {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 284; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 285; @position = 18; @symbol_constdef = [exclude,285,18,25]; @symbol_type<0> = [Boolean,285,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 288; @symbol_moduledef = [system_size__screen,288,15,34]; ]
+        module system_size__screen {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 288; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 289; @position = 18; @symbol_constdef = [width,289,18,23]; @symbol_type<0> = [Number,289,27,33]; ]
+            const width as Number = 246;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 290; @position = 18; @symbol_constdef = [height,290,18,24]; @symbol_type<0> = [Number,290,28,34]; ]
+            const height as Number = 322;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 293; @symbol_moduledef = [system_icon_destructive__hint_button_right_bottom,293,15,64]; ]
+        module system_icon_destructive__hint_button_right_bottom {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 293; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 294; @position = 18; @symbol_constdef = [exclude,294,18,25]; @symbol_type<0> = [Boolean,294,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 297; @symbol_moduledef = [system_color_light__background,297,15,45]; ]
+        module system_color_light__background {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 297; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 298; @position = 18; @symbol_constdef = [color,298,18,23]; @symbol_type<0> = [Number,298,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 299; @position = 18; @symbol_constdef = [background,299,18,28]; @symbol_type<0> = [Number,299,32,38]; ]
+            const background as Number = 0xFFFFFF;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 302; @symbol_moduledef = [system_icon_destructive__hint_button_right_top,302,15,61]; ]
+        module system_icon_destructive__hint_button_right_top {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 302; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 303; @position = 18; @symbol_constdef = [exclude,303,18,25]; @symbol_type<0> = [Boolean,303,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 306; @symbol_moduledef = [confirmation_loc__hint_confirm,306,15,45]; ]
+        module confirmation_loc__hint_confirm {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 306; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 307; @position = 18; @symbol_constdef = [x,307,18,19]; @symbol_type<0> = [Number,307,23,29]; ]
+            const x as Number = 195;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 308; @position = 18; @symbol_constdef = [y,308,18,19]; @symbol_type<0> = [Number,308,23,29]; ]
+            const y as Number = 30;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 309; @position = 18; @symbol_constdef = [horizontalJustification,309,18,41]; @symbol_type<0> = [String,309,45,51]; ]
+            const horizontalJustification as String = "center";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 310; @position = 18; @symbol_constdef = [verticalJustification,310,18,39]; @symbol_type<0> = [String,310,43,49]; ]
+            const verticalJustification as String = "center";
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 313; @symbol_moduledef = [activity_color_dark__text,313,15,40]; ]
+        module activity_color_dark__text {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 313; ]
+            <init> {
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 315 18 ]
+                symbol [ Graphics %tmp.117 315 31 39 ];
+                %tmp.117 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.118 315 40 57 ];
+                %tmp.118 = getv %tmp.117 :COLOR_TRANSPARENT;
+                putv self :background %tmp.118;
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 314; @position = 18; @symbol_constdef = [color,314,18,23]; @symbol_type<0> = [Number,314,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 315; @position = 18; @symbol_constdef = [background,315,18,28]; ]
+            const background;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 318; @symbol_moduledef = [confirmation_input__keep,318,15,39]; ]
+        module confirmation_input__keep {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 318; ]
+            <init> {
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 319 18 ]
+                symbol [ WatchUi %tmp.119 319 27 34 ];
+                %tmp.119 = getm $.Toybox.WatchUi;
+                symbol [ KEY_ENTER %tmp.120 319 35 44 ];
+                %tmp.120 = getv %tmp.119 :KEY_ENTER;
+                putv self :button %tmp.120;
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 319; @position = 18; @symbol_constdef = [button,319,18,24]; ]
+            const button;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 322; @symbol_moduledef = [prompt_loc__body_with_title,322,15,42]; ]
+        module prompt_loc__body_with_title {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 322; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 323; @position = 18; @symbol_constdef = [x,323,18,19]; @symbol_type<0> = [Number,323,23,29]; ]
+            const x as Number = 8;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 324; @position = 18; @symbol_constdef = [y,324,18,19]; @symbol_type<0> = [Number,324,23,29]; ]
+            const y as Number = 93;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 327; @symbol_moduledef = [system_icon_dark__search,327,15,39]; ]
+        module system_icon_dark__search {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 327; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 328; @position = 18; @symbol_constdef = [filename,328,18,26]; @symbol_type<0> = [String,328,30,36]; ]
+            const filename as String = "/Users/marknelson/Library/Application Support/Garmin/ConnectIQ/Devices/edge540/system_icon_dark__search.svg";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 329; @position = 18; @symbol_constdef = [disableTransparency,329,18,37]; @symbol_type<0> = [Boolean,329,41,48]; ]
+            const disableTransparency as Boolean = true;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 330; @position = 18; @symbol_constdef = [dithering,330,18,27]; @symbol_type<0> = [String,330,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 331; @position = 18; @symbol_constdef = [automaticPalette,331,18,34]; @symbol_type<0> = [Boolean,331,38,45]; ]
+            const automaticPalette as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 334; @symbol_moduledef = [activity_color_light__text,334,15,41]; ]
+        module activity_color_light__text {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 334; ]
+            <init> {
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 336 18 ]
+                symbol [ Graphics %tmp.121 336 31 39 ];
+                %tmp.121 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.122 336 40 57 ];
+                %tmp.122 = getv %tmp.121 :COLOR_TRANSPARENT;
+                putv self :background %tmp.122;
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 335; @position = 18; @symbol_constdef = [color,335,18,23]; @symbol_type<0> = [Number,335,27,33]; ]
+            const color as Number = 0x000000;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 336; @position = 18; @symbol_constdef = [background,336,18,28]; ]
+            const background;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 339; @symbol_moduledef = [confirmation_icon__hint_keep,339,15,43]; ]
+        module confirmation_icon__hint_keep {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 339; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 340; @position = 18; @symbol_constdef = [filename,340,18,26]; @symbol_type<0> = [String,340,30,36]; ]
+            const filename as String = "/Users/marknelson/Library/Application Support/Garmin/ConnectIQ/Devices/edge540/confirmation_icon__hint_completion.svg";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 341; @position = 18; @symbol_constdef = [disableTransparency,341,18,37]; @symbol_type<0> = [Boolean,341,41,48]; ]
+            const disableTransparency as Boolean = false;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 342; @position = 18; @symbol_constdef = [dithering,342,18,27]; @symbol_type<0> = [String,342,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 343; @position = 18; @symbol_constdef = [automaticPalette,343,18,34]; @symbol_type<0> = [Boolean,343,38,45]; ]
+            const automaticPalette as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 346; @symbol_moduledef = [system_icon_dark__save,346,15,37]; ]
+        module system_icon_dark__save {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 346; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 347; @position = 18; @symbol_constdef = [filename,347,18,26]; @symbol_type<0> = [String,347,30,36]; ]
+            const filename as String = "/Users/marknelson/Library/Application Support/Garmin/ConnectIQ/Devices/edge540/system_icon_dark__save.svg";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 348; @position = 18; @symbol_constdef = [disableTransparency,348,18,37]; @symbol_type<0> = [Boolean,348,41,48]; ]
+            const disableTransparency as Boolean = true;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 349; @position = 18; @symbol_constdef = [dithering,349,18,27]; @symbol_type<0> = [String,349,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 350; @position = 18; @symbol_constdef = [automaticPalette,350,18,34]; @symbol_type<0> = [Boolean,350,38,45]; ]
+            const automaticPalette as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 353; @symbol_moduledef = [system_icon_destructive__hint_button_left_middle,353,15,63]; ]
+        module system_icon_destructive__hint_button_left_middle {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 353; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 354; @position = 18; @symbol_constdef = [exclude,354,18,25]; @symbol_type<0> = [Boolean,354,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 357; @symbol_moduledef = [system_icon_light__search,357,15,40]; ]
+        module system_icon_light__search {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 357; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 358; @position = 18; @symbol_constdef = [filename,358,18,26]; @symbol_type<0> = [String,358,30,36]; ]
+            const filename as String = "/Users/marknelson/Library/Application Support/Garmin/ConnectIQ/Devices/edge540/system_icon_light__search.svg";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 359; @position = 18; @symbol_constdef = [disableTransparency,359,18,37]; @symbol_type<0> = [Boolean,359,41,48]; ]
+            const disableTransparency as Boolean = true;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 360; @position = 18; @symbol_constdef = [dithering,360,18,27]; @symbol_type<0> = [String,360,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 361; @position = 18; @symbol_constdef = [automaticPalette,361,18,34]; @symbol_type<0> = [Boolean,361,38,45]; ]
+            const automaticPalette as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 364; @symbol_moduledef = [system_icon_dark__hint_button_left_bottom,364,15,56]; ]
+        module system_icon_dark__hint_button_left_bottom {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 364; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 365; @position = 18; @symbol_constdef = [exclude,365,18,25]; @symbol_type<0> = [Boolean,365,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 368; @symbol_moduledef = [system_icon_positive__hint_button_left_top,368,15,57]; ]
+        module system_icon_positive__hint_button_left_top {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 368; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 369; @position = 18; @symbol_constdef = [exclude,369,18,25]; @symbol_type<0> = [Boolean,369,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 372; @symbol_moduledef = [system_loc__hint_button_right_bottom,372,15,51]; ]
+        module system_loc__hint_button_right_bottom {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 372; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 373; @position = 18; @symbol_constdef = [exclude,373,18,25]; @symbol_type<0> = [Boolean,373,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 376; @symbol_moduledef = [confirmation_icon_dark__hint_reject,376,15,50]; ]
+        module confirmation_icon_dark__hint_reject {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 376; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 377; @position = 18; @symbol_constdef = [filename,377,18,26]; @symbol_type<0> = [String,377,30,36]; ]
+            const filename as String = "/Users/marknelson/Library/Application Support/Garmin/ConnectIQ/Devices/edge540/confirmation_icon__hint_x.svg";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 378; @position = 18; @symbol_constdef = [disableTransparency,378,18,37]; @symbol_type<0> = [Boolean,378,41,48]; ]
+            const disableTransparency as Boolean = true;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 379; @position = 18; @symbol_constdef = [dithering,379,18,27]; @symbol_type<0> = [String,379,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 380; @position = 18; @symbol_constdef = [automaticPalette,380,18,34]; @symbol_type<0> = [Boolean,380,38,45]; ]
+            const automaticPalette as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 383; @symbol_moduledef = [confirmation_color_dark__body,383,15,44]; ]
+        module confirmation_color_dark__body {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 383; ]
+            <init> {
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 385 18 ]
+                symbol [ Graphics %tmp.123 385 31 39 ];
+                %tmp.123 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.124 385 40 57 ];
+                %tmp.124 = getv %tmp.123 :COLOR_TRANSPARENT;
+                putv self :background %tmp.124;
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 384; @position = 18; @symbol_constdef = [color,384,18,23]; @symbol_type<0> = [Number,384,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 385; @position = 18; @symbol_constdef = [background,385,18,28]; ]
+            const background;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 388; @symbol_moduledef = [confirmation_icon_light__hint_confirm,388,15,52]; ]
+        module confirmation_icon_light__hint_confirm {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 388; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 389; @position = 18; @symbol_constdef = [filename,389,18,26]; @symbol_type<0> = [String,389,30,36]; ]
+            const filename as String = "/Users/marknelson/Library/Application Support/Garmin/ConnectIQ/Devices/edge540/confirmation_icon__hint_completion.svg";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 390; @position = 18; @symbol_constdef = [disableTransparency,390,18,37]; @symbol_type<0> = [Boolean,390,41,48]; ]
+            const disableTransparency as Boolean = true;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 391; @position = 18; @symbol_constdef = [dithering,391,18,27]; @symbol_type<0> = [String,391,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 392; @position = 18; @symbol_constdef = [automaticPalette,392,18,34]; @symbol_type<0> = [Boolean,392,38,45]; ]
+            const automaticPalette as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 395; @symbol_moduledef = [prompt_color_dark__title,395,15,39]; ]
+        module prompt_color_dark__title {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 395; ]
+            <init> {
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 397 18 ]
+                symbol [ Graphics %tmp.125 397 31 39 ];
+                %tmp.125 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.126 397 40 57 ];
+                %tmp.126 = getv %tmp.125 :COLOR_TRANSPARENT;
+                putv self :background %tmp.126;
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 396; @position = 18; @symbol_constdef = [color,396,18,23]; @symbol_type<0> = [Number,396,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 397; @position = 18; @symbol_constdef = [background,397,18,28]; ]
+            const background;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 400; @symbol_moduledef = [system_icon_destructive__cancel,400,15,46]; ]
+        module system_icon_destructive__cancel {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 400; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 401; @position = 18; @symbol_constdef = [filename,401,18,26]; @symbol_type<0> = [String,401,30,36]; ]
+            const filename as String = "/Users/marknelson/Library/Application Support/Garmin/ConnectIQ/Devices/edge540/system_icon_destructive__cancel.svg";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 402; @position = 18; @symbol_constdef = [disableTransparency,402,18,37]; @symbol_type<0> = [Boolean,402,41,48]; ]
+            const disableTransparency as Boolean = true;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 403; @position = 18; @symbol_constdef = [dithering,403,18,27]; @symbol_type<0> = [String,403,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 404; @position = 18; @symbol_constdef = [automaticPalette,404,18,34]; @symbol_type<0> = [Boolean,404,38,45]; ]
+            const automaticPalette as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 407; @symbol_moduledef = [system_icon_light__hint_button_right_bottom,407,15,58]; ]
+        module system_icon_light__hint_button_right_bottom {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 407; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 408; @position = 18; @symbol_constdef = [exclude,408,18,25]; @symbol_type<0> = [Boolean,408,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 411; @symbol_moduledef = [prompt_loc__title,411,15,32]; ]
+        module prompt_loc__title {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 411; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 412; @position = 18; @symbol_constdef = [exclude,412,18,25]; @symbol_type<0> = [Boolean,412,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 415; @symbol_moduledef = [confirmation_font_enhanced_readability__body,415,15,59]; ]
+        module confirmation_font_enhanced_readability__body {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 415; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 416; @position = 18; @symbol_constdef = [exclude,416,18,25]; @symbol_type<0> = [Boolean,416,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 419; @symbol_moduledef = [prompt_color_light__title,419,15,40]; ]
+        module prompt_color_light__title {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 419; ]
+            <init> {
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 421 18 ]
+                symbol [ Graphics %tmp.127 421 31 39 ];
+                %tmp.127 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.128 421 40 57 ];
+                %tmp.128 = getv %tmp.127 :COLOR_TRANSPARENT;
+                putv self :background %tmp.128;
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 420; @position = 18; @symbol_constdef = [color,420,18,23]; @symbol_type<0> = [Number,420,27,33]; ]
+            const color as Number = 0x000000;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 421; @position = 18; @symbol_constdef = [background,421,18,28]; ]
+            const background;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 424; @symbol_moduledef = [system_icon_dark__hint_button_right_top,424,15,54]; ]
+        module system_icon_dark__hint_button_right_top {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 424; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 425; @position = 18; @symbol_constdef = [exclude,425,18,25]; @symbol_type<0> = [Boolean,425,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 428; @symbol_moduledef = [system_icon_dark__hint_button_left_middle,428,15,56]; ]
+        module system_icon_dark__hint_button_left_middle {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 428; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 429; @position = 18; @symbol_constdef = [exclude,429,18,25]; @symbol_type<0> = [Boolean,429,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 432; @symbol_moduledef = [confirmation_icon_dark__hint_keep,432,15,48]; ]
+        module confirmation_icon_dark__hint_keep {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 432; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 433; @position = 18; @symbol_constdef = [filename,433,18,26]; @symbol_type<0> = [String,433,30,36]; ]
+            const filename as String = "/Users/marknelson/Library/Application Support/Garmin/ConnectIQ/Devices/edge540/confirmation_icon__hint_completion.svg";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 434; @position = 18; @symbol_constdef = [disableTransparency,434,18,37]; @symbol_type<0> = [Boolean,434,41,48]; ]
+            const disableTransparency as Boolean = false;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 435; @position = 18; @symbol_constdef = [dithering,435,18,27]; @symbol_type<0> = [String,435,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 436; @position = 18; @symbol_constdef = [automaticPalette,436,18,34]; @symbol_type<0> = [Boolean,436,38,45]; ]
+            const automaticPalette as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 439; @symbol_moduledef = [system_icon_light__cancel,439,15,40]; ]
+        module system_icon_light__cancel {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 439; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 440; @position = 18; @symbol_constdef = [filename,440,18,26]; @symbol_type<0> = [String,440,30,36]; ]
+            const filename as String = "/Users/marknelson/Library/Application Support/Garmin/ConnectIQ/Devices/edge540/system_icon_light__cancel.svg";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 441; @position = 18; @symbol_constdef = [disableTransparency,441,18,37]; @symbol_type<0> = [Boolean,441,41,48]; ]
+            const disableTransparency as Boolean = true;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 442; @position = 18; @symbol_constdef = [dithering,442,18,27]; @symbol_type<0> = [String,442,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 443; @position = 18; @symbol_constdef = [automaticPalette,443,18,34]; @symbol_type<0> = [Boolean,443,38,45]; ]
+            const automaticPalette as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 446; @symbol_moduledef = [confirmation_icon_light__hint_reject,446,15,51]; ]
+        module confirmation_icon_light__hint_reject {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 446; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 447; @position = 18; @symbol_constdef = [filename,447,18,26]; @symbol_type<0> = [String,447,30,36]; ]
+            const filename as String = "/Users/marknelson/Library/Application Support/Garmin/ConnectIQ/Devices/edge540/confirmation_icon__hint_x.svg";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 448; @position = 18; @symbol_constdef = [disableTransparency,448,18,37]; @symbol_type<0> = [Boolean,448,41,48]; ]
+            const disableTransparency as Boolean = true;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 449; @position = 18; @symbol_constdef = [dithering,449,18,27]; @symbol_type<0> = [String,449,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 450; @position = 18; @symbol_constdef = [automaticPalette,450,18,34]; @symbol_type<0> = [Boolean,450,38,45]; ]
+            const automaticPalette as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 453; @symbol_moduledef = [system_icon_light__about,453,15,39]; ]
+        module system_icon_light__about {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 453; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 454; @position = 18; @symbol_constdef = [filename,454,18,26]; @symbol_type<0> = [String,454,30,36]; ]
+            const filename as String = "/Users/marknelson/Library/Application Support/Garmin/ConnectIQ/Devices/edge540/system_icon_light__about.svg";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 455; @position = 18; @symbol_constdef = [disableTransparency,455,18,37]; @symbol_type<0> = [Boolean,455,41,48]; ]
+            const disableTransparency as Boolean = true;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 456; @position = 18; @symbol_constdef = [dithering,456,18,27]; @symbol_type<0> = [String,456,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 457; @position = 18; @symbol_constdef = [automaticPalette,457,18,34]; @symbol_type<0> = [Boolean,457,38,45]; ]
+            const automaticPalette as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 460; @symbol_moduledef = [system_size__toast_icon,460,15,38]; ]
+        module system_size__toast_icon {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 460; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 461; @position = 18; @symbol_constdef = [scaleX,461,18,24]; @symbol_type<0> = [Number,461,28,34]; ]
+            const scaleX as Number = 32;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 462; @position = 18; @symbol_constdef = [scaleY,462,18,24]; @symbol_type<0> = [Number,462,28,34]; ]
+            const scaleY as Number = 32;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 463; @position = 18; @symbol_constdef = [scaleRelativeTo,463,18,33]; @symbol_type<0> = [String,463,37,43]; ]
+            const scaleRelativeTo as String = "screen";
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 466; @symbol_moduledef = [system_icon_dark__hint_button_right_middle,466,15,57]; ]
+        module system_icon_dark__hint_button_right_middle {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 466; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 467; @position = 18; @symbol_constdef = [exclude,467,18,25]; @symbol_type<0> = [Boolean,467,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 470; @symbol_moduledef = [confirmation_icon__hint_reject,470,15,45]; ]
+        module confirmation_icon__hint_reject {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 470; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 471; @position = 18; @symbol_constdef = [filename,471,18,26]; @symbol_type<0> = [String,471,30,36]; ]
+            const filename as String = "/Users/marknelson/Library/Application Support/Garmin/ConnectIQ/Devices/edge540/confirmation_icon__hint_x.svg";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 472; @position = 18; @symbol_constdef = [disableTransparency,472,18,37]; @symbol_type<0> = [Boolean,472,41,48]; ]
+            const disableTransparency as Boolean = true;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 473; @position = 18; @symbol_constdef = [dithering,473,18,27]; @symbol_type<0> = [String,473,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 474; @position = 18; @symbol_constdef = [automaticPalette,474,18,34]; @symbol_type<0> = [Boolean,474,38,45]; ]
+            const automaticPalette as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 477; @symbol_moduledef = [system_icon_light__hint_action_menu,477,15,50]; ]
+        module system_icon_light__hint_action_menu {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 477; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 478; @position = 18; @symbol_constdef = [exclude,478,18,25]; @symbol_type<0> = [Boolean,478,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 481; @symbol_moduledef = [system_icon_light__hint_button_right_middle,481,15,58]; ]
+        module system_icon_light__hint_button_right_middle {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 481; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 482; @position = 18; @symbol_constdef = [exclude,482,18,25]; @symbol_type<0> = [Boolean,482,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 485; @symbol_moduledef = [system_icon_destructive__hint_button_right_middle,485,15,64]; ]
+        module system_icon_destructive__hint_button_right_middle {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 485; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 486; @position = 18; @symbol_constdef = [exclude,486,18,25]; @symbol_type<0> = [Boolean,486,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 489; @symbol_moduledef = [confirmation_loc__hint_reject,489,15,44]; ]
+        module confirmation_loc__hint_reject {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 489; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 490; @position = 18; @symbol_constdef = [x,490,18,19]; @symbol_type<0> = [Number,490,23,29]; ]
+            const x as Number = 214;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 491; @position = 18; @symbol_constdef = [y,491,18,19]; @symbol_type<0> = [Number,491,23,29]; ]
+            const y as Number = 249;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 492; @position = 18; @symbol_constdef = [horizontalJustification,492,18,41]; @symbol_type<0> = [String,492,45,51]; ]
+            const horizontalJustification as String = "center";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 493; @position = 18; @symbol_constdef = [verticalJustification,493,18,39]; @symbol_type<0> = [String,493,43,49]; ]
+            const verticalJustification as String = "center";
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 496; @symbol_moduledef = [confirmation_icon_dark__hint_delete,496,15,50]; ]
+        module confirmation_icon_dark__hint_delete {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 496; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 497; @position = 18; @symbol_constdef = [filename,497,18,26]; @symbol_type<0> = [String,497,30,36]; ]
+            const filename as String = "/Users/marknelson/Library/Application Support/Garmin/ConnectIQ/Devices/edge540/confirmation_icon__hint_back.svg";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 498; @position = 18; @symbol_constdef = [disableTransparency,498,18,37]; @symbol_type<0> = [Boolean,498,41,48]; ]
+            const disableTransparency as Boolean = true;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 499; @position = 18; @symbol_constdef = [dithering,499,18,27]; @symbol_type<0> = [String,499,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 500; @position = 18; @symbol_constdef = [automaticPalette,500,18,34]; @symbol_type<0> = [Boolean,500,38,45]; ]
+            const automaticPalette as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 503; @symbol_moduledef = [activity_color_dark__background,503,15,46]; ]
+        module activity_color_dark__background {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 503; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 504; @position = 18; @symbol_constdef = [color,504,18,23]; @symbol_type<0> = [Number,504,27,33]; ]
+            const color as Number = 0x000000;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 505; @position = 18; @symbol_constdef = [background,505,18,28]; @symbol_type<0> = [Number,505,32,38]; ]
+            const background as Number = 0x000000;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 508; @symbol_moduledef = [system_icon_light__hint_button_left_bottom,508,15,57]; ]
+        module system_icon_light__hint_button_left_bottom {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 508; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 509; @position = 18; @symbol_constdef = [exclude,509,18,25]; @symbol_type<0> = [Boolean,509,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 512; @symbol_moduledef = [system_icon_positive__hint_button_left_middle,512,15,60]; ]
+        module system_icon_positive__hint_button_left_middle {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 512; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 513; @position = 18; @symbol_constdef = [exclude,513,18,25]; @symbol_type<0> = [Boolean,513,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 516; @symbol_moduledef = [system_size__menu_icon,516,15,37]; ]
+        module system_size__menu_icon {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 516; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 517; @position = 18; @symbol_constdef = [scaleX,517,18,24]; @symbol_type<0> = [Number,517,28,34]; ]
+            const scaleX as Number = 40;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 518; @position = 18; @symbol_constdef = [scaleY,518,18,24]; @symbol_type<0> = [Number,518,28,34]; ]
+            const scaleY as Number = 40;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 519; @position = 18; @symbol_constdef = [scaleRelativeTo,519,18,33]; @symbol_type<0> = [String,519,37,43]; ]
+            const scaleRelativeTo as String = "screen";
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 522; @symbol_moduledef = [system_icon_destructive__warning,522,15,47]; ]
+        module system_icon_destructive__warning {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 522; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 523; @position = 18; @symbol_constdef = [filename,523,18,26]; @symbol_type<0> = [String,523,30,36]; ]
+            const filename as String = "/Users/marknelson/Library/Application Support/Garmin/ConnectIQ/Devices/edge540/system_icon_destructive__warning.svg";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 524; @position = 18; @symbol_constdef = [disableTransparency,524,18,37]; @symbol_type<0> = [Boolean,524,41,48]; ]
+            const disableTransparency as Boolean = true;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 525; @position = 18; @symbol_constdef = [dithering,525,18,27]; @symbol_type<0> = [String,525,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 526; @position = 18; @symbol_constdef = [automaticPalette,526,18,34]; @symbol_type<0> = [Boolean,526,38,45]; ]
+            const automaticPalette as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 529; @symbol_moduledef = [system_loc__hint_button_right_middle,529,15,51]; ]
+        module system_loc__hint_button_right_middle {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 529; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 530; @position = 18; @symbol_constdef = [exclude,530,18,25]; @symbol_type<0> = [Boolean,530,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 533; @symbol_moduledef = [system_icon_dark__cancel,533,15,39]; ]
+        module system_icon_dark__cancel {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 533; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 534; @position = 18; @symbol_constdef = [filename,534,18,26]; @symbol_type<0> = [String,534,30,36]; ]
+            const filename as String = "/Users/marknelson/Library/Application Support/Garmin/ConnectIQ/Devices/edge540/system_icon_dark__cancel.svg";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 535; @position = 18; @symbol_constdef = [disableTransparency,535,18,37]; @symbol_type<0> = [Boolean,535,41,48]; ]
+            const disableTransparency as Boolean = true;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 536; @position = 18; @symbol_constdef = [dithering,536,18,27]; @symbol_type<0> = [String,536,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 537; @position = 18; @symbol_constdef = [automaticPalette,537,18,34]; @symbol_type<0> = [Boolean,537,38,45]; ]
+            const automaticPalette as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 540; @symbol_moduledef = [prompt_size__body_with_title,540,15,43]; ]
+        module prompt_size__body_with_title {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 540; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 541; @position = 18; @symbol_constdef = [width,541,18,23]; @symbol_type<0> = [Number,541,27,33]; ]
+            const width as Number = 230;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 542; @position = 18; @symbol_constdef = [height,542,18,24]; @symbol_type<0> = [Number,542,28,34]; ]
+            const height as Number = 135;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 545; @symbol_moduledef = [system_loc__hint_button_right_top,545,15,48]; ]
+        module system_loc__hint_button_right_top {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 545; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 546; @position = 18; @symbol_constdef = [exclude,546,18,25]; @symbol_type<0> = [Boolean,546,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 549; @symbol_moduledef = [system_color_light__text,549,15,39]; ]
+        module system_color_light__text {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 549; ]
+            <init> {
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 551 18 ]
+                symbol [ Graphics %tmp.129 551 31 39 ];
+                %tmp.129 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.130 551 40 57 ];
+                %tmp.130 = getv %tmp.129 :COLOR_TRANSPARENT;
+                putv self :background %tmp.130;
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 550; @position = 18; @symbol_constdef = [color,550,18,23]; @symbol_type<0> = [Number,550,27,33]; ]
+            const color as Number = 0x000000;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 551; @position = 18; @symbol_constdef = [background,551,18,28]; ]
+            const background;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 554; @symbol_moduledef = [system_icon_light__check,554,15,39]; ]
+        module system_icon_light__check {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 554; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 555; @position = 18; @symbol_constdef = [filename,555,18,26]; @symbol_type<0> = [String,555,30,36]; ]
+            const filename as String = "/Users/marknelson/Library/Application Support/Garmin/ConnectIQ/Devices/edge540/system_icon_light__check.svg";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 556; @position = 18; @symbol_constdef = [disableTransparency,556,18,37]; @symbol_type<0> = [Boolean,556,41,48]; ]
+            const disableTransparency as Boolean = true;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 557; @position = 18; @symbol_constdef = [dithering,557,18,27]; @symbol_type<0> = [String,557,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 558; @position = 18; @symbol_constdef = [automaticPalette,558,18,34]; @symbol_type<0> = [Boolean,558,38,45]; ]
+            const automaticPalette as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 561; @symbol_moduledef = [confirmation_input__reject,561,15,41]; ]
+        module confirmation_input__reject {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 561; ]
+            <init> {
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 562 18 ]
+                symbol [ WatchUi %tmp.131 562 27 34 ];
+                %tmp.131 = getm $.Toybox.WatchUi;
+                symbol [ KEY_ESC %tmp.132 562 35 42 ];
+                %tmp.132 = getv %tmp.131 :KEY_ESC;
+                putv self :button %tmp.132;
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 562; @position = 18; @symbol_constdef = [button,562,18,24]; ]
+            const button;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 565; @symbol_moduledef = [system_icon_light__revert,565,15,40]; ]
+        module system_icon_light__revert {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 565; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 566; @position = 18; @symbol_constdef = [filename,566,18,26]; @symbol_type<0> = [String,566,30,36]; ]
+            const filename as String = "/Users/marknelson/Library/Application Support/Garmin/ConnectIQ/Devices/edge540/system_icon_light__revert.svg";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 567; @position = 18; @symbol_constdef = [disableTransparency,567,18,37]; @symbol_type<0> = [Boolean,567,41,48]; ]
+            const disableTransparency as Boolean = true;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 568; @position = 18; @symbol_constdef = [dithering,568,18,27]; @symbol_type<0> = [String,568,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 569; @position = 18; @symbol_constdef = [automaticPalette,569,18,34]; @symbol_type<0> = [Boolean,569,38,45]; ]
+            const automaticPalette as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 572; @symbol_moduledef = [system_size__subwindow,572,15,37]; ]
+        module system_size__subwindow {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 572; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 573; @position = 18; @symbol_constdef = [exclude,573,18,25]; @symbol_type<0> = [Boolean,573,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 576; @symbol_moduledef = [system_icon_positive__hint_button_left_bottom,576,15,60]; ]
+        module system_icon_positive__hint_button_left_bottom {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 576; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 577; @position = 18; @symbol_constdef = [exclude,577,18,25]; @symbol_type<0> = [Boolean,577,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 580; @symbol_moduledef = [system_icon_dark__check,580,15,38]; ]
+        module system_icon_dark__check {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 580; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 581; @position = 18; @symbol_constdef = [filename,581,18,26]; @symbol_type<0> = [String,581,30,36]; ]
+            const filename as String = "/Users/marknelson/Library/Application Support/Garmin/ConnectIQ/Devices/edge540/system_icon_dark__check.svg";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 582; @position = 18; @symbol_constdef = [disableTransparency,582,18,37]; @symbol_type<0> = [Boolean,582,41,48]; ]
+            const disableTransparency as Boolean = true;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 583; @position = 18; @symbol_constdef = [dithering,583,18,27]; @symbol_type<0> = [String,583,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 584; @position = 18; @symbol_constdef = [automaticPalette,584,18,34]; @symbol_type<0> = [Boolean,584,38,45]; ]
+            const automaticPalette as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 587; @symbol_moduledef = [confirmation_loc__hint_keep,587,15,42]; ]
+        module confirmation_loc__hint_keep {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 587; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 588; @position = 18; @symbol_constdef = [x,588,18,19]; @symbol_type<0> = [Number,588,23,29]; ]
+            const x as Number = 195;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 589; @position = 18; @symbol_constdef = [y,589,18,19]; @symbol_type<0> = [Number,589,23,29]; ]
+            const y as Number = 30;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 590; @position = 18; @symbol_constdef = [horizontalJustification,590,18,41]; @symbol_type<0> = [String,590,45,51]; ]
+            const horizontalJustification as String = "center";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 591; @position = 18; @symbol_constdef = [verticalJustification,591,18,39]; @symbol_type<0> = [String,591,43,49]; ]
+            const verticalJustification as String = "center";
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 594; @symbol_moduledef = [confirmation_loc__hint_delete,594,15,44]; ]
+        module confirmation_loc__hint_delete {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 594; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 595; @position = 18; @symbol_constdef = [x,595,18,19]; @symbol_type<0> = [Number,595,23,29]; ]
+            const x as Number = 195;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 596; @position = 18; @symbol_constdef = [y,596,18,19]; @symbol_type<0> = [Number,596,23,29]; ]
+            const y as Number = 249;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 597; @position = 18; @symbol_constdef = [horizontalJustification,597,18,41]; @symbol_type<0> = [String,597,45,51]; ]
+            const horizontalJustification as String = "center";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 598; @position = 18; @symbol_constdef = [verticalJustification,598,18,39]; @symbol_type<0> = [String,598,43,49]; ]
+            const verticalJustification as String = "center";
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 601; @symbol_moduledef = [system_icon_positive__hint_action_menu,601,15,53]; ]
+        module system_icon_positive__hint_action_menu {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 601; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 602; @position = 18; @symbol_constdef = [exclude,602,18,25]; @symbol_type<0> = [Boolean,602,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 605; @symbol_moduledef = [system_icon_positive__hint_button_right_middle,605,15,61]; ]
+        module system_icon_positive__hint_button_right_middle {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 605; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 606; @position = 18; @symbol_constdef = [exclude,606,18,25]; @symbol_type<0> = [Boolean,606,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 609; @symbol_moduledef = [system_icon_light__hint_button_left_middle,609,15,57]; ]
+        module system_icon_light__hint_button_left_middle {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 609; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 610; @position = 18; @symbol_constdef = [exclude,610,18,25]; @symbol_type<0> = [Boolean,610,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 613; @symbol_moduledef = [system_icon_dark__hint_button_right_bottom,613,15,57]; ]
+        module system_icon_dark__hint_button_right_bottom {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 613; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 614; @position = 18; @symbol_constdef = [exclude,614,18,25]; @symbol_type<0> = [Boolean,614,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 617; @symbol_moduledef = [system_icon_positive__hint_button_right_bottom,617,15,61]; ]
+        module system_icon_positive__hint_button_right_bottom {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 617; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 618; @position = 18; @symbol_constdef = [exclude,618,18,25]; @symbol_type<0> = [Boolean,618,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 621; @symbol_moduledef = [system_icon_dark__revert,621,15,39]; ]
+        module system_icon_dark__revert {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 621; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 622; @position = 18; @symbol_constdef = [filename,622,18,26]; @symbol_type<0> = [String,622,30,36]; ]
+            const filename as String = "/Users/marknelson/Library/Application Support/Garmin/ConnectIQ/Devices/edge540/system_icon_dark__revert.svg";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 623; @position = 18; @symbol_constdef = [disableTransparency,623,18,37]; @symbol_type<0> = [Boolean,623,41,48]; ]
+            const disableTransparency as Boolean = true;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 624; @position = 18; @symbol_constdef = [dithering,624,18,27]; @symbol_type<0> = [String,624,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 625; @position = 18; @symbol_constdef = [automaticPalette,625,18,34]; @symbol_type<0> = [Boolean,625,38,45]; ]
+            const automaticPalette as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 628; @symbol_moduledef = [confirmation_icon_light__hint_delete,628,15,51]; ]
+        module confirmation_icon_light__hint_delete {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 628; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 629; @position = 18; @symbol_constdef = [filename,629,18,26]; @symbol_type<0> = [String,629,30,36]; ]
+            const filename as String = "/Users/marknelson/Library/Application Support/Garmin/ConnectIQ/Devices/edge540/confirmation_icon__hint_back.svg";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 630; @position = 18; @symbol_constdef = [disableTransparency,630,18,37]; @symbol_type<0> = [Boolean,630,41,48]; ]
+            const disableTransparency as Boolean = true;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 631; @position = 18; @symbol_constdef = [dithering,631,18,27]; @symbol_type<0> = [String,631,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 632; @position = 18; @symbol_constdef = [automaticPalette,632,18,34]; @symbol_type<0> = [Boolean,632,38,45]; ]
+            const automaticPalette as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 635; @symbol_moduledef = [system_icon_dark__question,635,15,41]; ]
+        module system_icon_dark__question {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 635; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 636; @position = 18; @symbol_constdef = [filename,636,18,26]; @symbol_type<0> = [String,636,30,36]; ]
+            const filename as String = "/Users/marknelson/Library/Application Support/Garmin/ConnectIQ/Devices/edge540/system_icon_dark__question.svg";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 637; @position = 18; @symbol_constdef = [disableTransparency,637,18,37]; @symbol_type<0> = [Boolean,637,41,48]; ]
+            const disableTransparency as Boolean = true;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 638; @position = 18; @symbol_constdef = [dithering,638,18,27]; @symbol_type<0> = [String,638,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 639; @position = 18; @symbol_constdef = [automaticPalette,639,18,34]; @symbol_type<0> = [Boolean,639,38,45]; ]
+            const automaticPalette as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 642; @symbol_moduledef = [system_icon_light__discard,642,15,41]; ]
+        module system_icon_light__discard {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 642; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 643; @position = 18; @symbol_constdef = [filename,643,18,26]; @symbol_type<0> = [String,643,30,36]; ]
+            const filename as String = "/Users/marknelson/Library/Application Support/Garmin/ConnectIQ/Devices/edge540/system_icon_light__discard.svg";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 644; @position = 18; @symbol_constdef = [disableTransparency,644,18,37]; @symbol_type<0> = [Boolean,644,41,48]; ]
+            const disableTransparency as Boolean = true;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 645; @position = 18; @symbol_constdef = [dithering,645,18,27]; @symbol_type<0> = [String,645,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 646; @position = 18; @symbol_constdef = [automaticPalette,646,18,34]; @symbol_type<0> = [Boolean,646,38,45]; ]
+            const automaticPalette as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 649; @symbol_moduledef = [device_info,649,15,26]; ]
+        module device_info {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 649; ]
+            <init> {
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 651 18 ]
+                symbol [ Toybox %tmp.134 651 32 38 ];
+                %tmp.134 = getv ? :Toybox;
+                symbol [ System %tmp.135 651 39 45 ];
+                %tmp.135 = getv %tmp.134 :System;
+                symbol [ SCREEN_SHAPE_RECTANGLE %tmp.136 651 46 68 ];
+                %tmp.136 = getv %tmp.135 :SCREEN_SHAPE_RECTANGLE;
+                putv self :screenShape %tmp.136;
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 650; @position = 18; @symbol_constdef = [screenWidth,650,18,29]; @symbol_type<0> = [Number,650,33,39]; ]
+            const screenWidth as Number = 246;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 651; @position = 18; @symbol_constdef = [screenShape,651,18,29]; ]
+            const screenShape;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 652; @position = 18; @symbol_constdef = [hasNightMode,652,18,30]; @symbol_type<0> = [Boolean,652,34,41]; ]
+            const hasNightMode as Boolean = true;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 653; @position = 18; @symbol_constdef = [hasGpu,653,18,24]; @symbol_type<0> = [Boolean,653,28,35]; ]
+            const hasGpu as Boolean = false;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 654; @position = 18; @symbol_constdef = [screenHeight,654,18,30]; @symbol_type<0> = [Number,654,34,40]; ]
+            const screenHeight as Number = 322;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 655; @position = 18; @symbol_constdef = [hasTouchScreen,655,18,32]; @symbol_type<0> = [Boolean,655,36,43]; ]
+            const hasTouchScreen as Boolean = false;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 656; @position = 18; @symbol_constdef = [hasEnhancedReadabilityMode,656,18,44]; @symbol_type<0> = [Boolean,656,48,55]; ]
+            const hasEnhancedReadabilityMode as Boolean = false;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 659; @symbol_moduledef = [confirmation_icon_dark__hint_confirm,659,15,51]; ]
+        module confirmation_icon_dark__hint_confirm {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 659; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 660; @position = 18; @symbol_constdef = [filename,660,18,26]; @symbol_type<0> = [String,660,30,36]; ]
+            const filename as String = "/Users/marknelson/Library/Application Support/Garmin/ConnectIQ/Devices/edge540/confirmation_icon__hint_completion.svg";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 661; @position = 18; @symbol_constdef = [disableTransparency,661,18,37]; @symbol_type<0> = [Boolean,661,41,48]; ]
+            const disableTransparency as Boolean = true;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 662; @position = 18; @symbol_constdef = [dithering,662,18,27]; @symbol_type<0> = [String,662,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 663; @position = 18; @symbol_constdef = [automaticPalette,663,18,34]; @symbol_type<0> = [Boolean,663,38,45]; ]
+            const automaticPalette as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 666; @symbol_moduledef = [prompt_font__body_no_title,666,15,41]; ]
+        module prompt_font__body_no_title {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 666; ]
+            <init> {
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 667 18 ]
+                symbol [ Graphics %tmp.137 667 34 42 ];
+                %tmp.137 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_CENTER %tmp.138 667 43 62 ];
+                %tmp.138 = getv %tmp.137 :TEXT_JUSTIFY_CENTER;
+                symbol [ Graphics %tmp.139 667 63 71 ];
+                %tmp.139 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_VCENTER %tmp.140 667 72 92 ];
+                %tmp.140 = getv %tmp.139 :TEXT_JUSTIFY_VCENTER;
+                %tmp.141 = bitor %tmp.138 %tmp.140;
+                putv self :justification %tmp.141;
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 668 18 ]
+                symbol [ Graphics %tmp.142 668 25 33 ];
+                %tmp.142 = getm $.Toybox.Graphics;
+                symbol [ FONT_MEDIUM %tmp.143 668 34 45 ];
+                %tmp.143 = getv %tmp.142 :FONT_MEDIUM;
+                putv self :font %tmp.143;
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 667; @position = 18; @symbol_constdef = [justification,667,18,31]; ]
+            const justification;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 668; @position = 18; @symbol_constdef = [font,668,18,22]; ]
+            const font;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 671; @symbol_moduledef = [prompt_size__title_icon,671,15,38]; ]
+        module prompt_size__title_icon {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 671; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 672; @position = 18; @symbol_constdef = [scaleX,672,18,24]; @symbol_type<0> = [Number,672,28,34]; ]
+            const scaleX as Number = 55;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 673; @position = 18; @symbol_constdef = [scaleY,673,18,24]; @symbol_type<0> = [Number,673,28,34]; ]
+            const scaleY as Number = 55;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 674; @position = 18; @symbol_constdef = [scaleRelativeTo,674,18,33]; @symbol_type<0> = [String,674,37,43]; ]
+            const scaleRelativeTo as String = "screen";
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 677; @symbol_moduledef = [system_icon_dark__warning,677,15,40]; ]
+        module system_icon_dark__warning {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 677; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 678; @position = 18; @symbol_constdef = [filename,678,18,26]; @symbol_type<0> = [String,678,30,36]; ]
+            const filename as String = "/Users/marknelson/Library/Application Support/Garmin/ConnectIQ/Devices/edge540/system_icon_dark__warning.svg";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 679; @position = 18; @symbol_constdef = [disableTransparency,679,18,37]; @symbol_type<0> = [Boolean,679,41,48]; ]
+            const disableTransparency as Boolean = true;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 680; @position = 18; @symbol_constdef = [dithering,680,18,27]; @symbol_type<0> = [String,680,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 681; @position = 18; @symbol_constdef = [automaticPalette,681,18,34]; @symbol_type<0> = [Boolean,681,38,45]; ]
+            const automaticPalette as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 684; @symbol_moduledef = [prompt_loc__title_icon,684,15,37]; ]
+        module prompt_loc__title_icon {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 684; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 685; @position = 18; @symbol_constdef = [x,685,18,19]; @symbol_type<0> = [Number,685,23,29]; ]
+            const x as Number = 123;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 686; @position = 18; @symbol_constdef = [y,686,18,19]; @symbol_type<0> = [Number,686,23,29]; ]
+            const y as Number = 44;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 687; @position = 18; @symbol_constdef = [horizontalJustification,687,18,41]; @symbol_type<0> = [String,687,45,51]; ]
+            const horizontalJustification as String = "center";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 688; @position = 18; @symbol_constdef = [verticalJustification,688,18,39]; @symbol_type<0> = [String,688,43,49]; ]
+            const verticalJustification as String = "center";
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 691; @symbol_moduledef = [prompt_font_enhanced_readability__title,691,15,54]; ]
+        module prompt_font_enhanced_readability__title {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 691; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 692; @position = 18; @symbol_constdef = [exclude,692,18,25]; @symbol_type<0> = [Boolean,692,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 695; @symbol_moduledef = [prompt_color_dark__body,695,15,38]; ]
+        module prompt_color_dark__body {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 695; ]
+            <init> {
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen" 697 18 ]
+                symbol [ Graphics %tmp.144 697 31 39 ];
+                %tmp.144 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.145 697 40 57 ];
+                %tmp.145 = getv %tmp.144 :COLOR_TRANSPARENT;
+                putv self :background %tmp.145;
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 696; @position = 18; @symbol_constdef = [color,696,18,23]; @symbol_type<0> = [Number,696,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 697; @position = 18; @symbol_constdef = [background,697,18,28]; ]
+            const background;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 700; @symbol_moduledef = [confirmation_icon__hint_delete,700,15,45]; ]
+        module confirmation_icon__hint_delete {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 700; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 701; @position = 18; @symbol_constdef = [filename,701,18,26]; @symbol_type<0> = [String,701,30,36]; ]
+            const filename as String = "/Users/marknelson/Library/Application Support/Garmin/ConnectIQ/Devices/edge540/confirmation_icon__hint_back.svg";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 702; @position = 18; @symbol_constdef = [disableTransparency,702,18,37]; @symbol_type<0> = [Boolean,702,41,48]; ]
+            const disableTransparency as Boolean = true;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 703; @position = 18; @symbol_constdef = [dithering,703,18,27]; @symbol_type<0> = [String,703,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 704; @position = 18; @symbol_constdef = [automaticPalette,704,18,34]; @symbol_type<0> = [Boolean,704,38,45]; ]
+            const automaticPalette as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 707; @symbol_moduledef = [system_icon_light__hint_button_right_top,707,15,55]; ]
+        module system_icon_light__hint_button_right_top {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 707; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 708; @position = 18; @symbol_constdef = [exclude,708,18,25]; @symbol_type<0> = [Boolean,708,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 711; @symbol_moduledef = [confirmation_size__body,711,15,38]; ]
+        module confirmation_size__body {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 711; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 712; @position = 18; @symbol_constdef = [width,712,18,23]; @symbol_type<0> = [Number,712,27,33]; ]
+            const width as Number = 246;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 713; @position = 18; @symbol_constdef = [height,713,18,24]; @symbol_type<0> = [Number,713,28,34]; ]
+            const height as Number = 236;
+        }
+        [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 716; @symbol_moduledef = [system_icon_positive__check,716,15,42]; ]
+        module system_icon_positive__check {
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 716; ]
+            <init> {
+            }
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 717; @position = 18; @symbol_constdef = [filename,717,18,26]; @symbol_type<0> = [String,717,30,36]; ]
+            const filename as String = "/Users/marknelson/Library/Application Support/Garmin/ConnectIQ/Devices/edge540/system_icon_positive__check.svg";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 718; @position = 18; @symbol_constdef = [disableTransparency,718,18,37]; @symbol_type<0> = [Boolean,718,41,48]; ]
+            const disableTransparency as Boolean = true;
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 719; @position = 18; @symbol_constdef = [dithering,719,18,27]; @symbol_type<0> = [String,719,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 720; @position = 18; @symbol_constdef = [automaticPalette,720,18,34]; @symbol_type<0> = [Boolean,720,38,45]; ]
+            const automaticPalette as Boolean = true;
+        }
+    }
+}
+[ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/gen/006-B4061-00/source/Rez.mcgen"; @line = 1; ]
+<init> {
+}

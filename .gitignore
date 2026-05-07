@@ -1,0 +1,13 @@
+# Garmin Connect IQ ignores
+bin/
+gen/
+*.prg
+*.debug.xml
+
+# Python ignores
+__pycache__/
+*.py[cod]
+
+# OS ignores
+.DS_Store
+Thumbs.db

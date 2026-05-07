@@ -1,0 +1,7 @@
+
+<properties>
+    <property id="HighThresholdPercentageX" type="number">20</property>
+    <property id="LowThresholdPercentageX"  type="number">10</property>
+    <property id="IgnorePowerWattsX"   type="number">100</property>
+
+</properties>

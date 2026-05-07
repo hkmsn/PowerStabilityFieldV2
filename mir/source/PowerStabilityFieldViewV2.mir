@@ -1,0 +1,2176 @@
+[ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Activity,1,14,22]; ]
+import Toybox.Activity;
+[ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [Lang,2,14,18]; ]
+import Toybox.Lang;
+[ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [WatchUi,3,14,21]; ]
+import Toybox.WatchUi;
+[ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 4; @symbol_importdef<0> = [Toybox,4,7,13]; @symbol_importdef<1> = [Math,4,14,18]; ]
+import Toybox.Math;
+[ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 5; @symbol_usingdef<0> = [Toybox,5,7,13]; @symbol_usingdef<1> = [Application,5,14,25]; @symbol_usingAlias = [App,5,29,32]; ]
+using Toybox.Application as :App;
+[ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 6; @symbol_usingdef<0> = [Toybox,6,7,13]; @symbol_usingdef<1> = [Graphics,6,14,22]; @symbol_usingAlias = [Gfx,6,29,32]; ]
+using Toybox.Graphics as :Gfx;
+[ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 7; @symbol_usingdef<0> = [Toybox,7,7,13]; @symbol_usingdef<1> = [FitContributor,7,14,28]; ]
+using Toybox.FitContributor;
+[ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 9; @symbol_classdef = [PowerStabilityFieldView,9,6,29]; @symbol_extends<0> = [WatchUi,9,38,45]; @symbol_extends<1> = [DataField,9,46,55]; ]
+class PowerStabilityFieldView extends WatchUi.DataField {
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 9; ]
+    <init> {
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 31 16 ]
+        symbol [ Gfx %tmp.1 31 45 48 ];
+        %tmp.1 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.2 31 49 60 ];
+        %tmp.2 = getv %tmp.1 :COLOR_WHITE;
+        putv self :mBackgroundColor %tmp.2;
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 45 16 ]
+        %tmp.3 = newa 0 Lang.Array<Lang.Float>;
+        symbol [ Lang %tmp.3 45 67 71 ];
+        symbol [ Array %tmp.3 45 72 77 ];
+        symbol [ Lang %tmp.3 45 78 82 ];
+        symbol [ Float %tmp.3 45 83 88 ];
+        putv self :mSmoothingBuffer %tmp.3;
+    }
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 9; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 11; @position = 10; @symbol_constdef = [HISTORY_SIZE,11,10,22]; ]
+    const HISTORY_SIZE = 20;
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 12; @position = 10; @symbol_constdef = [POWER_NODATA,12,10,22]; ]
+    const POWER_NODATA = -1.0f;
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 13; @position = 10; @symbol_constdef = [LABEL_TEXT,13,10,20]; ]
+    const LABEL_TEXT = "3S PWR+";
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 14; @position = 10; @symbol_constdef = [DEBUG,14,10,15]; ]
+    const DEBUG = true;
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 15; @position = 10; @symbol_constdef = [CV_FIELD_ID,15,10,21]; ]
+    const CV_FIELD_ID = 0;
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 16; @position = 16; @symbol_vardef = [INVALID_FLOAT,16,16,29]; ]
+    private
+    var INVALID_FLOAT = 0.0f;
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 19; @position = 16; @symbol_vardef = [mPowerHistory,19,16,29]; @symbol_type<0> = [Toybox,19,33,39]; @symbol_type<1> = [Lang,19,40,44]; @symbol_type<2> = [Array,19,45,50]; @symbol_type<3> = [Lang,19,51,55]; @symbol_type<4> = [Float,19,56,61]; ]
+    private
+    var mPowerHistory as Toybox.Lang.Array<Lang.Float>;
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 20; @position = 16; @symbol_vardef = [mAvg3s,20,16,22]; @symbol_type<0> = [Lang,20,26,30]; @symbol_type<1> = [Float,20,31,36]; ]
+    private
+    var mAvg3s as Lang.Float = 0.0f;
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 21; @position = 16; @symbol_vardef = [mAvg10s,21,16,23]; @symbol_type<0> = [Lang,21,27,31]; @symbol_type<1> = [Float,21,32,37]; ]
+    private
+    var mAvg10s as Lang.Float = 0.0f;
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 22; @position = 16; @symbol_vardef = [mAvg20s,22,16,23]; @symbol_type<0> = [Lang,22,27,31]; @symbol_type<1> = [Float,22,32,37]; ]
+    private
+    var mAvg20s as Lang.Float = 0.0f;
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 23; @position = 16; @symbol_vardef = [mStdDev10s,23,16,26]; @symbol_type<0> = [Lang,23,30,34]; @symbol_type<1> = [Float,23,35,40]; ]
+    private
+    var mStdDev10s as Lang.Float = 0.0f;
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 25; @position = 16; @symbol_vardef = [mCvValue,25,16,24]; @symbol_type<0> = [Lang,25,28,32]; @symbol_type<1> = [Float,25,33,38]; ]
+    private
+    var mCvValue as Lang.Float = 0.0f;
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 26; @position = 16; @symbol_vardef = [mCvField,26,16,24]; @symbol_type<0> = [FitContributor,26,28,42]; @symbol_type<1> = [Field,26,43,48]; ]
+    private
+    var mCvField as FitContributor.Field or Null;
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 27; @position = 16; @symbol_vardef = [mCvSessionField,27,16,31]; @symbol_type<0> = [FitContributor,27,35,49]; @symbol_type<1> = [Field,27,50,55]; ]
+    private
+    var mCvSessionField as FitContributor.Field or Null;
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 28; @position = 16; @symbol_vardef = [mCvSum,28,16,22]; @symbol_type<0> = [Lang,28,26,30]; @symbol_type<1> = [Float,28,31,36]; ]
+    private
+    var mCvSum as Lang.Float = 0.0f;
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 29; @position = 16; @symbol_vardef = [mCvCount,29,16,24]; @symbol_type<0> = [Lang,29,28,32]; @symbol_type<1> = [Number,29,33,39]; ]
+    private
+    var mCvCount as Lang.Number = 0;
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 30; @position = 16; @symbol_vardef = [mAvg3sDisplay,30,16,29]; @symbol_type<0> = [Lang,30,33,37]; @symbol_type<1> = [String,30,38,44]; ]
+    private
+    var mAvg3sDisplay as Lang.String = "-";
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 31; @position = 16; @symbol_vardef = [mBackgroundColor,31,16,32]; @symbol_type<0> = [Number,31,36,42]; ]
+    private
+    var mBackgroundColor as Number;
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 34; @position = 16; @symbol_vardef = [mLabelFont,34,16,26]; ]
+    private
+    var mLabelFont;
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 34; @position = 28; @symbol_vardef = [mValueFont,34,28,38]; ]
+    private
+    var mValueFont;
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 34; @position = 40; @symbol_vardef = [mCvFont,34,40,47]; ]
+    private
+    var mCvFont;
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 35; @position = 16; @symbol_vardef = [mLabelY,35,16,23]; @symbol_type<0> = [Lang,35,27,31]; @symbol_type<1> = [Number,35,32,38]; ]
+    private
+    var mLabelY as Lang.Number = 0;
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 36; @position = 16; @symbol_vardef = [mValueY,36,16,23]; @symbol_type<0> = [Lang,36,27,31]; @symbol_type<1> = [Number,36,32,38]; ]
+    private
+    var mValueY as Lang.Number = 0;
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 37; @position = 16; @symbol_vardef = [mCvX,37,16,20]; @symbol_type<0> = [Lang,37,24,28]; @symbol_type<1> = [Number,37,29,35]; ]
+    private
+    var mCvX as Lang.Number = 0;
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 38; @position = 16; @symbol_vardef = [mCvY,38,16,20]; @symbol_type<0> = [Lang,38,24,28]; @symbol_type<1> = [Number,38,29,35]; ]
+    private
+    var mCvY as Lang.Number = 0;
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 41; @position = 16; @symbol_vardef = [mHighThreshold,41,16,30]; @symbol_type<0> = [Lang,41,37,41]; @symbol_type<1> = [Float,41,42,47]; ]
+    private
+    var mHighThreshold as Lang.Float = 10.0f;
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 42; @position = 16; @symbol_vardef = [mLowThreshold,42,16,29]; @symbol_type<0> = [Lang,42,37,41]; @symbol_type<1> = [Float,42,42,47]; ]
+    private
+    var mLowThreshold as Lang.Float = 5.0f;
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 43; @position = 16; @symbol_vardef = [mIgnorePower,43,16,28]; @symbol_type<0> = [Lang,43,32,36]; @symbol_type<1> = [Number,43,37,43]; ]
+    private
+    var mIgnorePower as Lang.Number = 100;
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 45; @position = 16; @symbol_vardef = [mSmoothingBuffer,45,16,32]; @symbol_type<0> = [Lang,45,36,40]; @symbol_type<1> = [Array,45,41,46]; @symbol_type<2> = [Lang,45,47,51]; @symbol_type<3> = [Float,45,52,57]; ]
+    private
+    var mSmoothingBuffer as Lang.Array<Lang.Float>;
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 46; @position = 18; @symbol_constdef = [SMOOTHING_WINDOW,46,18,34]; ]
+    private
+    const SMOOTHING_WINDOW = 3;
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 48; @symbol_functiondef = [initialize,48,13,23]; ]
+    function initialize() as Void {
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_48_26_78_4_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 49 8 ]
+        symbol [ DataField %tmp.2 49 8 17 ];
+        %tmp.2 = getv ? :DataField;
+        symbol [ initialize %tmp.3 49 18 28 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 52 8 ]
+        symbol [ Math %tmp.4 52 24 28 ];
+        %tmp.4 = getm $.Toybox.Math;
+        symbol [ sqrt %tmp.5 52 29 33 ];
+        %tmp.5 = getv function %tmp.4 :sqrt;
+        %tmp.6 = -1.0;
+        %tmp.7 = invoke %tmp.4 %tmp.5(%tmp.6);
+        symbol [ INVALID_FLOAT ? 52 8 21 ];
+        putv self :INVALID_FLOAT %tmp.7;
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 55 8 ]
+        %tmp.8 = self;
+        symbol [ createField %tmp.9 55 19 30 ];
+        %tmp.9 = getv function %tmp.8 :createField;
+        %tmp.10 = "CV";
+        symbol [ CV_FIELD_ID %tmp.12 57 12 23 ];
+        %tmp.12 = getv ? :CV_FIELD_ID;
+        symbol [ FitContributor %tmp.13 58 12 26 ];
+        %tmp.13 = getm $.Toybox.FitContributor;
+        symbol [ DATA_TYPE_FLOAT %tmp.14 58 27 42 ];
+        %tmp.14 = getv %tmp.13 :DATA_TYPE_FLOAT;
+        %tmp.15 = newd 2;
+        %tmp.17 = const :mesgType;
+        symbol [ mesgType %tmp.17 59 14 22 const ];
+        symbol [ FitContributor %tmp.18 59 24 38 ];
+        %tmp.18 = getm $.Toybox.FitContributor;
+        symbol [ MESG_TYPE_RECORD %tmp.19 59 39 55 ];
+        %tmp.19 = getv %tmp.18 :MESG_TYPE_RECORD;
+        %tmp.20 = dup %tmp.15;
+        %tmp.21 = aputv %tmp.20 %tmp.17 %tmp.19;
+        %tmp.23 = const :units;
+        symbol [ units %tmp.23 59 58 63 const ];
+        %tmp.24 = "%";
+        %tmp.25 = dup %tmp.21;
+        %tmp.26 = aputv %tmp.25 %tmp.23 %tmp.24;
+        %tmp.27 = invoke %tmp.8 %tmp.9(%tmp.10, %tmp.12, %tmp.14, %tmp.26);
+        symbol [ mCvField ? 55 8 16 ];
+        putv self :mCvField %tmp.27;
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 62 8 ]
+        %tmp.28 = self;
+        symbol [ createField %tmp.29 62 26 37 ];
+        %tmp.29 = getv function %tmp.28 :createField;
+        %tmp.30 = "Avg CV";
+        %tmp.31 = 1;
+        symbol [ FitContributor %tmp.32 65 12 26 ];
+        %tmp.32 = getm $.Toybox.FitContributor;
+        symbol [ DATA_TYPE_FLOAT %tmp.33 65 27 42 ];
+        %tmp.33 = getv %tmp.32 :DATA_TYPE_FLOAT;
+        %tmp.34 = newd 2;
+        %tmp.36 = const :mesgType;
+        symbol [ mesgType %tmp.36 67 17 25 const ];
+        symbol [ FitContributor %tmp.37 67 29 43 ];
+        %tmp.37 = getm $.Toybox.FitContributor;
+        symbol [ MESG_TYPE_SESSION %tmp.38 67 44 61 ];
+        %tmp.38 = getv %tmp.37 :MESG_TYPE_SESSION;
+        %tmp.39 = dup %tmp.34;
+        %tmp.40 = aputv %tmp.39 %tmp.36 %tmp.38;
+        %tmp.42 = const :units;
+        symbol [ units %tmp.42 68 17 22 const ];
+        %tmp.43 = "%";
+        %tmp.44 = dup %tmp.40;
+        %tmp.45 = aputv %tmp.44 %tmp.42 %tmp.43;
+        %tmp.46 = invoke %tmp.28 %tmp.29(%tmp.30, %tmp.31, %tmp.33, %tmp.45);
+        symbol [ mCvSessionField ? 62 8 23 ];
+        putv self :mCvSessionField %tmp.46;
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 73 8 ]
+        %tmp.47 = self;
+        symbol [ loadSettings %tmp.48 73 8 20 ];
+        %tmp.48 = getv function %tmp.47 :loadSettings;
+        invoke %tmp.47 %tmp.48();
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 74 8 ]
+        %tmp.49 = newa 0;
+        symbol [ mPowerHistory ? 74 8 21 ];
+        putv self :mPowerHistory %tmp.49;
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 75 8 ]
+        for @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_75_8_77_8_for_test @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_75_8_77_8_for_incr @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_75_8_77_8_for_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_75_8_77_8_for_init:
+        [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_75_8_77_8_for_begin" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_75_8_77_8_for_end" ]
+        %i.1 = local;
+        symbol [ i %i.1 75 17 18 ];
+        %tmp.50 = 0;
+        lputv %i.1 %tmp.50;
+        symbol [ i %i.1 75 17 18 ];
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_75_8_77_8_for_test:
+        %tmp.51 = lgetv %i.1;
+        symbol [ i %tmp.51 75 24 25 ];
+        symbol [ HISTORY_SIZE %tmp.53 75 28 40 ];
+        %tmp.53 = getv ? :HISTORY_SIZE;
+        %tmp.54 = lt %tmp.51 %tmp.53;
+        bf %tmp.54 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_75_8_77_8_for_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_75_8_77_8_for_begin:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_75_47_77_8_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 76 12 ]
+        symbol [ mPowerHistory %tmp.56 76 12 25 ];
+        %tmp.56 = getv ? :mPowerHistory;
+        symbol [ add %tmp.57 76 26 29 ];
+        %tmp.57 = getv function %tmp.56 :add;
+        symbol [ POWER_NODATA %tmp.59 76 30 42 ];
+        %tmp.59 = getv ? :POWER_NODATA;
+        invoke %tmp.56 %tmp.57(%tmp.59);
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_75_47_77_8_stop:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_75_8_77_8_for_incr:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 75 ]
+        %tmp.62 = lgetv %i.1;
+        symbol [ i %tmp.62 75 42 43 ];
+        %tmp.63 = add %tmp.62 1;
+        lputv %i.1 %tmp.63;
+        symbol [ i %i.1 75 42 43 ];
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_75_8_77_8_for_test;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_75_8_77_8_for_end:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_48_26_78_4_stop:
+    }
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 80; @symbol_functiondef = [loadSettings,80,21,33]; ]
+    private
+    function loadSettings() as Void {
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_80_44_108_4_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 83 8 ]
+        [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_80_44_108_4_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_80_44_108_4_stop" ]
+        %high.1 = local;
+        symbol [ high %high.1 83 12 16 ];
+        %tmp.1 = self;
+        symbol [ getProperty %tmp.2 83 19 30 ];
+        %tmp.2 = getv function %tmp.1 :getProperty;
+        %tmp.3 = "HighThresholdPercentageX";
+        %tmp.4 = 10.0f;
+        %tmp.5 = invoke %tmp.1 %tmp.2(%tmp.3, %tmp.4);
+        lputv %high.1 %tmp.5;
+        symbol [ high %high.1 83 12 16 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 84 8 ]
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_84_8_90_8_if_stmt:
+        %tmp.6 = lgetv %high.1;
+        symbol [ high %tmp.6 84 12 16 ];
+        %tmp.8 = const :toFloat;
+        symbol [ toFloat %tmp.8 84 22 29 const ];
+        %tmp.9 = canhazplz %tmp.6 %tmp.8;
+        bf %tmp.9 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_84_8_90_8_if_false;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_84_8_90_8_if_true:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_84_31_86_8_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 85 12 ]
+        %tmp.10 = lgetv %high.1;
+        symbol [ high %tmp.10 85 29 33 ];
+        %tmp.11 = as %tmp.10 { (interface { var toFloat; }) };
+        symbol [ toFloat %tmp.12 85 34 41 ];
+        %tmp.12 = getv function %tmp.11 :toFloat;
+        %tmp.13 = invoke %tmp.11 %tmp.12();
+        symbol [ mHighThreshold ? 85 12 26 ];
+        putv self :mHighThreshold %tmp.13;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_84_31_86_8_stop:
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_84_8_90_8_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_84_8_90_8_if_false:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 86 15 ]
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_86_15_90_8_if_stmt:
+        %tmp.14 = lgetv %high.1;
+        symbol [ high %tmp.14 86 19 23 ];
+        %tmp.15 = as %tmp.14 { (!interface { var toFloat; }) };
+        symbol [ Lang %tmp.16 86 35 39 ];
+        %tmp.16 = getm $.Toybox.Lang;
+        symbol [ Float %tmp.17 86 40 45 ];
+        %tmp.17 = getv %tmp.16 :Float;
+        %tmp.18 = isa %tmp.15 %tmp.17;
+        bf %tmp.18 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_86_15_90_8_if_else_false;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_86_15_90_8_if_true:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_86_47_88_8_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 87 12 ]
+        %tmp.19 = lgetv %high.1;
+        symbol [ high %tmp.19 87 29 33 ];
+        %tmp.20 = as %tmp.19 { (!interface { var toFloat; }) && (Lang.Float) };
+        symbol [ mHighThreshold ? 87 12 26 ];
+        putv self :mHighThreshold %tmp.20;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_86_47_88_8_stop:
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_86_15_90_8_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_86_15_90_8_if_else_false:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_88_15_90_8_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 89 12 ]
+        %tmp.21 = 10.0f;
+        symbol [ mHighThreshold ? 89 12 26 ];
+        putv self :mHighThreshold %tmp.21;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_88_15_90_8_stop:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_86_15_90_8_if_end:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_84_8_90_8_if_end:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 92 8 ]
+        [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_80_44_108_4_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_80_44_108_4_stop" ]
+        %low.2 = local;
+        symbol [ low %low.2 92 12 15 ];
+        %tmp.22 = self;
+        symbol [ getProperty %tmp.23 92 18 29 ];
+        %tmp.23 = getv function %tmp.22 :getProperty;
+        %tmp.24 = "LowThresholdPercentageX";
+        %tmp.25 = 5.0f;
+        %tmp.26 = invoke %tmp.22 %tmp.23(%tmp.24, %tmp.25);
+        lputv %low.2 %tmp.26;
+        symbol [ low %low.2 92 12 15 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 93 8 ]
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_93_8_99_8_if_stmt:
+        %tmp.27 = lgetv %low.2;
+        symbol [ low %tmp.27 93 12 15 ];
+        %tmp.29 = const :toFloat;
+        symbol [ toFloat %tmp.29 93 21 28 const ];
+        %tmp.30 = canhazplz %tmp.27 %tmp.29;
+        bf %tmp.30 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_93_8_99_8_if_false;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_93_8_99_8_if_true:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_93_30_95_8_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 94 12 ]
+        %tmp.31 = lgetv %low.2;
+        symbol [ low %tmp.31 94 28 31 ];
+        %tmp.32 = as %tmp.31 { (interface { var toFloat; }) };
+        symbol [ toFloat %tmp.33 94 32 39 ];
+        %tmp.33 = getv function %tmp.32 :toFloat;
+        %tmp.34 = invoke %tmp.32 %tmp.33();
+        symbol [ mLowThreshold ? 94 12 25 ];
+        putv self :mLowThreshold %tmp.34;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_93_30_95_8_stop:
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_93_8_99_8_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_93_8_99_8_if_false:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 95 15 ]
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_95_15_99_8_if_stmt:
+        %tmp.35 = lgetv %low.2;
+        symbol [ low %tmp.35 95 19 22 ];
+        %tmp.36 = as %tmp.35 { (!interface { var toFloat; }) };
+        symbol [ Lang %tmp.37 95 34 38 ];
+        %tmp.37 = getm $.Toybox.Lang;
+        symbol [ Float %tmp.38 95 39 44 ];
+        %tmp.38 = getv %tmp.37 :Float;
+        %tmp.39 = isa %tmp.36 %tmp.38;
+        bf %tmp.39 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_95_15_99_8_if_else_false;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_95_15_99_8_if_true:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_95_46_97_8_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 96 12 ]
+        %tmp.40 = lgetv %low.2;
+        symbol [ low %tmp.40 96 28 31 ];
+        %tmp.41 = as %tmp.40 { (!interface { var toFloat; }) && (Lang.Float) };
+        symbol [ mLowThreshold ? 96 12 25 ];
+        putv self :mLowThreshold %tmp.41;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_95_46_97_8_stop:
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_95_15_99_8_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_95_15_99_8_if_else_false:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_97_15_99_8_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 98 12 ]
+        %tmp.42 = 5.0f;
+        symbol [ mLowThreshold ? 98 12 25 ];
+        putv self :mLowThreshold %tmp.42;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_97_15_99_8_stop:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_95_15_99_8_if_end:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_93_8_99_8_if_end:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 101 8 ]
+        [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_80_44_108_4_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_80_44_108_4_stop" ]
+        %ignore.3 = local;
+        symbol [ ignore %ignore.3 101 12 18 ];
+        %tmp.43 = self;
+        symbol [ getProperty %tmp.44 101 21 32 ];
+        %tmp.44 = getv function %tmp.43 :getProperty;
+        %tmp.45 = "IgnorePowerWattsX";
+        %tmp.46 = 50;
+        %tmp.47 = invoke %tmp.43 %tmp.44(%tmp.45, %tmp.46);
+        lputv %ignore.3 %tmp.47;
+        symbol [ ignore %ignore.3 101 12 18 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 102 8 ]
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_102_8_106_8_if_stmt:
+        %tmp.48 = lgetv %ignore.3;
+        symbol [ ignore %tmp.48 102 12 18 ];
+        %tmp.50 = const :toNumber;
+        symbol [ toNumber %tmp.50 102 24 32 const ];
+        %tmp.51 = canhazplz %tmp.48 %tmp.50;
+        bf %tmp.51 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_102_8_106_8_if_else_false;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_102_8_106_8_if_true:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_102_34_104_8_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 103 12 ]
+        %tmp.52 = lgetv %ignore.3;
+        symbol [ ignore %tmp.52 103 27 33 ];
+        %tmp.53 = as %tmp.52 { (interface { var toNumber; }) };
+        symbol [ toNumber %tmp.54 103 34 42 ];
+        %tmp.54 = getv function %tmp.53 :toNumber;
+        %tmp.55 = invoke %tmp.53 %tmp.54();
+        symbol [ mIgnorePower ? 103 12 24 ];
+        putv self :mIgnorePower %tmp.55;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_102_34_104_8_stop:
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_102_8_106_8_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_102_8_106_8_if_else_false:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_104_15_106_8_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 105 12 ]
+        %tmp.56 = 50;
+        symbol [ mIgnorePower ? 105 12 24 ];
+        putv self :mIgnorePower %tmp.56;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_104_15_106_8_stop:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_102_8_106_8_if_end:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 107 8 ]
+        symbol [ mIgnorePower %tmp.58 107 23 35 ];
+        %tmp.58 = getv ? :mIgnorePower;
+        symbol [ toFloat %tmp.59 107 36 43 ];
+        %tmp.59 = getv function %tmp.58 :toFloat;
+        %tmp.60 = invoke %tmp.58 %tmp.59();
+        symbol [ mIgnorePower ? 107 8 20 ];
+        putv self :mIgnorePower %tmp.60;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_80_44_108_4_stop:
+    }
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 111; @symbol_functiondef = [getProperty,111,21,32]; @symbol_param<0> = [key,111,33,36]; @symbol_param<0>_type<0> = [String,111,40,46]; @symbol_param<1> = [defaultValue,111,48,60]; @symbol_param<1>_type<0> = [Object,111,64,70]; @symbol_return<0> = [Object,111,75,81]; ]
+    private
+    function getProperty(key as String, defaultValue as Object) as Object {
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_111_82_122_4_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 112 8 ]
+        try @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_112_8_121_8_beginTry @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_112_8_121_8_endTry @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_112_8_121_8_catch @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_112_8_121_8_finally;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_112_8_121_8_beginTry:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_112_12_119_8_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 113 12 ]
+        [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_112_12_119_8_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_112_12_119_8_stop" ]
+        %value.1 = local;
+        symbol [ value %value.1 113 16 21 ];
+        symbol [ App %tmp.1 113 25 28 ];
+        %tmp.1 = getm $.Toybox.Application;
+        symbol [ Properties %tmp.2 113 29 39 ];
+        %tmp.2 = getv %tmp.1 :Properties;
+        symbol [ getValue %tmp.3 113 40 48 ];
+        %tmp.3 = getv function %tmp.2 :getValue;
+        %tmp.4 = lgetv %key;
+        symbol [ key %tmp.4 113 49 52 ];
+        %tmp.5 = invoke %tmp.2 %tmp.3(%tmp.4);
+        lputv %value.1 %tmp.5;
+        symbol [ value %value.1 113 16 21 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 114 12 ]
+        [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_112_12_119_8_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_112_12_119_8_stop" ]
+        %result.2 = local;
+        symbol [ result %result.2 114 16 22 ];
+        %tmp.6 = lgetv %defaultValue;
+        symbol [ defaultValue %tmp.6 114 25 37 ];
+        lputv %result.2 %tmp.6;
+        symbol [ result %result.2 114 16 22 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 115 12 ]
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_115_12_117_12_if_stmt:
+        %tmp.7 = lgetv %value.1;
+        symbol [ value %tmp.7 115 16 21 ];
+        %tmp.8 = null;
+        %tmp.9 = ne %tmp.7 %tmp.8;
+        bf %tmp.9 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_115_12_117_12_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_115_12_117_12_if_true:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_115_31_117_12_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 116 16 ]
+        %tmp.10 = lgetv %value.1;
+        symbol [ value %tmp.10 116 25 30 ];
+        %tmp.11 = as %tmp.10 { (!Null) };
+        %tmp.12 = as %tmp.11 Object;
+        symbol [ Object %tmp.12 116 34 40 ];
+        lputv %result.2 %tmp.12;
+        symbol [ result %result.2 116 16 22 ];
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_115_31_117_12_stop:
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_115_12_117_12_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_115_12_117_12_if_end:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 118 12 ]
+        %tmp.13 = lgetv %result.2;
+        symbol [ result %tmp.13 118 19 25 ];
+        jsr @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_112_8_121_8_finally;
+        ret %tmp.13;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_112_12_119_8_stop:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_112_8_121_8_endTry:
+        jsr @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_112_8_121_8_finally;
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_112_8_121_8_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_112_8_121_8_catch:
+        %tmp.14 = exception;
+        push %tmp.14;
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 119 10 ]
+        [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_112_8_121_8_catch" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_119_10_121_8_end" ]
+        %ex.3 = local;
+        symbol [ ex %ex.3 119 17 19 ];
+        %tmp.15 = dup %tmp.14;
+        lputv %ex.3 %tmp.15;
+        symbol [ ex %ex.3 119 17 19 ];
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_119_21_121_8_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 120 12 ]
+        pop;
+        %tmp.16 = lgetv %defaultValue;
+        symbol [ defaultValue %tmp.16 120 19 31 ];
+        jsr @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_112_8_121_8_finally;
+        ret %tmp.16;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_119_21_121_8_stop:
+        jsr @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_112_8_121_8_finally;
+        pop;
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_112_8_121_8_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_119_10_121_8_end:
+        try @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_112_8_121_8_catch @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_119_10_121_8_end @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_119_10_121_8_end @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_112_8_121_8_finally;
+        jsr @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_112_8_121_8_finally;
+        throw %tmp.14;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_112_8_121_8_finally:
+        jsrret;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_112_8_121_8_end:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_111_82_122_4_stop:
+    }
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 124; @symbol_functiondef = [calculateAverage,124,21,37]; @symbol_param<0> = [seconds,124,38,45]; @symbol_param<0>_type<0> = [Lang,124,49,53]; @symbol_param<0>_type<1> = [Number,124,54,60]; @symbol_return<0> = [Lang,124,65,69]; @symbol_return<1> = [Float,124,70,75]; ]
+    private
+    function calculateAverage(seconds as Lang.Number) as Lang.Float {
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_124_76_143_4_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 125 8 ]
+        [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_124_76_143_4_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_124_76_143_4_stop" ]
+        %sum.1 = local;
+        symbol [ sum %sum.1 125 12 15 ];
+        %tmp.1 = 0.0f;
+        lputv %sum.1 %tmp.1;
+        symbol [ sum %sum.1 125 12 15 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 126 8 ]
+        [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_124_76_143_4_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_124_76_143_4_stop" ]
+        %count.2 = local;
+        symbol [ count %count.2 126 12 17 ];
+        %tmp.2 = 0;
+        lputv %count.2 %tmp.2;
+        symbol [ count %count.2 126 12 17 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 127 8 ]
+        [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_124_76_143_4_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_124_76_143_4_stop" ]
+        %average.3 = local;
+        symbol [ average %average.3 127 12 19 ];
+        %tmp.3 = 0.0f;
+        lputv %average.3 %tmp.3;
+        symbol [ average %average.3 127 12 19 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 129 8 ]
+        for @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_129_8_135_12_for_test @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_129_8_135_12_for_incr @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_129_8_135_12_for_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_129_8_135_12_for_init:
+        [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_129_8_135_12_for_begin" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_129_8_135_12_for_end" ]
+        %i.4 = local;
+        symbol [ i %i.4 129 17 18 ];
+        symbol [ HISTORY_SIZE %tmp.5 129 21 33 ];
+        %tmp.5 = getv ? :HISTORY_SIZE;
+        %tmp.6 = 1;
+        %tmp.7 = sub %tmp.5 %tmp.6;
+        lputv %i.4 %tmp.7;
+        symbol [ i %i.4 129 17 18 ];
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_129_8_135_12_for_test:
+        %tmp.8 = lgetv %i.4;
+        symbol [ i %tmp.8 129 39 40 ];
+        symbol [ HISTORY_SIZE %tmp.10 129 44 56 ];
+        %tmp.10 = getv ? :HISTORY_SIZE;
+        %tmp.11 = lgetv %seconds;
+        symbol [ seconds %tmp.11 129 59 66 ];
+        %tmp.12 = sub %tmp.10 %tmp.11;
+        %tmp.13 = gte %tmp.8 %tmp.12;
+        bf %tmp.13 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_129_8_135_12_for_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_129_8_135_12_for_begin:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_129_73_135_12_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 130 12 ]
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_130_12_134_16_if_stmt:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_130_16_130_81_begin:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_130_16_130_46_begin:
+        %tmp.14 = lgetv %i.4;
+        symbol [ i %tmp.14 130 16 17 ];
+        %tmp.15 = 0;
+        %tmp.16 = gte %tmp.14 %tmp.15;
+        bf %tmp.16 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_130_12_134_16_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_130_26_130_46_true:
+        symbol [ mPowerHistory %tmp.18 130 26 39 ];
+        %tmp.18 = getv ? :mPowerHistory;
+        %tmp.19 = lgetv %i.4;
+        symbol [ i %tmp.19 130 40 41 ];
+        %tmp.20 = agetv %tmp.18 %tmp.19;
+        symbol [ POWER_NODATA %tmp.22 130 46 58 ];
+        %tmp.22 = getv ? :POWER_NODATA;
+        %tmp.23 = ne %tmp.20 %tmp.22;
+        push %tmp.23;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_130_26_130_46_end:
+        %tmp.24 = phi [%tmp.16 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_130_16_130_46_begin] [%tmp.23 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_130_26_130_46_true] [%tmp.24 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_130_26_130_46_end];
+        bf %tmp.24 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_130_12_134_16_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_130_62_130_81_true:
+        symbol [ mPowerHistory %tmp.26 130 62 75 ];
+        %tmp.26 = getv ? :mPowerHistory;
+        %tmp.27 = lgetv %i.4;
+        symbol [ i %tmp.27 130 76 77 ];
+        %tmp.28 = agetv %tmp.26 %tmp.27;
+        %tmp.29 = 1;
+        %tmp.30 = gt %tmp.28 %tmp.29;
+        push %tmp.30;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_130_62_130_81_end:
+        %tmp.31 = phi [%tmp.24 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_130_16_130_81_begin] [%tmp.30 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_130_62_130_81_true] [%tmp.31 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_130_62_130_81_end];
+        bf %tmp.31 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_130_12_134_16_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_130_12_134_16_if_true:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_130_84_134_16_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 131 16 ]
+        %tmp.32 = lgetv %sum.1;
+        symbol [ sum %tmp.32 131 16 19 ];
+        symbol [ mPowerHistory %tmp.34 131 23 36 ];
+        %tmp.34 = getv ? :mPowerHistory;
+        %tmp.35 = lgetv %i.4;
+        symbol [ i %tmp.35 131 37 38 ];
+        %tmp.36 = agetv %tmp.34 %tmp.35;
+        %tmp.37 = add %tmp.32 %tmp.36;
+        lputv %sum.1 %tmp.37;
+        symbol [ sum %sum.1 131 16 19 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 133 16 ]
+        %tmp.40 = lgetv %count.2;
+        symbol [ count %tmp.40 133 16 21 ];
+        %tmp.41 = add %tmp.40 1;
+        lputv %count.2 %tmp.41;
+        symbol [ count %count.2 133 16 21 ];
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_130_84_134_16_stop:
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_130_12_134_16_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_130_12_134_16_if_end:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_129_73_135_12_stop:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_129_8_135_12_for_incr:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 129 ]
+        %tmp.44 = lgetv %i.4;
+        symbol [ i %tmp.44 129 68 69 ];
+        %tmp.45 = sub %tmp.44 1;
+        lputv %i.4 %tmp.45;
+        symbol [ i %i.4 129 68 69 ];
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_129_8_135_12_for_test;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_129_8_135_12_for_end:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 137 8 ]
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_137_8_141_8_if_stmt:
+        %tmp.46 = lgetv %count.2;
+        symbol [ count %tmp.46 137 12 17 ];
+        %tmp.47 = 0;
+        %tmp.48 = gt %tmp.46 %tmp.47;
+        bf %tmp.48 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_137_8_141_8_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_137_8_141_8_if_true:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_137_23_141_8_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 140 12 ]
+        %tmp.49 = lgetv %sum.1;
+        symbol [ sum %tmp.49 140 22 25 ];
+        %tmp.50 = lgetv %count.2;
+        symbol [ count %tmp.50 140 28 33 ];
+        symbol [ toFloat %tmp.51 140 34 41 ];
+        %tmp.51 = getv function %tmp.50 :toFloat;
+        %tmp.52 = invoke %tmp.50 %tmp.51();
+        %tmp.53 = div %tmp.49 %tmp.52;
+        lputv %average.3 %tmp.53;
+        symbol [ average %average.3 140 12 19 ];
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_137_23_141_8_stop:
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_137_8_141_8_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_137_8_141_8_if_end:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 142 8 ]
+        %tmp.54 = lgetv %average.3;
+        symbol [ average %tmp.54 142 15 22 ];
+        ret %tmp.54;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_124_76_143_4_stop:
+    }
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 145; @symbol_functiondef = [calculateDifference,145,21,40]; @symbol_param<0> = [avg3s,145,41,46]; @symbol_param<0>_type<0> = [Lang,145,50,54]; @symbol_param<0>_type<1> = [Float,145,55,60]; @symbol_param<1> = [avg10s,145,62,68]; @symbol_param<1>_type<0> = [Lang,145,72,76]; @symbol_param<1>_type<1> = [Float,145,77,82]; @symbol_return<0> = [Lang,145,87,91]; @symbol_return<1> = [Float,145,92,97]; ]
+    private
+    function calculateDifference(avg3s as Lang.Float, avg10s as Lang.Float) as Lang.Float {
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_145_98_154_4_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 146 8 ]
+        [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_145_98_154_4_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_145_98_154_4_stop" ]
+        %percentage.1 = local;
+        symbol [ percentage %percentage.1 146 12 22 ];
+        %tmp.1 = 0.0f;
+        lputv %percentage.1 %tmp.1;
+        symbol [ percentage %percentage.1 146 12 22 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 149 8 ]
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_149_8_152_8_if_stmt:
+        %tmp.2 = lgetv %avg10s;
+        symbol [ avg10s %tmp.2 149 12 18 ];
+        symbol [ mIgnorePower %tmp.4 149 21 33 ];
+        %tmp.4 = getv ? :mIgnorePower;
+        %tmp.5 = gt %tmp.2 %tmp.4;
+        bf %tmp.5 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_149_8_152_8_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_149_8_152_8_if_true:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_149_35_152_8_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 150 12 ]
+        [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_149_35_152_8_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_149_35_152_8_stop" ]
+        %diff.2 = local;
+        symbol [ diff %diff.2 150 16 20 ];
+        %tmp.6 = lgetv %avg3s;
+        symbol [ avg3s %tmp.6 150 23 28 ];
+        %tmp.7 = lgetv %avg10s;
+        symbol [ avg10s %tmp.7 150 31 37 ];
+        %tmp.8 = sub %tmp.6 %tmp.7;
+        lputv %diff.2 %tmp.8;
+        symbol [ diff %diff.2 150 16 20 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 151 12 ]
+        %tmp.9 = lgetv %diff.2;
+        symbol [ diff %tmp.9 151 26 30 ];
+        symbol [ abs %tmp.10 151 31 34 ];
+        %tmp.10 = getv function %tmp.9 :abs;
+        %tmp.11 = invoke %tmp.9 %tmp.10();
+        %tmp.12 = lgetv %avg10s;
+        symbol [ avg10s %tmp.12 151 39 45 ];
+        %tmp.13 = div %tmp.11 %tmp.12;
+        %tmp.14 = 100.0f;
+        %tmp.15 = mul %tmp.13 %tmp.14;
+        lputv %percentage.1 %tmp.15;
+        symbol [ percentage %percentage.1 151 12 22 ];
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_149_35_152_8_stop:
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_149_8_152_8_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_149_8_152_8_if_end:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 153 8 ]
+        %tmp.16 = lgetv %percentage.1;
+        symbol [ percentage %tmp.16 153 15 25 ];
+        ret %tmp.16;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_145_98_154_4_stop:
+    }
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 156; @symbol_functiondef = [calculateStandardDeviation,156,21,47]; @symbol_param<0> = [seconds,156,48,55]; @symbol_param<0>_type<0> = [Lang,156,59,63]; @symbol_param<0>_type<1> = [Number,156,64,70]; @symbol_param<1> = [mean,156,72,76]; @symbol_param<1>_type<0> = [Lang,156,80,84]; @symbol_param<1>_type<1> = [Float,156,85,90]; @symbol_return<0> = [Lang,156,95,99]; @symbol_return<1> = [Float,156,100,105]; ]
+    private
+    function calculateStandardDeviation(seconds as Lang.Number, mean as Lang.Float) as Lang.Float {
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_156_106_179_4_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 157 8 ]
+        [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_156_106_179_4_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_156_106_179_4_stop" ]
+        %sumOfSquaredDiffs.1 = local;
+        symbol [ sumOfSquaredDiffs %sumOfSquaredDiffs.1 157 12 29 ];
+        %tmp.1 = 0.0f;
+        lputv %sumOfSquaredDiffs.1 %tmp.1;
+        symbol [ sumOfSquaredDiffs %sumOfSquaredDiffs.1 157 12 29 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 158 8 ]
+        [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_156_106_179_4_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_156_106_179_4_stop" ]
+        %count.2 = local;
+        symbol [ count %count.2 158 12 17 ];
+        %tmp.2 = 0;
+        lputv %count.2 %tmp.2;
+        symbol [ count %count.2 158 12 17 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 159 8 ]
+        [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_156_106_179_4_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_156_106_179_4_stop" ]
+        %stdDev.3 = local;
+        symbol [ stdDev %stdDev.3 159 12 18 ];
+        %tmp.3 = 0.0f;
+        lputv %stdDev.3 %tmp.3;
+        symbol [ stdDev %stdDev.3 159 12 18 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 161 8 ]
+        for @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_161_8_169_12_for_test @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_161_8_169_12_for_incr @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_161_8_169_12_for_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_161_8_169_12_for_init:
+        [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_161_8_169_12_for_begin" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_161_8_169_12_for_end" ]
+        %i.4 = local;
+        symbol [ i %i.4 161 17 18 ];
+        symbol [ HISTORY_SIZE %tmp.5 161 21 33 ];
+        %tmp.5 = getv ? :HISTORY_SIZE;
+        %tmp.6 = 1;
+        %tmp.7 = sub %tmp.5 %tmp.6;
+        lputv %i.4 %tmp.7;
+        symbol [ i %i.4 161 17 18 ];
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_161_8_169_12_for_test:
+        %tmp.8 = lgetv %i.4;
+        symbol [ i %tmp.8 161 39 40 ];
+        symbol [ HISTORY_SIZE %tmp.10 161 44 56 ];
+        %tmp.10 = getv ? :HISTORY_SIZE;
+        %tmp.11 = lgetv %seconds;
+        symbol [ seconds %tmp.11 161 59 66 ];
+        %tmp.12 = sub %tmp.10 %tmp.11;
+        %tmp.13 = gte %tmp.8 %tmp.12;
+        bf %tmp.13 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_161_8_169_12_for_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_161_8_169_12_for_begin:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_161_73_169_12_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 162 12 ]
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_162_12_168_16_if_stmt:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_162_16_162_81_begin:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_162_16_162_46_begin:
+        %tmp.14 = lgetv %i.4;
+        symbol [ i %tmp.14 162 16 17 ];
+        %tmp.15 = 0;
+        %tmp.16 = gte %tmp.14 %tmp.15;
+        bf %tmp.16 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_162_12_168_16_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_162_26_162_46_true:
+        symbol [ mPowerHistory %tmp.18 162 26 39 ];
+        %tmp.18 = getv ? :mPowerHistory;
+        %tmp.19 = lgetv %i.4;
+        symbol [ i %tmp.19 162 40 41 ];
+        %tmp.20 = agetv %tmp.18 %tmp.19;
+        symbol [ POWER_NODATA %tmp.22 162 46 58 ];
+        %tmp.22 = getv ? :POWER_NODATA;
+        %tmp.23 = ne %tmp.20 %tmp.22;
+        push %tmp.23;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_162_26_162_46_end:
+        %tmp.24 = phi [%tmp.16 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_162_16_162_46_begin] [%tmp.23 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_162_26_162_46_true] [%tmp.24 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_162_26_162_46_end];
+        bf %tmp.24 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_162_12_168_16_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_162_62_162_81_true:
+        symbol [ mPowerHistory %tmp.26 162 62 75 ];
+        %tmp.26 = getv ? :mPowerHistory;
+        %tmp.27 = lgetv %i.4;
+        symbol [ i %tmp.27 162 76 77 ];
+        %tmp.28 = agetv %tmp.26 %tmp.27;
+        %tmp.29 = 1;
+        %tmp.30 = gt %tmp.28 %tmp.29;
+        push %tmp.30;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_162_62_162_81_end:
+        %tmp.31 = phi [%tmp.24 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_162_16_162_81_begin] [%tmp.30 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_162_62_162_81_true] [%tmp.31 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_162_62_162_81_end];
+        bf %tmp.31 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_162_12_168_16_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_162_12_168_16_if_true:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_162_85_168_16_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 164 16 ]
+        [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_162_85_168_16_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_162_85_168_16_stop" ]
+        %diff.5 = local;
+        symbol [ diff %diff.5 164 20 24 ];
+        symbol [ mPowerHistory %tmp.33 164 27 40 ];
+        %tmp.33 = getv ? :mPowerHistory;
+        %tmp.34 = lgetv %i.4;
+        symbol [ i %tmp.34 164 41 42 ];
+        %tmp.35 = agetv %tmp.33 %tmp.34;
+        %tmp.36 = lgetv %mean;
+        symbol [ mean %tmp.36 164 46 50 ];
+        %tmp.37 = sub %tmp.35 %tmp.36;
+        lputv %diff.5 %tmp.37;
+        symbol [ diff %diff.5 164 20 24 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 165 16 ]
+        %tmp.38 = lgetv %sumOfSquaredDiffs.1;
+        symbol [ sumOfSquaredDiffs %tmp.38 165 16 33 ];
+        %tmp.39 = lgetv %diff.5;
+        symbol [ diff %tmp.39 165 37 41 ];
+        %tmp.40 = lgetv %diff.5;
+        symbol [ diff %tmp.40 165 44 48 ];
+        %tmp.41 = mul %tmp.39 %tmp.40;
+        %tmp.42 = add %tmp.38 %tmp.41;
+        lputv %sumOfSquaredDiffs.1 %tmp.42;
+        symbol [ sumOfSquaredDiffs %sumOfSquaredDiffs.1 165 16 33 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 167 16 ]
+        %tmp.45 = lgetv %count.2;
+        symbol [ count %tmp.45 167 16 21 ];
+        %tmp.46 = add %tmp.45 1;
+        lputv %count.2 %tmp.46;
+        symbol [ count %count.2 167 16 21 ];
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_162_85_168_16_stop:
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_162_12_168_16_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_162_12_168_16_if_end:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_161_73_169_12_stop:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_161_8_169_12_for_incr:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 161 ]
+        %tmp.49 = lgetv %i.4;
+        symbol [ i %tmp.49 161 68 69 ];
+        %tmp.50 = sub %tmp.49 1;
+        lputv %i.4 %tmp.50;
+        symbol [ i %i.4 161 68 69 ];
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_161_8_169_12_for_test;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_161_8_169_12_for_end:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 171 8 ]
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_171_8_177_8_if_stmt:
+        %tmp.51 = lgetv %count.2;
+        symbol [ count %tmp.51 171 12 17 ];
+        %tmp.52 = 1;
+        %tmp.53 = gt %tmp.51 %tmp.52;
+        bf %tmp.53 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_171_8_177_8_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_171_8_177_8_if_true:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_171_23_177_8_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 174 12 ]
+        [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_171_23_177_8_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_171_23_177_8_stop" ]
+        %variance.6 = local;
+        symbol [ variance %variance.6 174 16 24 ];
+        %tmp.54 = lgetv %sumOfSquaredDiffs.1;
+        symbol [ sumOfSquaredDiffs %tmp.54 174 27 44 ];
+        %tmp.55 = lgetv %count.2;
+        symbol [ count %tmp.55 174 48 53 ];
+        symbol [ toFloat %tmp.56 174 55 62 ];
+        %tmp.56 = getv function %tmp.55 :toFloat;
+        %tmp.57 = invoke %tmp.55 %tmp.56();
+        %tmp.58 = div %tmp.54 %tmp.57;
+        lputv %variance.6 %tmp.58;
+        symbol [ variance %variance.6 174 16 24 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 176 12 ]
+        symbol [ Math %tmp.59 176 21 25 ];
+        %tmp.59 = getm $.Toybox.Math;
+        symbol [ sqrt %tmp.60 176 26 30 ];
+        %tmp.60 = getv function %tmp.59 :sqrt;
+        %tmp.61 = lgetv %variance.6;
+        symbol [ variance %tmp.61 176 31 39 ];
+        %tmp.62 = invoke %tmp.59 %tmp.60(%tmp.61);
+        symbol [ toFloat %tmp.63 176 41 48 ];
+        %tmp.63 = getv function %tmp.62 :toFloat;
+        %tmp.64 = invoke %tmp.62 %tmp.63();
+        lputv %stdDev.3 %tmp.64;
+        symbol [ stdDev %stdDev.3 176 12 18 ];
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_171_23_177_8_stop:
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_171_8_177_8_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_171_8_177_8_if_end:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 178 8 ]
+        %tmp.65 = lgetv %stdDev.3;
+        symbol [ stdDev %tmp.65 178 15 21 ];
+        ret %tmp.65;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_156_106_179_4_stop:
+    }
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 181; @symbol_functiondef = [calculatePowerSpread,181,21,41]; @symbol_param<0> = [avg3s,181,42,47]; @symbol_param<0>_type<0> = [Lang,181,51,55]; @symbol_param<0>_type<1> = [Float,181,56,61]; @symbol_param<1> = [avg10s,181,63,69]; @symbol_param<1>_type<0> = [Lang,181,73,77]; @symbol_param<1>_type<1> = [Float,181,78,83]; @symbol_return<0> = [Lang,181,88,92]; @symbol_return<1> = [Float,181,93,98]; ]
+    private
+    function calculatePowerSpread(avg3s as Lang.Float, avg10s as Lang.Float) as Lang.Float {
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_181_99_191_4_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 182 8 ]
+        [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_181_99_191_4_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_181_99_191_4_stop" ]
+        %stdDev.1 = local;
+        symbol [ stdDev %stdDev.1 182 12 18 ];
+        %tmp.1 = 0.0f;
+        lputv %stdDev.1 %tmp.1;
+        symbol [ stdDev %stdDev.1 182 12 18 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 185 8 ]
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_185_8_189_8_if_stmt:
+        %tmp.2 = lgetv %avg10s;
+        symbol [ avg10s %tmp.2 185 12 18 ];
+        symbol [ mIgnorePower %tmp.4 185 21 33 ];
+        %tmp.4 = getv ? :mIgnorePower;
+        %tmp.5 = gt %tmp.2 %tmp.4;
+        bf %tmp.5 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_185_8_189_8_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_185_8_189_8_if_true:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_185_35_189_8_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 187 12 ]
+        [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_185_35_189_8_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_185_35_189_8_stop" ]
+        %diff.2 = local;
+        symbol [ diff %diff.2 187 16 20 ];
+        %tmp.6 = lgetv %avg3s;
+        symbol [ avg3s %tmp.6 187 24 29 ];
+        %tmp.7 = lgetv %avg10s;
+        symbol [ avg10s %tmp.7 187 32 38 ];
+        %tmp.8 = sub %tmp.6 %tmp.7;
+        symbol [ abs %tmp.9 187 40 43 ];
+        %tmp.9 = getv function %tmp.8 :abs;
+        %tmp.10 = invoke %tmp.8 %tmp.9();
+        lputv %diff.2 %tmp.10;
+        symbol [ diff %diff.2 187 16 20 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 188 12 ]
+        %tmp.11 = lgetv %diff.2;
+        symbol [ diff %tmp.11 188 21 25 ];
+        %tmp.12 = 2.0f;
+        %tmp.13 = div %tmp.11 %tmp.12;
+        lputv %stdDev.1 %tmp.13;
+        symbol [ stdDev %stdDev.1 188 12 18 ];
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_185_35_189_8_stop:
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_185_8_189_8_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_185_8_189_8_if_end:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 190 8 ]
+        %tmp.14 = lgetv %stdDev.1;
+        symbol [ stdDev %tmp.14 190 15 21 ];
+        ret %tmp.14;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_181_99_191_4_stop:
+    }
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 193; @symbol_functiondef = [updateBackgroundColor,193,21,42]; @symbol_param<0> = [percentageDiff,193,43,57]; @symbol_param<0>_type<0> = [Lang,193,61,65]; @symbol_param<0>_type<1> = [Float,193,66,71]; ]
+    private
+    function updateBackgroundColor(percentageDiff as Lang.Float) as Void {
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_193_81_201_4_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 194 10 ]
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_194_10_200_8_if_stmt:
+        %tmp.1 = lgetv %percentageDiff;
+        symbol [ percentageDiff %tmp.1 194 14 28 ];
+        symbol [ mHighThreshold %tmp.3 194 32 46 ];
+        %tmp.3 = getv ? :mHighThreshold;
+        %tmp.4 = gte %tmp.1 %tmp.3;
+        bf %tmp.4 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_194_10_200_8_if_false;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_194_10_200_8_if_true:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_194_48_196_8_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 195 12 ]
+        symbol [ Gfx %tmp.5 195 31 34 ];
+        %tmp.5 = getm $.Toybox.Graphics;
+        symbol [ COLOR_RED %tmp.6 195 35 44 ];
+        %tmp.6 = getv %tmp.5 :COLOR_RED;
+        symbol [ mBackgroundColor ? 195 12 28 ];
+        putv self :mBackgroundColor %tmp.6;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_194_48_196_8_stop:
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_194_10_200_8_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_194_10_200_8_if_false:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 196 15 ]
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_196_15_200_8_if_stmt:
+        %tmp.7 = lgetv %percentageDiff;
+        symbol [ percentageDiff %tmp.7 196 19 33 ];
+        symbol [ mLowThreshold %tmp.9 196 37 50 ];
+        %tmp.9 = getv ? :mLowThreshold;
+        %tmp.10 = lte %tmp.7 %tmp.9;
+        bf %tmp.10 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_196_15_200_8_if_else_false;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_196_15_200_8_if_true:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_196_52_198_8_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 197 12 ]
+        symbol [ Gfx %tmp.11 197 31 34 ];
+        %tmp.11 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLUE %tmp.12 197 35 45 ];
+        %tmp.12 = getv %tmp.11 :COLOR_BLUE;
+        symbol [ mBackgroundColor ? 197 12 28 ];
+        putv self :mBackgroundColor %tmp.12;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_196_52_198_8_stop:
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_196_15_200_8_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_196_15_200_8_if_else_false:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_198_15_200_8_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 199 12 ]
+        symbol [ Gfx %tmp.13 199 31 34 ];
+        %tmp.13 = getm $.Toybox.Graphics;
+        symbol [ COLOR_GREEN %tmp.14 199 35 46 ];
+        %tmp.14 = getv %tmp.13 :COLOR_GREEN;
+        symbol [ mBackgroundColor ? 199 12 28 ];
+        putv self :mBackgroundColor %tmp.14;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_198_15_200_8_stop:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_196_15_200_8_if_end:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_194_10_200_8_if_end:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_193_81_201_4_stop:
+    }
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 206; @symbol_functiondef = [onLayout,206,13,21]; @symbol_param<0> = [dc,206,22,24]; @symbol_param<0>_type<0> = [Gfx,206,28,31]; @symbol_param<0>_type<1> = [Dc,206,32,34]; ]
+    function onLayout(dc as Gfx.Dc) as Void {
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_206_44_244_4_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 207 8 ]
+        [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_206_44_244_4_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_206_44_244_4_stop" ]
+        %width.1 = local;
+        symbol [ width %width.1 207 12 17 ];
+        %tmp.1 = lgetv %dc;
+        symbol [ dc %tmp.1 207 21 23 ];
+        symbol [ getWidth %tmp.2 207 24 32 ];
+        %tmp.2 = getv function %tmp.1 :getWidth;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %width.1 %tmp.3;
+        symbol [ width %width.1 207 12 17 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 208 8 ]
+        [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_206_44_244_4_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_206_44_244_4_stop" ]
+        %height.2 = local;
+        symbol [ height %height.2 208 12 18 ];
+        %tmp.4 = lgetv %dc;
+        symbol [ dc %tmp.4 208 21 23 ];
+        symbol [ getHeight %tmp.5 208 24 33 ];
+        %tmp.5 = getv function %tmp.4 :getHeight;
+        %tmp.6 = invoke %tmp.4 %tmp.5();
+        lputv %height.2 %tmp.6;
+        symbol [ height %height.2 208 12 18 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 212 8 ]
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_212_8_227_8_if_stmt:
+        %tmp.7 = lgetv %height.2;
+        symbol [ height %tmp.7 212 12 18 ];
+        %tmp.8 = 120;
+        %tmp.9 = gte %tmp.7 %tmp.8;
+        bf %tmp.9 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_212_8_227_8_if_false;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_212_8_227_8_if_true:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_212_27_215_8_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 213 12 ]
+        symbol [ Gfx %tmp.10 213 25 28 ];
+        %tmp.10 = getm $.Toybox.Graphics;
+        symbol [ FONT_NUMBER_HOT %tmp.11 213 29 44 ];
+        %tmp.11 = getv %tmp.10 :FONT_NUMBER_HOT;
+        symbol [ mValueFont ? 213 12 22 ];
+        putv self :mValueFont %tmp.11;
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 214 12 ]
+        symbol [ Gfx %tmp.12 214 25 28 ];
+        %tmp.12 = getm $.Toybox.Graphics;
+        symbol [ FONT_SMALL %tmp.13 214 29 39 ];
+        %tmp.13 = getv %tmp.12 :FONT_SMALL;
+        symbol [ mLabelFont ? 214 12 22 ];
+        putv self :mLabelFont %tmp.13;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_212_27_215_8_stop:
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_212_8_227_8_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_212_8_227_8_if_false:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 215 15 ]
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_215_15_227_8_if_stmt:
+        %tmp.14 = lgetv %height.2;
+        symbol [ height %tmp.14 215 19 25 ];
+        %tmp.15 = 90;
+        %tmp.16 = gte %tmp.14 %tmp.15;
+        bf %tmp.16 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_215_15_227_8_if_false;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_215_15_227_8_if_true:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_215_33_218_8_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 216 12 ]
+        symbol [ Gfx %tmp.17 216 25 28 ];
+        %tmp.17 = getm $.Toybox.Graphics;
+        symbol [ FONT_NUMBER_MEDIUM %tmp.18 216 29 47 ];
+        %tmp.18 = getv %tmp.17 :FONT_NUMBER_MEDIUM;
+        symbol [ mValueFont ? 216 12 22 ];
+        putv self :mValueFont %tmp.18;
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 217 12 ]
+        symbol [ Gfx %tmp.19 217 25 28 ];
+        %tmp.19 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.20 217 29 38 ];
+        %tmp.20 = getv %tmp.19 :FONT_TINY;
+        symbol [ mLabelFont ? 217 12 22 ];
+        putv self :mLabelFont %tmp.20;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_215_33_218_8_stop:
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_215_15_227_8_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_215_15_227_8_if_false:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 218 15 ]
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_218_15_227_8_if_stmt:
+        %tmp.21 = lgetv %height.2;
+        symbol [ height %tmp.21 218 19 25 ];
+        %tmp.22 = 60;
+        %tmp.23 = gte %tmp.21 %tmp.22;
+        bf %tmp.23 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_218_15_227_8_if_false;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_218_15_227_8_if_true:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_218_33_221_8_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 219 12 ]
+        symbol [ Gfx %tmp.24 219 25 28 ];
+        %tmp.24 = getm $.Toybox.Graphics;
+        symbol [ FONT_NUMBER_MILD %tmp.25 219 29 45 ];
+        %tmp.25 = getv %tmp.24 :FONT_NUMBER_MILD;
+        symbol [ mValueFont ? 219 12 22 ];
+        putv self :mValueFont %tmp.25;
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 220 12 ]
+        symbol [ Gfx %tmp.26 220 25 28 ];
+        %tmp.26 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.27 220 29 39 ];
+        %tmp.27 = getv %tmp.26 :FONT_XTINY;
+        symbol [ mLabelFont ? 220 12 22 ];
+        putv self :mLabelFont %tmp.27;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_218_33_221_8_stop:
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_218_15_227_8_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_218_15_227_8_if_false:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 221 15 ]
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_221_15_227_8_if_stmt:
+        %tmp.28 = lgetv %height.2;
+        symbol [ height %tmp.28 221 19 25 ];
+        %tmp.29 = 40;
+        %tmp.30 = gte %tmp.28 %tmp.29;
+        bf %tmp.30 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_221_15_227_8_if_else_false;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_221_15_227_8_if_true:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_221_33_224_8_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 222 12 ]
+        symbol [ Gfx %tmp.31 222 25 28 ];
+        %tmp.31 = getm $.Toybox.Graphics;
+        symbol [ FONT_MEDIUM %tmp.32 222 29 40 ];
+        %tmp.32 = getv %tmp.31 :FONT_MEDIUM;
+        symbol [ mValueFont ? 222 12 22 ];
+        putv self :mValueFont %tmp.32;
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 223 12 ]
+        symbol [ Gfx %tmp.33 223 25 28 ];
+        %tmp.33 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.34 223 29 39 ];
+        %tmp.34 = getv %tmp.33 :FONT_XTINY;
+        symbol [ mLabelFont ? 223 12 22 ];
+        putv self :mLabelFont %tmp.34;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_221_33_224_8_stop:
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_221_15_227_8_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_221_15_227_8_if_else_false:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_224_15_227_8_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 225 12 ]
+        symbol [ Gfx %tmp.35 225 25 28 ];
+        %tmp.35 = getm $.Toybox.Graphics;
+        symbol [ FONT_SMALL %tmp.36 225 29 39 ];
+        %tmp.36 = getv %tmp.35 :FONT_SMALL;
+        symbol [ mValueFont ? 225 12 22 ];
+        putv self :mValueFont %tmp.36;
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 226 12 ]
+        symbol [ Gfx %tmp.37 226 25 28 ];
+        %tmp.37 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.38 226 29 39 ];
+        %tmp.38 = getv %tmp.37 :FONT_XTINY;
+        symbol [ mLabelFont ? 226 12 22 ];
+        putv self :mLabelFont %tmp.38;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_224_15_227_8_stop:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_221_15_227_8_if_end:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_218_15_227_8_if_end:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_215_15_227_8_if_end:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_212_8_227_8_if_end:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 228 8 ]
+        symbol [ Gfx %tmp.39 228 18 21 ];
+        %tmp.39 = getm $.Toybox.Graphics;
+        symbol [ FONT_SMALL %tmp.40 228 22 32 ];
+        %tmp.40 = getv %tmp.39 :FONT_SMALL;
+        symbol [ mCvFont ? 228 8 15 ];
+        putv self :mCvFont %tmp.40;
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 233 8 ]
+        [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_206_44_244_4_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_206_44_244_4_stop" ]
+        %labelCenterY.3 = local;
+        symbol [ labelCenterY %labelCenterY.3 233 12 24 ];
+        %tmp.41 = lgetv %height.2;
+        symbol [ height %tmp.41 233 27 33 ];
+        %tmp.42 = 0.15;
+        %tmp.43 = mul %tmp.41 %tmp.42;
+        lputv %labelCenterY.3 %tmp.43;
+        symbol [ labelCenterY %labelCenterY.3 233 12 24 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 235 8 ]
+        [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_206_44_244_4_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_206_44_244_4_stop" ]
+        %valueCenterY.4 = local;
+        symbol [ valueCenterY %valueCenterY.4 235 12 24 ];
+        %tmp.44 = lgetv %height.2;
+        symbol [ height %tmp.44 235 28 34 ];
+        %tmp.45 = lgetv %labelCenterY.3;
+        symbol [ labelCenterY %tmp.45 235 37 49 ];
+        %tmp.46 = add %tmp.44 %tmp.45;
+        %tmp.47 = 2;
+        %tmp.48 = div %tmp.46 %tmp.47;
+        lputv %valueCenterY.4 %tmp.48;
+        symbol [ valueCenterY %valueCenterY.4 235 12 24 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 238 8 ]
+        %tmp.49 = lgetv %labelCenterY.3;
+        symbol [ labelCenterY %tmp.49 238 19 31 ];
+        %tmp.50 = lgetv %dc;
+        symbol [ dc %tmp.50 238 35 37 ];
+        symbol [ getFontHeight %tmp.51 238 38 51 ];
+        %tmp.51 = getv function %tmp.50 :getFontHeight;
+        symbol [ mLabelFont %tmp.53 238 52 62 ];
+        %tmp.53 = getv ? :mLabelFont;
+        %tmp.54 = invoke %tmp.50 %tmp.51(%tmp.53);
+        %tmp.55 = 2;
+        %tmp.56 = div %tmp.54 %tmp.55;
+        %tmp.57 = sub %tmp.49 %tmp.56;
+        symbol [ toNumber %tmp.58 238 70 78 ];
+        %tmp.58 = getv function %tmp.57 :toNumber;
+        %tmp.59 = invoke %tmp.57 %tmp.58();
+        symbol [ mLabelY ? 238 8 15 ];
+        putv self :mLabelY %tmp.59;
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 239 8 ]
+        %tmp.60 = lgetv %valueCenterY.4;
+        symbol [ valueCenterY %tmp.60 239 19 31 ];
+        %tmp.61 = lgetv %dc;
+        symbol [ dc %tmp.61 239 35 37 ];
+        symbol [ getFontHeight %tmp.62 239 38 51 ];
+        %tmp.62 = getv function %tmp.61 :getFontHeight;
+        symbol [ mValueFont %tmp.64 239 52 62 ];
+        %tmp.64 = getv ? :mValueFont;
+        %tmp.65 = invoke %tmp.61 %tmp.62(%tmp.64);
+        %tmp.66 = 2;
+        %tmp.67 = div %tmp.65 %tmp.66;
+        %tmp.68 = sub %tmp.60 %tmp.67;
+        symbol [ toNumber %tmp.69 239 70 78 ];
+        %tmp.69 = getv function %tmp.68 :toNumber;
+        %tmp.70 = invoke %tmp.68 %tmp.69();
+        symbol [ mValueY ? 239 8 15 ];
+        putv self :mValueY %tmp.70;
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 242 8 ]
+        %tmp.71 = lgetv %width.1;
+        symbol [ width %tmp.71 242 15 20 ];
+        %tmp.72 = 5;
+        %tmp.73 = sub %tmp.71 %tmp.72;
+        symbol [ mCvX ? 242 8 12 ];
+        putv self :mCvX %tmp.73;
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 243 8 ]
+        %tmp.74 = lgetv %height.2;
+        symbol [ height %tmp.74 243 15 21 ];
+        %tmp.75 = lgetv %dc;
+        symbol [ dc %tmp.75 243 24 26 ];
+        symbol [ getFontHeight %tmp.76 243 27 40 ];
+        %tmp.76 = getv function %tmp.75 :getFontHeight;
+        symbol [ mCvFont %tmp.78 243 41 48 ];
+        %tmp.78 = getv ? :mCvFont;
+        %tmp.79 = invoke %tmp.75 %tmp.76(%tmp.78);
+        %tmp.80 = sub %tmp.74 %tmp.79;
+        %tmp.81 = 2;
+        %tmp.82 = sub %tmp.80 %tmp.81;
+        symbol [ mCvY ? 243 8 12 ];
+        putv self :mCvY %tmp.82;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_206_44_244_4_stop:
+    }
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 247; @symbol_functiondef = [onTimerReset,247,13,25]; ]
+    function onTimerReset() as Void {
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_247_36_256_4_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 248 8 ]
+        %tmp.1 = 0.0f;
+        symbol [ mCvSum ? 248 8 14 ];
+        putv self :mCvSum %tmp.1;
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 249 8 ]
+        %tmp.2 = 0;
+        symbol [ mCvCount ? 249 8 16 ];
+        putv self :mCvCount %tmp.2;
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 251 8 ]
+        %tmp.3 = newa 0 Lang.Array<Lang.Float>;
+        symbol [ Lang %tmp.3 251 33 37 ];
+        symbol [ Array %tmp.3 251 38 43 ];
+        symbol [ Lang %tmp.3 251 44 48 ];
+        symbol [ Float %tmp.3 251 49 54 ];
+        symbol [ mSmoothingBuffer ? 251 8 24 ];
+        putv self :mSmoothingBuffer %tmp.3;
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 252 8 ]
+        %tmp.4 = newa 0;
+        symbol [ mPowerHistory ? 252 8 21 ];
+        putv self :mPowerHistory %tmp.4;
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 253 8 ]
+        for @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_253_8_255_8_for_test @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_253_8_255_8_for_incr @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_253_8_255_8_for_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_253_8_255_8_for_init:
+        [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_253_8_255_8_for_begin" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_253_8_255_8_for_end" ]
+        %i.1 = local;
+        symbol [ i %i.1 253 17 18 ];
+        %tmp.5 = 0;
+        lputv %i.1 %tmp.5;
+        symbol [ i %i.1 253 17 18 ];
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_253_8_255_8_for_test:
+        %tmp.6 = lgetv %i.1;
+        symbol [ i %tmp.6 253 24 25 ];
+        symbol [ HISTORY_SIZE %tmp.8 253 28 40 ];
+        %tmp.8 = getv ? :HISTORY_SIZE;
+        %tmp.9 = lt %tmp.6 %tmp.8;
+        bf %tmp.9 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_253_8_255_8_for_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_253_8_255_8_for_begin:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_253_47_255_8_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 254 12 ]
+        symbol [ mPowerHistory %tmp.11 254 12 25 ];
+        %tmp.11 = getv ? :mPowerHistory;
+        symbol [ add %tmp.12 254 26 29 ];
+        %tmp.12 = getv function %tmp.11 :add;
+        symbol [ POWER_NODATA %tmp.14 254 30 42 ];
+        %tmp.14 = getv ? :POWER_NODATA;
+        invoke %tmp.11 %tmp.12(%tmp.14);
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_253_47_255_8_stop:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_253_8_255_8_for_incr:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 253 ]
+        %tmp.17 = lgetv %i.1;
+        symbol [ i %tmp.17 253 42 43 ];
+        %tmp.18 = add %tmp.17 1;
+        lputv %i.1 %tmp.18;
+        symbol [ i %i.1 253 42 43 ];
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_253_8_255_8_for_test;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_253_8_255_8_for_end:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_247_36_256_4_stop:
+    }
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 258; @symbol_functiondef = [compute,258,13,20]; @symbol_param<0> = [info,258,21,25]; @symbol_param<0>_type<0> = [Activity,258,29,37]; @symbol_param<0>_type<1> = [Info,258,38,42]; @symbol_return<0> = [Lang,258,47,51]; @symbol_return<1> = [String,258,52,58]; ]
+    function compute(info as Activity.Info) as Lang.String or Null {
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_258_67_361_4_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 260 8 ]
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_260_8_263_8_if_stmt:
+        %tmp.1 = self;
+        symbol [ getApp %tmp.2 260 12 18 ];
+        %tmp.2 = getv function %tmp.1 :getApp;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        symbol [ settingsChanged %tmp.4 260 21 36 ];
+        %tmp.4 = getv %tmp.3 :settingsChanged;
+        bf %tmp.4 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_260_8_263_8_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_260_8_263_8_if_true:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_260_38_263_8_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 261 12 ]
+        %tmp.5 = self;
+        symbol [ loadSettings %tmp.6 261 12 24 ];
+        %tmp.6 = getv function %tmp.5 :loadSettings;
+        invoke %tmp.5 %tmp.6();
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 262 12 ]
+        symbol [ getApp %tmp.7 262 12 18 ];
+        %tmp.7 = getv function self :getApp;
+        %tmp.8 = invoke self %tmp.7();
+        %tmp.9 = false;
+        symbol [ settingsChanged ? 262 21 36 ];
+        putv %tmp.8 :settingsChanged %tmp.9;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_260_38_263_8_stop:
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_260_8_263_8_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_260_8_263_8_if_end:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 266 8 ]
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_266_8_269_8_if_stmt:
+        %tmp.10 = lgetv %info;
+        symbol [ info %tmp.10 266 12 16 ];
+        symbol [ timerState %tmp.11 266 17 27 ];
+        %tmp.11 = getv %tmp.10 :timerState;
+        symbol [ Activity %tmp.12 266 31 39 ];
+        %tmp.12 = getm $.Toybox.Activity;
+        symbol [ TIMER_STATE_ON %tmp.13 266 40 54 ];
+        %tmp.13 = getv %tmp.12 :TIMER_STATE_ON;
+        %tmp.14 = ne %tmp.11 %tmp.13;
+        bf %tmp.14 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_266_8_269_8_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_266_8_269_8_if_true:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_266_56_269_8_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 267 12 ]
+        %tmp.15 = "---";
+        symbol [ mAvg3sDisplay ? 267 12 25 ];
+        putv self :mAvg3sDisplay %tmp.15;
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 268 12 ]
+        %tmp.16 = null;
+        ret %tmp.16;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_266_56_269_8_stop:
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_266_8_269_8_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_266_8_269_8_if_end:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 271 8 ]
+        [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_258_67_361_4_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_258_67_361_4_stop" ]
+        %currentPower.1 = local;
+        symbol [ currentPower %currentPower.1 271 12 24 ];
+        %tmp.17 = lgetv %info;
+        symbol [ info %tmp.17 271 27 31 ];
+        symbol [ currentPower %tmp.18 271 32 44 ];
+        %tmp.18 = getv %tmp.17 :currentPower;
+        lputv %currentPower.1 %tmp.18;
+        symbol [ currentPower %currentPower.1 271 12 24 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 272 8 ]
+        [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_258_67_361_4_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_258_67_361_4_stop" ]
+        %powerValue.2 = local;
+        symbol [ powerValue %powerValue.2 272 12 22 ];
+        %tmp.19 = 0.0f;
+        lputv %powerValue.2 %tmp.19;
+        symbol [ powerValue %powerValue.2 272 12 22 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 274 8 ]
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_274_8_338_8_if_stmt:
+        %tmp.20 = lgetv %currentPower.1;
+        symbol [ currentPower %tmp.20 274 12 24 ];
+        %tmp.21 = null;
+        %tmp.22 = eq %tmp.20 %tmp.21;
+        bf %tmp.22 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_274_8_338_8_if_else_false;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_274_8_338_8_if_true:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_274_34_286_8_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 276 12 ]
+        symbol [ mPowerHistory %tmp.24 276 29 42 ];
+        %tmp.24 = getv ? :mPowerHistory;
+        symbol [ slice %tmp.25 276 43 48 ];
+        %tmp.25 = getv function %tmp.24 :slice;
+        %tmp.26 = 1;
+        %tmp.27 = null;
+        %tmp.28 = invoke %tmp.24 %tmp.25(%tmp.26, %tmp.27);
+        symbol [ mPowerHistory ? 276 12 25 ];
+        putv self :mPowerHistory %tmp.28;
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 277 12 ]
+        symbol [ mPowerHistory %tmp.30 277 12 25 ];
+        %tmp.30 = getv ? :mPowerHistory;
+        symbol [ add %tmp.31 277 26 29 ];
+        %tmp.31 = getv function %tmp.30 :add;
+        symbol [ POWER_NODATA %tmp.33 277 30 42 ];
+        %tmp.33 = getv ? :POWER_NODATA;
+        invoke %tmp.30 %tmp.31(%tmp.33);
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 279 12 ]
+        %tmp.34 = self;
+        symbol [ calculateAverage %tmp.35 279 23 39 ];
+        %tmp.35 = getv function %tmp.34 :calculateAverage;
+        %tmp.36 = 3;
+        %tmp.37 = invoke %tmp.34 %tmp.35(%tmp.36);
+        symbol [ mAvg3s ? 279 12 18 ];
+        putv self :mAvg3s %tmp.37;
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 280 12 ]
+        %tmp.38 = self;
+        symbol [ calculateAverage %tmp.39 280 23 39 ];
+        %tmp.39 = getv function %tmp.38 :calculateAverage;
+        %tmp.40 = 10;
+        %tmp.41 = invoke %tmp.38 %tmp.39(%tmp.40);
+        symbol [ mAvg10s ? 280 12 19 ];
+        putv self :mAvg10s %tmp.41;
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 281 12 ]
+        %tmp.42 = self;
+        symbol [ calculateAverage %tmp.43 281 23 39 ];
+        %tmp.43 = getv function %tmp.42 :calculateAverage;
+        %tmp.44 = 20;
+        %tmp.45 = invoke %tmp.42 %tmp.43(%tmp.44);
+        symbol [ mAvg20s ? 281 12 19 ];
+        putv self :mAvg20s %tmp.45;
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 282 12 ]
+        %tmp.46 = newa 0 Lang.Array<Lang.Float>;
+        symbol [ Lang %tmp.46 282 37 41 ];
+        symbol [ Array %tmp.46 282 42 47 ];
+        symbol [ Lang %tmp.46 282 48 52 ];
+        symbol [ Float %tmp.46 282 53 58 ];
+        symbol [ mSmoothingBuffer ? 282 12 28 ];
+        putv self :mSmoothingBuffer %tmp.46;
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 283 12 ]
+        symbol [ INVALID_FLOAT %tmp.48 283 23 36 ];
+        %tmp.48 = getv ? :INVALID_FLOAT;
+        symbol [ mCvValue ? 283 12 20 ];
+        putv self :mCvValue %tmp.48;
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 284 12 ]
+        %tmp.49 = "---";
+        symbol [ mAvg3sDisplay ? 284 12 25 ];
+        putv self :mAvg3sDisplay %tmp.49;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_274_34_286_8_stop:
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_274_8_338_8_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_274_8_338_8_if_else_false:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_286_15_338_8_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 291 12 ]
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_291_12_295_12_if_stmt:
+        %tmp.50 = lgetv %currentPower.1;
+        symbol [ currentPower %tmp.50 291 16 28 ];
+        %tmp.51 = as %tmp.50 { (!Null) };
+        %tmp.53 = const :toFloat;
+        symbol [ toFloat %tmp.53 291 34 41 const ];
+        %tmp.54 = canhazplz %tmp.51 %tmp.53;
+        bf %tmp.54 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_291_12_295_12_if_else_false;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_291_12_295_12_if_true:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_291_43_293_12_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 292 16 ]
+        %tmp.55 = lgetv %currentPower.1;
+        symbol [ currentPower %tmp.55 292 29 41 ];
+        %tmp.56 = as %tmp.55 { (interface { var toFloat; }) && (!Null) };
+        symbol [ toFloat %tmp.57 292 42 49 ];
+        %tmp.57 = getv function %tmp.56 :toFloat;
+        %tmp.58 = invoke %tmp.56 %tmp.57();
+        lputv %powerValue.2 %tmp.58;
+        symbol [ powerValue %powerValue.2 292 16 26 ];
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_291_43_293_12_stop:
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_291_12_295_12_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_291_12_295_12_if_else_false:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_293_19_295_12_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 294 16 ]
+        %tmp.59 = lgetv %currentPower.1;
+        symbol [ currentPower %tmp.59 294 29 41 ];
+        %tmp.60 = as %tmp.59 { (!interface { var toFloat; }) && (!Null) };
+        %tmp.61 = as %tmp.60 Lang.Float;
+        symbol [ Lang %tmp.61 294 45 49 ];
+        symbol [ Float %tmp.61 294 50 55 ];
+        lputv %powerValue.2 %tmp.61;
+        symbol [ powerValue %powerValue.2 294 16 26 ];
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_293_19_295_12_stop:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_291_12_295_12_if_end:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 298 12 ]
+        symbol [ mSmoothingBuffer %tmp.63 298 12 28 ];
+        %tmp.63 = getv ? :mSmoothingBuffer;
+        symbol [ add %tmp.64 298 29 32 ];
+        %tmp.64 = getv function %tmp.63 :add;
+        %tmp.65 = lgetv %powerValue.2;
+        symbol [ powerValue %tmp.65 298 33 43 ];
+        invoke %tmp.63 %tmp.64(%tmp.65);
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 299 12 ]
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_299_12_301_12_if_stmt:
+        symbol [ mSmoothingBuffer %tmp.67 299 16 32 ];
+        %tmp.67 = getv ? :mSmoothingBuffer;
+        symbol [ size %tmp.68 299 33 37 ];
+        %tmp.68 = getv function %tmp.67 :size;
+        %tmp.69 = invoke %tmp.67 %tmp.68();
+        symbol [ SMOOTHING_WINDOW %tmp.71 299 42 58 ];
+        %tmp.71 = getv ? :SMOOTHING_WINDOW;
+        %tmp.72 = gt %tmp.69 %tmp.71;
+        bf %tmp.72 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_299_12_301_12_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_299_12_301_12_if_true:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_299_60_301_12_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 300 16 ]
+        symbol [ mSmoothingBuffer %tmp.74 300 35 51 ];
+        %tmp.74 = getv ? :mSmoothingBuffer;
+        symbol [ slice %tmp.75 300 52 57 ];
+        %tmp.75 = getv function %tmp.74 :slice;
+        %tmp.76 = 1;
+        %tmp.77 = null;
+        %tmp.78 = invoke %tmp.74 %tmp.75(%tmp.76, %tmp.77);
+        symbol [ mSmoothingBuffer ? 300 16 32 ];
+        putv self :mSmoothingBuffer %tmp.78;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_299_60_301_12_stop:
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_299_12_301_12_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_299_12_301_12_if_end:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 304 12 ]
+        [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_286_15_338_8_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_286_15_338_8_stop" ]
+        %smoothedPower.3 = local;
+        symbol [ smoothedPower %smoothedPower.3 304 16 29 ];
+        %tmp.79 = 0.0f;
+        lputv %smoothedPower.3 %tmp.79;
+        symbol [ smoothedPower %smoothedPower.3 304 16 29 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 305 12 ]
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_305_12_310_12_if_stmt:
+        symbol [ mSmoothingBuffer %tmp.81 305 16 32 ];
+        %tmp.81 = getv ? :mSmoothingBuffer;
+        symbol [ size %tmp.82 305 33 37 ];
+        %tmp.82 = getv function %tmp.81 :size;
+        %tmp.83 = invoke %tmp.81 %tmp.82();
+        %tmp.84 = 0;
+        %tmp.85 = gt %tmp.83 %tmp.84;
+        bf %tmp.85 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_305_12_310_12_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_305_12_310_12_if_true:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_305_45_310_12_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 306 16 ]
+        for @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_306_16_308_16_for_test @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_306_16_308_16_for_incr @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_306_16_308_16_for_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_306_16_308_16_for_init:
+        [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_306_16_308_16_for_begin" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_306_16_308_16_for_end" ]
+        %i.4 = local;
+        symbol [ i %i.4 306 25 26 ];
+        %tmp.86 = 0;
+        lputv %i.4 %tmp.86;
+        symbol [ i %i.4 306 25 26 ];
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_306_16_308_16_for_test:
+        %tmp.87 = lgetv %i.4;
+        symbol [ i %tmp.87 306 32 33 ];
+        symbol [ mSmoothingBuffer %tmp.89 306 36 52 ];
+        %tmp.89 = getv ? :mSmoothingBuffer;
+        symbol [ size %tmp.90 306 53 57 ];
+        %tmp.90 = getv function %tmp.89 :size;
+        %tmp.91 = invoke %tmp.89 %tmp.90();
+        %tmp.92 = lt %tmp.87 %tmp.91;
+        bf %tmp.92 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_306_16_308_16_for_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_306_16_308_16_for_begin:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_306_66_308_16_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 307 20 ]
+        %tmp.93 = lgetv %smoothedPower.3;
+        symbol [ smoothedPower %tmp.93 307 20 33 ];
+        symbol [ mSmoothingBuffer %tmp.95 307 37 53 ];
+        %tmp.95 = getv ? :mSmoothingBuffer;
+        %tmp.96 = lgetv %i.4;
+        symbol [ i %tmp.96 307 54 55 ];
+        %tmp.97 = agetv %tmp.95 %tmp.96;
+        %tmp.98 = add %tmp.93 %tmp.97;
+        lputv %smoothedPower.3 %tmp.98;
+        symbol [ smoothedPower %smoothedPower.3 307 20 33 ];
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_306_66_308_16_stop:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_306_16_308_16_for_incr:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 306 ]
+        %tmp.101 = lgetv %i.4;
+        symbol [ i %tmp.101 306 61 62 ];
+        %tmp.102 = add %tmp.101 1;
+        lputv %i.4 %tmp.102;
+        symbol [ i %i.4 306 61 62 ];
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_306_16_308_16_for_test;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_306_16_308_16_for_end:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 309 16 ]
+        %tmp.103 = lgetv %smoothedPower.3;
+        symbol [ smoothedPower %tmp.103 309 16 29 ];
+        symbol [ mSmoothingBuffer %tmp.105 309 33 49 ];
+        %tmp.105 = getv ? :mSmoothingBuffer;
+        symbol [ size %tmp.106 309 50 54 ];
+        %tmp.106 = getv function %tmp.105 :size;
+        %tmp.107 = invoke %tmp.105 %tmp.106();
+        symbol [ toFloat %tmp.108 309 57 64 ];
+        %tmp.108 = getv function %tmp.107 :toFloat;
+        %tmp.109 = invoke %tmp.107 %tmp.108();
+        %tmp.110 = div %tmp.103 %tmp.109;
+        lputv %smoothedPower.3 %tmp.110;
+        symbol [ smoothedPower %smoothedPower.3 309 16 29 ];
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_305_45_310_12_stop:
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_305_12_310_12_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_305_12_310_12_if_end:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 312 12 ]
+        symbol [ mPowerHistory %tmp.112 312 29 42 ];
+        %tmp.112 = getv ? :mPowerHistory;
+        symbol [ slice %tmp.113 312 43 48 ];
+        %tmp.113 = getv function %tmp.112 :slice;
+        %tmp.114 = 1;
+        %tmp.115 = null;
+        %tmp.116 = invoke %tmp.112 %tmp.113(%tmp.114, %tmp.115);
+        symbol [ mPowerHistory ? 312 12 25 ];
+        putv self :mPowerHistory %tmp.116;
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 313 12 ]
+        symbol [ mPowerHistory %tmp.118 313 12 25 ];
+        %tmp.118 = getv ? :mPowerHistory;
+        symbol [ add %tmp.119 313 26 29 ];
+        %tmp.119 = getv function %tmp.118 :add;
+        %tmp.120 = lgetv %smoothedPower.3;
+        symbol [ smoothedPower %tmp.120 313 30 43 ];
+        invoke %tmp.118 %tmp.119(%tmp.120);
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 315 12 ]
+        %tmp.121 = self;
+        symbol [ calculateAverage %tmp.122 315 26 42 ];
+        %tmp.122 = getv function %tmp.121 :calculateAverage;
+        %tmp.123 = 3;
+        %tmp.124 = invoke %tmp.121 %tmp.122(%tmp.123);
+        symbol [ mAvg3s ? 315 12 18 ];
+        putv self :mAvg3s %tmp.124;
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 316 12 ]
+        %tmp.125 = self;
+        symbol [ calculateAverage %tmp.126 316 26 42 ];
+        %tmp.126 = getv function %tmp.125 :calculateAverage;
+        %tmp.127 = 10;
+        %tmp.128 = invoke %tmp.125 %tmp.126(%tmp.127);
+        symbol [ mAvg10s ? 316 12 19 ];
+        putv self :mAvg10s %tmp.128;
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 317 12 ]
+        %tmp.129 = self;
+        symbol [ calculateAverage %tmp.130 317 26 42 ];
+        %tmp.130 = getv function %tmp.129 :calculateAverage;
+        %tmp.131 = 20;
+        %tmp.132 = invoke %tmp.129 %tmp.130(%tmp.131);
+        symbol [ mAvg20s ? 317 12 19 ];
+        putv self :mAvg20s %tmp.132;
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 318 12 ]
+        %tmp.133 = self;
+        symbol [ calculateStandardDeviation %tmp.134 318 26 52 ];
+        %tmp.134 = getv function %tmp.133 :calculateStandardDeviation;
+        %tmp.135 = 10;
+        symbol [ mAvg10s %tmp.137 318 57 64 ];
+        %tmp.137 = getv ? :mAvg10s;
+        %tmp.138 = invoke %tmp.133 %tmp.134(%tmp.135, %tmp.137);
+        symbol [ mStdDev10s ? 318 12 22 ];
+        putv self :mStdDev10s %tmp.138;
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 319 12 ]
+        [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_286_15_338_8_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_286_15_338_8_stop" ]
+        %percentageDiff.5 = local;
+        symbol [ percentageDiff %percentageDiff.5 319 16 30 ];
+        %tmp.139 = self;
+        symbol [ calculateDifference %tmp.140 319 33 52 ];
+        %tmp.140 = getv function %tmp.139 :calculateDifference;
+        symbol [ mAvg3s %tmp.142 319 53 59 ];
+        %tmp.142 = getv ? :mAvg3s;
+        symbol [ mAvg10s %tmp.144 319 61 68 ];
+        %tmp.144 = getv ? :mAvg10s;
+        %tmp.145 = invoke %tmp.139 %tmp.140(%tmp.142, %tmp.144);
+        lputv %percentageDiff.5 %tmp.145;
+        symbol [ percentageDiff %percentageDiff.5 319 16 30 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 323 12 ]
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_323_12_332_12_if_stmt:
+        symbol [ mAvg20s %tmp.147 323 16 23 ];
+        %tmp.147 = getv ? :mAvg20s;
+        symbol [ mIgnorePower %tmp.149 323 27 39 ];
+        %tmp.149 = getv ? :mIgnorePower;
+        %tmp.150 = gte %tmp.147 %tmp.149;
+        bf %tmp.150 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_323_12_332_12_if_else_false;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_323_12_332_12_if_true:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_323_41_329_12_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 325 16 ]
+        symbol [ mStdDev10s %tmp.152 325 28 38 ];
+        %tmp.152 = getv ? :mStdDev10s;
+        symbol [ mAvg10s %tmp.154 325 41 48 ];
+        %tmp.154 = getv ? :mAvg10s;
+        %tmp.155 = div %tmp.152 %tmp.154;
+        %tmp.156 = 100.0f;
+        %tmp.157 = mul %tmp.155 %tmp.156;
+        symbol [ mCvValue ? 325 16 24 ];
+        putv self :mCvValue %tmp.157;
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 326 16 ]
+        symbol [ mCvSum %tmp.158 326 16 22 ];
+        %tmp.158 = getv self :mCvSum;
+        symbol [ mCvValue %tmp.160 326 26 34 ];
+        %tmp.160 = getv ? :mCvValue;
+        %tmp.161 = add %tmp.158 %tmp.160;
+        symbol [ mCvSum ? 326 16 22 ];
+        putv self :mCvSum dup %tmp.161;
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 327 16 ]
+        symbol [ mCvCount %tmp.164 327 16 24 ];
+        %tmp.164 = getv ? :mCvCount;
+        %tmp.165 = add %tmp.164 1;
+        symbol [ mCvCount ? 327 16 24 ];
+        putv self :mCvCount dup %tmp.165;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_323_41_329_12_stop:
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_323_12_332_12_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_323_12_332_12_if_else_false:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_329_19_332_12_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 331 16 ]
+        symbol [ INVALID_FLOAT %tmp.167 331 27 40 ];
+        %tmp.167 = getv ? :INVALID_FLOAT;
+        symbol [ mCvValue ? 331 16 24 ];
+        putv self :mCvValue %tmp.167;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_329_19_332_12_stop:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_323_12_332_12_if_end:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 334 12 ]
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_334_12_336_12_if_stmt:
+        symbol [ mAvg10s %tmp.169 334 16 23 ];
+        %tmp.169 = getv ? :mAvg10s;
+        symbol [ mIgnorePower %tmp.171 334 27 39 ];
+        %tmp.171 = getv ? :mIgnorePower;
+        %tmp.172 = gte %tmp.169 %tmp.171;
+        bf %tmp.172 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_334_12_336_12_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_334_12_336_12_if_true:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_334_41_336_12_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 335 16 ]
+        %tmp.173 = self;
+        symbol [ updateBackgroundColor %tmp.174 335 16 37 ];
+        %tmp.174 = getv function %tmp.173 :updateBackgroundColor;
+        %tmp.175 = lgetv %percentageDiff.5;
+        symbol [ percentageDiff %tmp.175 335 38 52 ];
+        invoke %tmp.173 %tmp.174(%tmp.175);
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_334_41_336_12_stop:
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_334_12_336_12_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_334_12_336_12_if_end:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 337 12 ]
+        symbol [ mAvg3s %tmp.177 337 28 34 ];
+        %tmp.177 = getv ? :mAvg3s;
+        symbol [ format %tmp.178 337 35 41 ];
+        %tmp.178 = getv function %tmp.177 :format;
+        %tmp.179 = "%.0f";
+        %tmp.180 = invoke %tmp.177 %tmp.178(%tmp.179);
+        symbol [ mAvg3sDisplay ? 337 12 25 ];
+        putv self :mAvg3sDisplay %tmp.180;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_286_15_338_8_stop:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_274_8_338_8_if_end:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 341 8 ]
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_341_8_353_8_if_stmt:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_341_12_341_64_begin:
+        %tmp.181 = lgetv %info;
+        symbol [ info %tmp.181 341 12 16 ];
+        %tmp.183 = const :timerState;
+        symbol [ timerState %tmp.183 341 22 32 const ];
+        %tmp.184 = canhazplz %tmp.181 %tmp.183;
+        bf %tmp.184 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_341_8_353_8_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_341_36_341_64_true:
+        %tmp.185 = lgetv %info;
+        symbol [ info %tmp.185 341 36 40 ];
+        %tmp.186 = as %tmp.185 { (interface { var timerState; }) };
+        symbol [ timerState %tmp.187 341 41 51 ];
+        %tmp.187 = getv %tmp.186 :timerState;
+        symbol [ Activity %tmp.188 341 55 63 ];
+        %tmp.188 = getm $.Toybox.Activity;
+        symbol [ TIMER_STATE_ON %tmp.189 341 64 78 ];
+        %tmp.189 = getv %tmp.188 :TIMER_STATE_ON;
+        %tmp.190 = eq %tmp.187 %tmp.189;
+        push %tmp.190;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_341_36_341_64_end:
+        %tmp.191 = phi [%tmp.184 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_341_12_341_64_begin] [%tmp.190 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_341_36_341_64_true] [%tmp.191 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_341_36_341_64_end];
+        bf %tmp.191 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_341_8_353_8_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_341_8_353_8_if_true:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_341_80_353_8_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 342 12 ]
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_342_12_349_12_if_stmt:
+        symbol [ mCvField %tmp.193 342 16 24 ];
+        %tmp.193 = getv ? :mCvField;
+        %tmp.194 = null;
+        %tmp.195 = ne %tmp.193 %tmp.194;
+        bf %tmp.195 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_342_12_349_12_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_342_12_349_12_if_true:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_342_34_349_12_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 346 16 ]
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_346_16_348_16_if_stmt:
+        symbol [ mCvValue %tmp.197 346 20 28 ];
+        %tmp.197 = getv ? :mCvValue;
+        symbol [ mCvValue %tmp.199 346 32 40 ];
+        %tmp.199 = getv ? :mCvValue;
+        %tmp.200 = eq %tmp.197 %tmp.199;
+        bf %tmp.200 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_346_16_348_16_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_346_16_348_16_if_true:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_346_42_348_16_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 347 20 ]
+        symbol [ mCvField %tmp.202 347 20 28 ];
+        %tmp.202 = getv ? :mCvField;
+        %tmp.203 = as %tmp.202 { (!Null) };
+        symbol [ setData %tmp.204 347 29 36 ];
+        %tmp.204 = getv function %tmp.203 :setData;
+        symbol [ mCvValue %tmp.206 347 37 45 ];
+        %tmp.206 = getv ? :mCvValue;
+        invoke %tmp.203 %tmp.204(%tmp.206);
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_346_42_348_16_stop:
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_346_16_348_16_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_346_16_348_16_if_end:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_342_34_349_12_stop:
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_342_12_349_12_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_342_12_349_12_if_end:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 350 12 ]
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_350_12_352_12_if_stmt:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_350_16_350_71_begin:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_350_16_350_54_begin:
+        symbol [ mCvSessionField %tmp.208 350 16 31 ];
+        %tmp.208 = getv ? :mCvSessionField;
+        %tmp.209 = null;
+        %tmp.210 = ne %tmp.208 %tmp.209;
+        bf %tmp.210 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_350_12_352_12_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_350_43_350_54_true:
+        symbol [ mCvCount %tmp.212 350 43 51 ];
+        %tmp.212 = getv ? :mCvCount;
+        %tmp.213 = 0;
+        %tmp.214 = gt %tmp.212 %tmp.213;
+        push %tmp.214;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_350_43_350_54_end:
+        %tmp.215 = phi [%tmp.210 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_350_16_350_54_begin] [%tmp.214 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_350_43_350_54_true] [%tmp.215 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_350_43_350_54_end];
+        bf %tmp.215 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_350_12_352_12_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_350_59_350_71_true:
+        symbol [ mCvValue %tmp.217 350 59 67 ];
+        %tmp.217 = getv ? :mCvValue;
+        symbol [ mCvValue %tmp.219 350 71 79 ];
+        %tmp.219 = getv ? :mCvValue;
+        %tmp.220 = eq %tmp.217 %tmp.219;
+        push %tmp.220;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_350_59_350_71_end:
+        %tmp.221 = phi [%tmp.215 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_350_16_350_71_begin] [%tmp.220 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_350_59_350_71_true] [%tmp.221 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_350_59_350_71_end];
+        bf %tmp.221 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_350_12_352_12_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_350_12_352_12_if_true:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_350_81_352_12_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 351 16 ]
+        symbol [ mCvSessionField %tmp.223 351 16 31 ];
+        %tmp.223 = getv ? :mCvSessionField;
+        %tmp.224 = as %tmp.223 { (!Null) };
+        symbol [ setData %tmp.225 351 32 39 ];
+        %tmp.225 = getv function %tmp.224 :setData;
+        symbol [ mCvSum %tmp.227 351 40 46 ];
+        %tmp.227 = getv ? :mCvSum;
+        symbol [ mCvCount %tmp.229 351 49 57 ];
+        %tmp.229 = getv ? :mCvCount;
+        symbol [ toFloat %tmp.230 351 58 65 ];
+        %tmp.230 = getv function %tmp.229 :toFloat;
+        %tmp.231 = invoke %tmp.229 %tmp.230();
+        %tmp.232 = div %tmp.227 %tmp.231;
+        invoke %tmp.224 %tmp.225(%tmp.232);
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_350_81_352_12_stop:
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_350_12_352_12_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_350_12_352_12_if_end:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_341_80_353_8_stop:
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_341_8_353_8_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_341_8_353_8_if_end:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 355 8 ]
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_355_8_359_8_if_stmt:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_355_12_355_73_begin:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_355_12_355_31_begin:
+        symbol [ DEBUG %tmp.234 355 12 17 ];
+        %tmp.234 = getv ? :DEBUG;
+        bf %tmp.234 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_355_8_359_8_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_355_21_355_31_true:
+        %tmp.235 = lgetv %info;
+        symbol [ info %tmp.235 355 21 25 ];
+        %tmp.237 = const :timerState;
+        symbol [ timerState %tmp.237 355 31 41 const ];
+        %tmp.238 = canhazplz %tmp.235 %tmp.237;
+        push %tmp.238;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_355_21_355_31_end:
+        %tmp.239 = phi [%tmp.234 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_355_12_355_31_begin] [%tmp.238 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_355_21_355_31_true] [%tmp.239 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_355_21_355_31_end];
+        bf %tmp.239 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_355_8_359_8_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_355_45_355_73_true:
+        %tmp.240 = lgetv %info;
+        symbol [ info %tmp.240 355 45 49 ];
+        %tmp.241 = as %tmp.240 { (interface { var timerState; }) };
+        symbol [ timerState %tmp.242 355 50 60 ];
+        %tmp.242 = getv %tmp.241 :timerState;
+        symbol [ Activity %tmp.243 355 64 72 ];
+        %tmp.243 = getm $.Toybox.Activity;
+        symbol [ TIMER_STATE_ON %tmp.244 355 73 87 ];
+        %tmp.244 = getv %tmp.243 :TIMER_STATE_ON;
+        %tmp.245 = eq %tmp.242 %tmp.244;
+        push %tmp.245;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_355_45_355_73_end:
+        %tmp.246 = phi [%tmp.239 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_355_12_355_73_begin] [%tmp.245 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_355_45_355_73_true] [%tmp.246 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_355_45_355_73_end];
+        bf %tmp.246 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_355_8_359_8_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_355_8_359_8_if_true:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_355_89_359_8_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 356 12 ]
+        symbol [ System %tmp.248 356 12 18 ];
+        %tmp.248 = getv ? :System;
+        symbol [ println %tmp.249 356 19 26 ];
+        %tmp.249 = getv function %tmp.248 :println;
+        %tmp.250 = "CV: ";
+        symbol [ mCvValue %tmp.252 356 36 44 ];
+        %tmp.252 = getv ? :mCvValue;
+        symbol [ format %tmp.253 356 45 51 ];
+        %tmp.253 = getv function %tmp.252 :format;
+        %tmp.254 = "%.2f";
+        %tmp.255 = invoke %tmp.252 %tmp.253(%tmp.254);
+        %tmp.256 = add %tmp.250 %tmp.255;
+        invoke %tmp.248 %tmp.249(%tmp.256);
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 357 12 ]
+        symbol [ System %tmp.258 357 12 18 ];
+        %tmp.258 = getv ? :System;
+        symbol [ println %tmp.259 357 19 26 ];
+        %tmp.259 = getv function %tmp.258 :println;
+        %tmp.260 = "10 Sec SD: ";
+        symbol [ mStdDev10s %tmp.262 357 43 53 ];
+        %tmp.262 = getv ? :mStdDev10s;
+        %tmp.263 = add %tmp.260 %tmp.262;
+        %tmp.264 = " 10 sec mean ";
+        %tmp.265 = add %tmp.263 %tmp.264;
+        symbol [ mAvg10s %tmp.267 357 75 82 ];
+        %tmp.267 = getv ? :mAvg10s;
+        %tmp.268 = add %tmp.265 %tmp.267;
+        invoke %tmp.258 %tmp.259(%tmp.268);
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_355_89_359_8_stop:
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_355_8_359_8_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_355_8_359_8_if_end:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 360 8 ]
+        symbol [ mAvg3sDisplay %tmp.270 360 15 28 ];
+        %tmp.270 = getv ? :mAvg3sDisplay;
+        ret %tmp.270;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_258_67_361_4_stop:
+    }
+    [ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 363; @symbol_functiondef = [onUpdate,363,13,21]; @symbol_param<0> = [dc,363,22,24]; @symbol_param<0>_type<0> = [Gfx,363,28,31]; @symbol_param<0>_type<1> = [Dc,363,32,34]; ]
+    function onUpdate(dc as Gfx.Dc) as Void {
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_363_44_390_4_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 364 8 ]
+        [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_363_44_390_4_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_363_44_390_4_stop" ]
+        %width.1 = local;
+        symbol [ width %width.1 364 12 17 ];
+        %tmp.1 = lgetv %dc;
+        symbol [ dc %tmp.1 364 21 23 ];
+        symbol [ getWidth %tmp.2 364 24 32 ];
+        %tmp.2 = getv function %tmp.1 :getWidth;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %width.1 %tmp.3;
+        symbol [ width %width.1 364 12 17 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 366 8 ]
+        [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_363_44_390_4_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_363_44_390_4_stop" ]
+        %bgColor.2 = local;
+        symbol [ bgColor %bgColor.2 366 12 19 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 367 8 ]
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_367_8_371_8_if_stmt:
+        symbol [ mAvg10s %tmp.5 367 12 19 ];
+        %tmp.5 = getv ? :mAvg10s;
+        symbol [ mIgnorePower %tmp.7 367 23 35 ];
+        %tmp.7 = getv ? :mIgnorePower;
+        %tmp.8 = gte %tmp.5 %tmp.7;
+        bf %tmp.8 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_367_8_371_8_if_else_false;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_367_8_371_8_if_true:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_367_37_369_8_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 368 12 ]
+        symbol [ mBackgroundColor %tmp.10 368 22 38 ];
+        %tmp.10 = getv ? :mBackgroundColor;
+        lputv %bgColor.2 %tmp.10;
+        symbol [ bgColor %bgColor.2 368 12 19 ];
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_367_37_369_8_stop:
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_367_8_371_8_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_367_8_371_8_if_else_false:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_369_15_371_8_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 370 12 ]
+        %tmp.11 = self;
+        symbol [ getBackgroundColor %tmp.12 370 22 40 ];
+        %tmp.12 = getv function %tmp.11 :getBackgroundColor;
+        %tmp.13 = invoke %tmp.11 %tmp.12();
+        lputv %bgColor.2 %tmp.13;
+        symbol [ bgColor %bgColor.2 370 12 19 ];
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_369_15_371_8_stop:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_367_8_371_8_if_end:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 372 8 ]
+        [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_363_44_390_4_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_363_44_390_4_stop" ]
+        %fgColor.3 = local;
+        symbol [ fgColor %fgColor.3 372 12 19 ];
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_372_22_372_107_begin:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_372_23_372_68_begin:
+        %tmp.14 = lgetv %bgColor.2;
+        symbol [ bgColor %tmp.14 372 23 30 ];
+        symbol [ Gfx %tmp.15 372 34 37 ];
+        %tmp.15 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.16 372 38 49 ];
+        %tmp.16 = getv %tmp.15 :COLOR_BLACK;
+        %tmp.17 = eq %tmp.14 %tmp.16;
+        bt %tmp.17 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_372_22_372_107_true;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_372_53_372_68_false:
+        %tmp.18 = lgetv %bgColor.2;
+        symbol [ bgColor %tmp.18 372 53 60 ];
+        symbol [ Gfx %tmp.19 372 64 67 ];
+        %tmp.19 = getm $.Toybox.Graphics;
+        symbol [ COLOR_DK_GRAY %tmp.20 372 68 81 ];
+        %tmp.20 = getv %tmp.19 :COLOR_DK_GRAY;
+        %tmp.21 = eq %tmp.18 %tmp.20;
+        push %tmp.21;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_372_53_372_68_end:
+        %tmp.22 = phi [%tmp.17 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_372_23_372_68_begin] [%tmp.21 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_372_53_372_68_false] [%tmp.22 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_372_53_372_68_end];
+        bf %tmp.22 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_372_22_372_107_else_false;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_372_22_372_107_true:
+        symbol [ Gfx %tmp.23 372 85 88 ];
+        %tmp.23 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.24 372 89 100 ];
+        %tmp.24 = getv %tmp.23 :COLOR_WHITE;
+        push %tmp.24;
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_372_22_372_107_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_372_22_372_107_else_false:
+        symbol [ Gfx %tmp.25 372 103 106 ];
+        %tmp.25 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.26 372 107 118 ];
+        %tmp.26 = getv %tmp.25 :COLOR_BLACK;
+        push %tmp.26;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_372_22_372_107_end:
+        %tmp.27 = phi [%tmp.22 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_372_22_372_107_begin] [%tmp.24 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_372_22_372_107_true] [%tmp.26 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_372_22_372_107_else_false] [%tmp.27 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_372_22_372_107_end];
+        lputv %fgColor.3 %tmp.27;
+        symbol [ fgColor %fgColor.3 372 12 19 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 373 8 ]
+        [ "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_363_44_390_4_start" "_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_363_44_390_4_stop" ]
+        %labelColor.4 = local;
+        symbol [ labelColor %labelColor.4 373 12 22 ];
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_373_25_373_112_begin:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_373_26_373_71_begin:
+        %tmp.28 = lgetv %bgColor.2;
+        symbol [ bgColor %tmp.28 373 26 33 ];
+        symbol [ Gfx %tmp.29 373 37 40 ];
+        %tmp.29 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.30 373 41 52 ];
+        %tmp.30 = getv %tmp.29 :COLOR_BLACK;
+        %tmp.31 = eq %tmp.28 %tmp.30;
+        bt %tmp.31 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_373_25_373_112_true;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_373_56_373_71_false:
+        %tmp.32 = lgetv %bgColor.2;
+        symbol [ bgColor %tmp.32 373 56 63 ];
+        symbol [ Gfx %tmp.33 373 67 70 ];
+        %tmp.33 = getm $.Toybox.Graphics;
+        symbol [ COLOR_DK_GRAY %tmp.34 373 71 84 ];
+        %tmp.34 = getv %tmp.33 :COLOR_DK_GRAY;
+        %tmp.35 = eq %tmp.32 %tmp.34;
+        push %tmp.35;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_373_56_373_71_end:
+        %tmp.36 = phi [%tmp.31 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_373_26_373_71_begin] [%tmp.35 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_373_56_373_71_false] [%tmp.36 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_373_56_373_71_end];
+        bf %tmp.36 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_373_25_373_112_else_false;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_373_25_373_112_true:
+        symbol [ Gfx %tmp.37 373 88 91 ];
+        %tmp.37 = getm $.Toybox.Graphics;
+        symbol [ COLOR_LT_GRAY %tmp.38 373 92 105 ];
+        %tmp.38 = getv %tmp.37 :COLOR_LT_GRAY;
+        push %tmp.38;
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_373_25_373_112_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_373_25_373_112_else_false:
+        symbol [ Gfx %tmp.39 373 108 111 ];
+        %tmp.39 = getm $.Toybox.Graphics;
+        symbol [ COLOR_DK_GRAY %tmp.40 373 112 125 ];
+        %tmp.40 = getv %tmp.39 :COLOR_DK_GRAY;
+        push %tmp.40;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_373_25_373_112_end:
+        %tmp.41 = phi [%tmp.36 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_373_25_373_112_begin] [%tmp.38 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_373_25_373_112_true] [%tmp.40 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_373_25_373_112_else_false] [%tmp.41 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_373_25_373_112_end];
+        lputv %labelColor.4 %tmp.41;
+        symbol [ labelColor %labelColor.4 373 12 22 ];
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 376 8 ]
+        %tmp.42 = lgetv %dc;
+        symbol [ dc %tmp.42 376 8 10 ];
+        symbol [ setColor %tmp.43 376 11 19 ];
+        %tmp.43 = getv function %tmp.42 :setColor;
+        symbol [ Gfx %tmp.44 376 20 23 ];
+        %tmp.44 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.45 376 24 41 ];
+        %tmp.45 = getv %tmp.44 :COLOR_TRANSPARENT;
+        %tmp.46 = lgetv %bgColor.2;
+        symbol [ bgColor %tmp.46 376 43 50 ];
+        invoke %tmp.42 %tmp.43(%tmp.45, %tmp.46);
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 377 8 ]
+        %tmp.47 = lgetv %dc;
+        symbol [ dc %tmp.47 377 8 10 ];
+        symbol [ clear %tmp.48 377 11 16 ];
+        %tmp.48 = getv function %tmp.47 :clear;
+        invoke %tmp.47 %tmp.48();
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 380 8 ]
+        %tmp.49 = lgetv %dc;
+        symbol [ dc %tmp.49 380 8 10 ];
+        symbol [ setColor %tmp.50 380 11 19 ];
+        %tmp.50 = getv function %tmp.49 :setColor;
+        %tmp.51 = lgetv %labelColor.4;
+        symbol [ labelColor %tmp.51 380 20 30 ];
+        symbol [ Gfx %tmp.52 380 32 35 ];
+        %tmp.52 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.53 380 36 53 ];
+        %tmp.53 = getv %tmp.52 :COLOR_TRANSPARENT;
+        invoke %tmp.49 %tmp.50(%tmp.51, %tmp.53);
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 381 8 ]
+        %tmp.54 = lgetv %dc;
+        symbol [ dc %tmp.54 381 8 10 ];
+        symbol [ drawText %tmp.55 381 11 19 ];
+        %tmp.55 = getv function %tmp.54 :drawText;
+        %tmp.56 = lgetv %width.1;
+        symbol [ width %tmp.56 381 20 25 ];
+        %tmp.57 = 2;
+        %tmp.58 = div %tmp.56 %tmp.57;
+        symbol [ mLabelY %tmp.60 381 31 38 ];
+        %tmp.60 = getv ? :mLabelY;
+        symbol [ mLabelFont %tmp.62 381 40 50 ];
+        %tmp.62 = getv ? :mLabelFont;
+        symbol [ LABEL_TEXT %tmp.64 381 52 62 ];
+        %tmp.64 = getv ? :LABEL_TEXT;
+        symbol [ Gfx %tmp.65 381 64 67 ];
+        %tmp.65 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.66 381 68 87 ];
+        %tmp.66 = getv %tmp.65 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.54 %tmp.55(%tmp.58, %tmp.60, %tmp.62, %tmp.64, %tmp.66);
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 383 8 ]
+        %tmp.67 = lgetv %dc;
+        symbol [ dc %tmp.67 383 8 10 ];
+        symbol [ setColor %tmp.68 383 11 19 ];
+        %tmp.68 = getv function %tmp.67 :setColor;
+        %tmp.69 = lgetv %fgColor.3;
+        symbol [ fgColor %tmp.69 383 20 27 ];
+        symbol [ Gfx %tmp.70 383 29 32 ];
+        %tmp.70 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.71 383 33 50 ];
+        %tmp.71 = getv %tmp.70 :COLOR_TRANSPARENT;
+        invoke %tmp.67 %tmp.68(%tmp.69, %tmp.71);
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 384 8 ]
+        %tmp.72 = lgetv %dc;
+        symbol [ dc %tmp.72 384 8 10 ];
+        symbol [ drawText %tmp.73 384 11 19 ];
+        %tmp.73 = getv function %tmp.72 :drawText;
+        %tmp.74 = lgetv %width.1;
+        symbol [ width %tmp.74 384 20 25 ];
+        %tmp.75 = 2;
+        %tmp.76 = div %tmp.74 %tmp.75;
+        symbol [ mValueY %tmp.78 384 31 38 ];
+        %tmp.78 = getv ? :mValueY;
+        symbol [ mValueFont %tmp.80 384 40 50 ];
+        %tmp.80 = getv ? :mValueFont;
+        symbol [ mAvg3sDisplay %tmp.82 384 52 65 ];
+        %tmp.82 = getv ? :mAvg3sDisplay;
+        symbol [ Gfx %tmp.83 384 67 70 ];
+        %tmp.83 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.84 384 71 90 ];
+        %tmp.84 = getv %tmp.83 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.72 %tmp.73(%tmp.76, %tmp.78, %tmp.80, %tmp.82, %tmp.84);
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 387 8 ]
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_387_8_389_8_if_stmt:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_387_12_387_51_begin:
+        symbol [ mAvg10s %tmp.86 387 12 19 ];
+        %tmp.86 = getv ? :mAvg10s;
+        symbol [ mIgnorePower %tmp.88 387 23 35 ];
+        %tmp.88 = getv ? :mIgnorePower;
+        %tmp.89 = gt %tmp.86 %tmp.88;
+        bf %tmp.89 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_387_8_389_8_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_387_39_387_51_true:
+        symbol [ mCvValue %tmp.91 387 39 47 ];
+        %tmp.91 = getv ? :mCvValue;
+        symbol [ mCvValue %tmp.93 387 51 59 ];
+        %tmp.93 = getv ? :mCvValue;
+        %tmp.94 = eq %tmp.91 %tmp.93;
+        push %tmp.94;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_387_39_387_51_end:
+        %tmp.95 = phi [%tmp.89 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_387_12_387_51_begin] [%tmp.94 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_387_39_387_51_true] [%tmp.95 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_387_39_387_51_end];
+        bf %tmp.95 @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_387_8_389_8_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_387_8_389_8_if_true:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_387_61_389_8_start:
+[ "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc" 388 12 ]
+        %tmp.96 = lgetv %dc;
+        symbol [ dc %tmp.96 388 12 14 ];
+        symbol [ drawText %tmp.97 388 15 23 ];
+        %tmp.97 = getv function %tmp.96 :drawText;
+        symbol [ mCvX %tmp.99 388 24 28 ];
+        %tmp.99 = getv ? :mCvX;
+        symbol [ mCvY %tmp.101 388 30 34 ];
+        %tmp.101 = getv ? :mCvY;
+        symbol [ mCvFont %tmp.103 388 36 43 ];
+        %tmp.103 = getv ? :mCvFont;
+        symbol [ mCvValue %tmp.105 388 45 53 ];
+        %tmp.105 = getv ? :mCvValue;
+        symbol [ format %tmp.106 388 54 60 ];
+        %tmp.106 = getv function %tmp.105 :format;
+        %tmp.107 = "%.0f";
+        %tmp.108 = invoke %tmp.105 %tmp.106(%tmp.107);
+        %tmp.109 = "%";
+        %tmp.110 = add %tmp.108 %tmp.109;
+        symbol [ Gfx %tmp.111 388 76 79 ];
+        %tmp.111 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_RIGHT %tmp.112 388 80 98 ];
+        %tmp.112 = getv %tmp.111 :TEXT_JUSTIFY_RIGHT;
+        invoke %tmp.96 %tmp.97(%tmp.99, %tmp.101, %tmp.103, %tmp.110, %tmp.112);
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_387_61_389_8_stop:
+        goto @_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_387_8_389_8_if_end;
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_387_8_389_8_if_end:
+_Users_marknelson_Documents_dev_MONKEY_C_PowerStabilityField_source_PowerStabilityFieldViewV2_mc_363_44_390_4_stop:
+    }
+}
+[ @file = "/Users/marknelson/Documents/dev/MONKEY_C/PowerStabilityField/source/PowerStabilityFieldViewV2.mc"; @line = 1; ]
+<init> {
+}
