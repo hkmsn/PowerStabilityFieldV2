@@ -15,7 +15,8 @@ def parse_fit_file(file_path: str) -> Tuple[List, List, List]:
     timestamps, cv_values, power_values = [], [], []
     try:
         fitfile = fitparse.FitFile(file_path)
-    except FileNotFoundError:
+    except Exception as e:
+        print(f"Error reading FIT file {file_path}: {e}")
         return [], [], []
 
     for record in fitfile.get_messages("record"):

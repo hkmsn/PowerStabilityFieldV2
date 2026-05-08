@@ -8,7 +8,12 @@ def examine_fit_records(file_path: str, tz_offset: int = 7):
         print(f"Error: File {file_path} not found.")
         return
 
-    fitfile = fitparse.FitFile(file_path)
+    try:
+        fitfile = fitparse.FitFile(file_path)
+        fitfile.parse()
+    except Exception as e:
+        print(f"Error parsing {file_path}: {e}")
+        return
 
     for record in fitfile.get_messages("record"):
         print("-" * 20)
