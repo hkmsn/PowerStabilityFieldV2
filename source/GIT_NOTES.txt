@@ -1,0 +1,11 @@
+# 1. Stage all your current changes
+git add .
+
+# 2. Create a final commit with a descriptive message
+git commit -m "Enhance CV analysis tools and finalize project structure"
+
+# 3. Increase the Git buffer size to handle larger FIT file transfers
+git config http.postBuffer 52428800
+
+# 4. Overwrite the remote with your local master branch
+git push origin main --force
