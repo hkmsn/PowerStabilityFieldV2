@@ -43,7 +43,7 @@ class PowerStabilityFieldViewV2 extends WatchUi.DataField {
     private var mLowThreshold     as Lang.Float = 5.0f;
     private var mIgnorePower      as Lang.Float = 100.0f;
 
-    private var mSmoothingBuffer as Lang.Array<Lang.Float>;
+    private var   mSmoothingBuffer as Lang.Array<Lang.Float>;
     private const SMOOTHING_WINDOW = 3;
 
     function initialize() {
