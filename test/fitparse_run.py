@@ -31,6 +31,33 @@ Arguments:
 Time (Local):
     Automatically calculated as UTC time + offset. Used to correlate events with 
     the actual time of the activity.
+e.g.:
+
+CV                              : 54.959617614746094
+accumulated_power               : 965735
+cadence                         : 66
+distance                        : 68431.14
+enhanced_altitude               : -116.80000000000001
+enhanced_respiration_rate       : 20.97
+enhanced_speed                  : 6.485
+fractional_cadence              : 0.0
+heart_rate                      : 106
+left_pedal_smoothness           : 9.0
+left_right_balance              : 196
+left_torque_effectiveness       : 34.0
+position_lat                    : 94285408
+position_long                   : 1173391073
+power                           : 0
+right_pedal_smoothness          : 15.0
+right_torque_effectiveness      : 56.5
+temperature                     : 32
+Time (Local): 2026-04-14 08:47:20 (UTC: 2026-04-14 01:47:20)
+fractional_cadence              : 1
+enhanced_speed                  : None
+torque_effectiveness            : 79
+pedal_smoothness                : 79
+performance_condition           : 106
+
 """
 import os
 import fitparse
@@ -90,7 +117,9 @@ def examine_fit_records(file_path: str, tz_offset: int = 7, show_ids: bool = Fal
 
     padding = 65 if show_uuids else 30
 
+    record_count = 0
     for record in fitfile.get_messages("record"):
+        record_count += 1
         print("-" * 20)
         for data in record:
             if data.name == 'timestamp' and data.value:
@@ -115,6 +144,8 @@ def examine_fit_records(file_path: str, tz_offset: int = 7, show_ids: bool = Fal
                     id_str = f" (ID: {field_id})" if show_ids else ""
                     label = f"{str(name)}{id_str}"
                     print(f"{label:<{padding}}  : {data.value}")
+
+    print(f"\nTotal record messages parsed: {record_count}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Inspect raw FIT file records.")

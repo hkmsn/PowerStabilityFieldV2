@@ -1,0 +1,4 @@
+fitparse
+pandas
+matplotlib
+numpy
