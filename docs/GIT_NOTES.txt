@@ -2,12 +2,13 @@
 git add .
 
 # 2. Create a final commit with a descriptive message
-git commit -m "create doc folder"
+git commit -m "tidy test"
 
 # 3. Increase the Git buffer size to handle larger FIT file transfers
 git config http.postBuffer 52428800
 
-# 4. Overwrite the remote with your local master branch
+# 4. Overwrite the remote with your local branch (check if it is 'main' or 'master')
+# git push origin master --force
 git push origin main --force
 
 # --- Monorepo / Multi-Project Management ---
@@ -43,3 +44,7 @@ You can go to File > Add Folder to Workspace...
 and add the monkeyc_project and platformio_project folders individually. 
 This allows the Monkey C extension and the PlatformIO extension
  to run only in their respective directories, preventing build tool conflicts.
+
+ pandoc -f docx -t markdown PowerStability.docx -o output.md
+ 
+

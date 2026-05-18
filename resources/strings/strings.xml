@@ -4,8 +4,9 @@
     <string id="HighThresholdPercentageX_Title">High PWR difference - Red (%)</string>
     <string id="LowThresholdPercentageX_Title">Low  PWR difference - Blue(%)</string>
     <string id="IgnorePowerWattsX_Title">Ignore when PWR below (Watts)</string>
-    <string id="CV">CV</string>
-    <string id="GraphLabel_CV">Power Stability</string>
+    <string id="GraphLabel_CV_Pwr">Pwr Stability</string>
+    <string id="GraphLabel_CV_KE">KE Stability</string>
     <string id="percent_symbol">%</string>
-    <string id="CV_Summary">Avg Power Stability</string>
+    <string id="CV_Pwr_Summary">Avg Pwr Stability</string>
+    <string id="CV_KE_Summary">Avg KE Stability</string>
 </resources>

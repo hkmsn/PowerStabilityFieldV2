@@ -8,25 +8,39 @@ using  Toybox.FitContributor;
 
 class PowerStabilityFieldViewV2 extends WatchUi.DataField {
     //var mValue as Toybox.Lang.Numeric;
-    const HISTORY_SIZE = 20;
-    const POWER_NODATA = -1.0f;
-    const LABEL_TEXT   = "3S PWR+";
+    const HISTORY_SIZE = 10;
+    const POWER_NODATA = -1.0f; 
+    const LABEL_TEXT   = "KE              3S PWR+               Pwr";
     const DEBUG as Boolean  = false; // Set to false for production release
-    const CV_FIELD_ID  = 0;
+    const CV_PWR_FIELD_ID     = 0;
+    const CV_PWR_SUM_FIELD_ID = 1;
+    const CV_KE_FIELD_ID      = 2;
+    const CV_KE_SUM_FIELD_ID  = 3;
     private var INVALID_FLOAT = 0.0f;
 
     // Member variables for state
     private var mPowerHistory as Toybox.Lang.Array<Lang.Float>;
-    private var mAvg3s as Lang.Float = 0.0f;
+    private var mKEHistory    as Toybox.Lang.Array<Lang.Float>;
+    private var mLastSpeedSq  as Lang.Float = 0.0f;
+    private var mAvg3s  as Lang.Float = 0.0f;
     private var mAvg10s as Lang.Float = 0.0f;
-    private var mAvg20s as Lang.Float = 0.0f;
     private var mStdDev10s as Lang.Float = 0.0f;
     // private var mPowerSpread as Lang.Float = 0.0f;
-    private var mCvValue as Lang.Float;
-    private var mCvField as FitContributor.Field or Null;
-    private var mCvSessionField as FitContributor.Field or Null;
-    private var mCvSum as Lang.Float = 0.0f;
-    private var mCvCount as Lang.Number = 0;
+    private var mCvPwrValue as Lang.Float;
+
+    // Kalman Filter state for KE Stability
+    private var mKalmanInitialized as Boolean = false;
+    private var mCvKE_P as Lang.Float = 1.0f;
+
+    private var mCvKEValue as Lang.Float;
+    private var mCvPwrField as FitContributor.Field or Null;
+    private var mCvKEField as FitContributor.Field or Null;
+    private var mCvKESessionField as FitContributor.Field or Null;
+    private var mCvPwrSessionField as FitContributor.Field or Null; // Corrected declaration
+    private var mCvPwrSum   as Lang.Float = 0.0f;
+    private var mCvPwrCount as Lang.Number = 0;
+    private var mCvKESum as Lang.Float = 0.0f;
+    private var mCvKECount as Lang.Number = 0;
     private var mAvg3sDisplay as Lang.String = "---";
     private var mBackgroundColor as Number = Gfx.COLOR_WHITE;
     private const BAR_WIDTH = 42;
@@ -36,34 +50,50 @@ class PowerStabilityFieldViewV2 extends WatchUi.DataField {
     private var mLabelY as Lang.Number = 0;
     private var mValueY as Lang.Number = 0;
     private var mCvX as Lang.Number = 0;
+    private var mCvKEX as Lang.Number = 0;
     private var mCvY as Lang.Number = 0;
     
     // User Settings
-    private var mHighThreshold    as Lang.Float = 10.0f;
-    private var mLowThreshold     as Lang.Float = 5.0f;
+    private var mHighThreshold    as Lang.Float = 20.0f;
+    private var mLowThreshold     as Lang.Float = 10.0f;
     private var mIgnorePower      as Lang.Float = 100.0f;
-
-    private var   mSmoothingBuffer as Lang.Array<Lang.Float>;
-    private const SMOOTHING_WINDOW = 3;
 
     function initialize() {
         DataField.initialize();
 
         // Calculate real NaN. 0x7FC...toFloat() results in a large valid number, not NaN.
         INVALID_FLOAT = Math.sqrt(-1.0);
-        mCvValue = INVALID_FLOAT;
+        mCvPwrValue   = INVALID_FLOAT;
+        mCvKEValue    = INVALID_FLOAT;
 
         // 1. Create Field FIRST. If this doesn't run, the menu option won't appear.
-        mCvField = createField(
-            WatchUi.loadResource(Rez.Strings.GraphLabel_CV) as String,
-            CV_FIELD_ID,
+        mCvPwrField = createField(
+            WatchUi.loadResource(Rez.Strings.GraphLabel_CV_Pwr) as String,
+            CV_PWR_FIELD_ID,
             FitContributor.DATA_TYPE_FLOAT,
             {:mesgType=>FitContributor.MESG_TYPE_RECORD, :units=>"%"}
         );  
 
-        mCvSessionField = createField(
-            WatchUi.loadResource(Rez.Strings.CV_Summary) as String, 
-            1, // Use a different ID than your graph field
+        mCvKEField = createField(
+            WatchUi.loadResource(Rez.Strings.GraphLabel_CV_KE) as String,
+            CV_KE_FIELD_ID,
+            FitContributor.DATA_TYPE_FLOAT,
+            {:mesgType=>FitContributor.MESG_TYPE_RECORD, :units=>"%"}
+        );
+
+        mCvKESessionField = createField(
+            WatchUi.loadResource(Rez.Strings.CV_KE_Summary) as String, 
+            CV_KE_SUM_FIELD_ID,
+            FitContributor.DATA_TYPE_FLOAT, 
+            {
+                :mesgType => FitContributor.MESG_TYPE_SESSION, 
+                :units => "%"
+            }
+        );
+
+        mCvPwrSessionField = createField(
+            WatchUi.loadResource(Rez.Strings.CV_Pwr_Summary) as String,
+            CV_PWR_SUM_FIELD_ID,
             FitContributor.DATA_TYPE_FLOAT, 
             {
                 :mesgType => FitContributor.MESG_TYPE_SESSION, 
@@ -74,42 +104,41 @@ class PowerStabilityFieldViewV2 extends WatchUi.DataField {
         // 2. Then load settings (if this fails, the field is at least registered)
         loadSettings();
         
-        mPowerHistory = new [HISTORY_SIZE] as Lang.Array<Lang.Float>;
-        mSmoothingBuffer = new [SMOOTHING_WINDOW] as Lang.Array<Lang.Float>;
+        mPowerHistory    = new [HISTORY_SIZE]     as Lang.Array<Lang.Float>;
+        mKEHistory       = new [HISTORY_SIZE]     as Lang.Array<Lang.Float>;
         for (var i = 0; i < HISTORY_SIZE; i++) {
             mPowerHistory[i] = POWER_NODATA;
+            mKEHistory[i]    = 0.0f;
         }
-        for (var i = 0; i < SMOOTHING_WINDOW; i++) {
-            mSmoothingBuffer[i] = POWER_NODATA;
-        }
+        mLastSpeedSq = 0.0f;
+        mKalmanInitialized = false;
     }
 
     private function loadSettings() as Void {
         // Use `has` checks for robust type conversion from app settings.
         // This handles various numeric types (Number, Float, Double, String) gracefully.
-        var high = getProperty("HighThresholdPercentageX", 10.0f);
+        var high = getProperty("HighThresholdPercentageX", 20.0f);
         if (high != null && high has :toFloat) {
             mHighThreshold = high.toFloat();
         } else if (high instanceof Lang.Float) { // Fallback for older SDKs where Float may not have :toFloat
             mHighThreshold = high as Lang.Float;
         } else {
-            mHighThreshold = 10.0f;
+            mHighThreshold = 20.0f;
         }
-
-        var low = getProperty("LowThresholdPercentageX", 5.0f);
+        var low = getProperty("LowThresholdPercentageX", 10.0f);
         if (low != null && low has :toFloat) {
             mLowThreshold = low.toFloat();
         } else if (low instanceof Lang.Float) {
             mLowThreshold = low as Lang.Float;
         } else {
-            mLowThreshold = 5.0f;
+            mLowThreshold = 10.0f;
         }
 
-        var ignore = getProperty("IgnorePowerWattsX", 50);
+        var ignore = getProperty("IgnorePowerWattsX", 100);
         if (ignore != null && ignore has :toFloat) {
             mIgnorePower = ignore.toFloat();
         } else {
-            mIgnorePower = 50.0f;
+            mIgnorePower = 100.0f;
         }
     }
 
@@ -187,21 +216,58 @@ class PowerStabilityFieldViewV2 extends WatchUi.DataField {
         mValueY = (valueCenterY - (dc.getFontHeight(mValueFont) / 2)).toNumber();
 
         // Position CV in bottom right
-        mCvX = width  - (BAR_WIDTH / 2);
-        mCvY = height - dc.getFontHeight(mCvFont) - 2;
+        mCvX   = width  - (BAR_WIDTH / 2);
+        mCvKEX = BAR_WIDTH / 2;
+        mCvY   = height - dc.getFontHeight(mCvFont) - 2;
     }
 
     // Called when the activity is saved or cancelled
     function onTimerReset() as Void {
-        mCvSum = 0.0f;
-        mCvCount = 0;
+        mCvPwrSum = 0.0f;
+        mCvPwrCount = 0;
+        mCvKESum = 0.0f;
+        mCvKECount = 0;
         // Reset history to ensure a clean start for the next session
         for (var i = 0; i < HISTORY_SIZE; i++) {
             mPowerHistory[i] = POWER_NODATA;
+            mKEHistory[i]    = 0.0f;
         }
-        for (var i = 0; i < SMOOTHING_WINDOW; i++) {
-            mSmoothingBuffer[i] = POWER_NODATA;
+        mLastSpeedSq = 0.0f;
+        mKalmanInitialized = false;
+    }
+
+     private function calculateStats(history as Array<Float>, size as Number, noDataValue as Float, ignorePower as Float, invalidValue as Float) as Array<Float> {
+        var s3 = 0.0f,  c3 = 0;
+        var s10 = 0.0f, sq10 = 0.0f, c10 = 0;
+
+        for (var i = 1; i <= size; i++) {
+            var val = history[size - i];
+            // Check for null, nodata, and NaN (val == val is false for NaN)
+            if (val != null && val != noDataValue && val == val && val > 1) {
+                if (i <= 3) { s3 += val; c3++; }
+                if (i <= 10) { 
+                    s10 += val; 
+                    sq10 += (val * val);
+                    c10++; 
+                }
+            }
         }
+
+        var avg3s  = (c3 > 0)  ? (s3 / c3.toFloat())   : 0.0f;
+        var avg10s = (c10 > 0) ? (s10 / c10.toFloat()) : 0.0f;
+        var stdDev = 0.0f;
+        var cv     = invalidValue;
+
+        if (c10 > 1) {
+            var variance = (sq10 / c10.toFloat()) - (avg10s * avg10s);
+            stdDev = Math.sqrt(variance < 0 ? 0 : variance).toFloat();
+        }
+
+        if (avg10s >= ignorePower && avg10s > 0) {
+            cv = (stdDev / avg10s) * 100.0f;
+        }
+        
+        return [avg3s, avg10s, stdDev, cv] as Array<Float>;
     }
 
     function compute(info as Activity.Info) as Lang.String or Null {
@@ -213,104 +279,105 @@ class PowerStabilityFieldViewV2 extends WatchUi.DataField {
         
         var timerRunning = (info has :timerState && info.timerState == Activity.TIMER_STATE_ON);
         var currentPower = info.currentPower;
-        var smoothedPower = POWER_NODATA;
+        var powerValue = POWER_NODATA;
+        
+        var currentSpeedSq = 0.0f;
+        if (info has :currentSpeed && info.currentSpeed != null) {
+            var s = info.currentSpeed.toFloat();
+            currentSpeedSq = s * s;
+        }
+        var speedSqDelta = (currentSpeedSq - mLastSpeedSq).abs();
+        mLastSpeedSq     = currentSpeedSq;
 
-        // 1. Update Smoothing Buffer and Calculate Current Smoothed Power
         if (currentPower == null) {
-            // No sensor data: flush smoothing buffer immediately
-            for (var i = 0; i < SMOOTHING_WINDOW; i++) {
-                mSmoothingBuffer[i] = POWER_NODATA;
-            }
-            mCvValue = INVALID_FLOAT;
+            mCvPwrValue = INVALID_FLOAT;
             mAvg3sDisplay = "---";
         } else {
-            var powerValue = (currentPower has :toFloat) ? currentPower.toFloat() : currentPower as Lang.Float;
-            var smoothSum = 0.0f;
-            var smoothCount = 0;
-
-            // Shift and sum in one pass
-            for (var i = 0; i < SMOOTHING_WINDOW - 1; i++) {
-                var val = mSmoothingBuffer[i+1];
-                mSmoothingBuffer[i] = val;
-                if (val != POWER_NODATA) {
-                    smoothSum += val;
-                    smoothCount++;
-                }
-            }
-            mSmoothingBuffer[SMOOTHING_WINDOW - 1] = powerValue;
-            smoothSum += powerValue;
-            smoothCount++;
-            
-            smoothedPower = smoothSum / smoothCount.toFloat();
-            mAvg3sDisplay = smoothedPower.format("%.0f");
+            powerValue = (currentPower has :toFloat) ? currentPower.toFloat() : currentPower as Lang.Float;
         }
 
-        // 2. Update History Array (Decays if smoothedPower is POWER_NODATA)
+        // 1. Update History Arrays (Decays if values are POWER_NODATA or 0)
         for (var i = 0; i < HISTORY_SIZE - 1; i++) {
             mPowerHistory[i] = mPowerHistory[i+1];
+            mKEHistory[i]    = mKEHistory[i+1];
         }
-        mPowerHistory[HISTORY_SIZE - 1] = smoothedPower;
+        mPowerHistory[HISTORY_SIZE - 1] = powerValue;
+        mKEHistory[HISTORY_SIZE    - 1] = speedSqDelta;
 
-        // 3. Single-Pass Statistics Calculation (3s, 10s, 20s Means + 10s StdDev)
-        var s3 = 0.0f, c3 = 0;
-        var s10 = 0.0f, sq10 = 0.0f, c10 = 0;
-        var s20 = 0.0f, c20 = 0;
+        // 2. Single-Pass Statistics Calculation
+        var statsPwr = calculateStats(mPowerHistory, HISTORY_SIZE, POWER_NODATA, mIgnorePower, INVALID_FLOAT);
+        mAvg3s     = statsPwr[0];
+        mAvg10s    = statsPwr[1];
+        mStdDev10s = statsPwr[2];
+        mCvPwrValue = statsPwr[3];
 
-        for (var i = 1; i <= HISTORY_SIZE; i++) {
-            var val = mPowerHistory[HISTORY_SIZE - i];
-            if (val != null && val != POWER_NODATA && val == val && val > 1) {
-                if (i <= 3) { s3 += val; c3++; }
-                if (i <= 10) { 
-                    s10 += val; 
-                    sq10 += (val * val);
-                    c10++; 
-                }
-                if (i <= 20) { s20 += val; c20++; }
+        
+        var statsKE = calculateStats(mKEHistory, HISTORY_SIZE, 0.0, -1.0, INVALID_FLOAT);
+        var measurementKE = statsKE[3];
+
+        // Apply Simple Kalman Filter to KE Stability
+        if (measurementKE == measurementKE) { // Check if not NaN
+            if (!mKalmanInitialized) {
+                mCvKEValue = measurementKE;
+                mCvKE_P = 1.0f;
+                mKalmanInitialized = true;
+            } else {
+                // Predict (Q = 0.05: Process noise, how much we trust the model to change)
+                mCvKE_P = mCvKE_P + 0.05f;
+                // Update (R = 0.8: Measurement noise, higher means more smoothing/less trust in raw data)
+                var K = mCvKE_P / (mCvKE_P + 0.5f); //0.8 changed to 0.5
+                mCvKEValue = mCvKEValue + K * (measurementKE - mCvKEValue);
+                mCvKE_P = (1.0f - K) * mCvKE_P;
             }
+        } else {
+            mCvKEValue = INVALID_FLOAT;
+            mKalmanInitialized = false;
         }
 
-        mAvg3s  = (c3 > 0)  ? (s3 / c3.toFloat())   : 0.0f;
-        mAvg10s = (c10 > 0) ? (s10 / c10.toFloat()) : 0.0f;
-        mAvg20s = (c20 > 0) ? (s20 / c20.toFloat()) : 0.0f;
+        if (currentPower != null) {
+            mAvg3sDisplay = mAvg3s.format("%.0f");
+        }
 
         if (DEBUG) {
-            System.println("Average powers 3s, 10s 20s " +  mAvg3s +  " "+  mAvg10s +  " "+  mAvg20s);
+            System.println("mAvg3s:     " + mAvg3s);
+            System.println("mAvg10s:    " + mAvg10s);
+            System.println("mStdDev10s: " + mStdDev10s);
+            System.println("mCvPwrValue: " + mCvPwrValue);
+            System.println("mCvKEValue: " + mCvKEValue);
         }
 
-
-        if (c10 > 1) {
-            var variance = (sq10 / c10.toFloat()) - (mAvg10s * mAvg10s);
-            mStdDev10s = Math.sqrt(variance < 0 ? 0 : variance).toFloat();
-        } else {
-            mStdDev10s = 0.0f;
-        }
-
-        // 4. Stability Metrics and FIT Recording
+        // 3. Stability Metrics and FIT Recording
         if (mAvg10s >= mIgnorePower) {
             // Metric 1: Trend Stability (3s vs 10s) -> Used for Background Color
             var trendDiff = calculateDifference(mAvg3s, mAvg10s);
             updateBackgroundColor(trendDiff);
             
             // Metric 2: Delivery Stability (CV) -> Used for Graphical Bar
-            if (mAvg20s >= mIgnorePower) {
-                mCvValue = (mStdDev10s / mAvg10s) * 100.0f;
-                if (timerRunning) {
-                    mCvSum += mCvValue;
-                    mCvCount++;
+            if (timerRunning) {
+                if (mCvPwrValue == mCvPwrValue) { // Check if not NaN
+                    mCvPwrSum += mCvPwrValue;
+                    mCvPwrCount++;
                 }
-            } else {
-                mCvValue = INVALID_FLOAT;
+                if (mCvKEValue == mCvKEValue) {
+                    mCvKESum += mCvKEValue;
+                    mCvKECount++;
+                }
             }
-        } else {
-            mCvValue = INVALID_FLOAT;
         }
 
         if (timerRunning) {
-            if (mCvField != null && mCvValue == mCvValue) {
-                mCvField.setData(mCvValue);
+
+            if (mCvPwrField != null && mCvPwrValue == mCvPwrValue) {
+                mCvPwrField.setData(mCvPwrValue);
             }
-            if (mCvSessionField != null && mCvCount > 0) {
-                mCvSessionField.setData(mCvSum / mCvCount.toFloat());
+            if (mCvKEField != null && mCvKEValue == mCvKEValue) {
+                mCvKEField.setData(mCvKEValue);
+            }
+            if (mCvPwrSessionField != null && mCvPwrCount > 0) { // Use the correctly named field
+                mCvPwrSessionField.setData(mCvPwrSum / mCvPwrCount.toFloat());
+            }
+            if (mCvKESessionField != null && mCvKECount > 0) {
+                mCvKESessionField.setData(mCvKESum / mCvKECount.toFloat());
             }
         }
         return mAvg3sDisplay;
@@ -332,14 +399,37 @@ class PowerStabilityFieldViewV2 extends WatchUi.DataField {
         dc.setColor(Gfx.COLOR_TRANSPARENT, bgColor);
         dc.clear();
 
+        var maxHeightValue = 50.0f;
+        var fieldHeight = dc.getHeight();
+        var ticks = [10, 20, 30];
+
+        // 3a. Draw Kinetic Energy Stability Bar (Left Side)
+        if (mAvg10s > mIgnorePower && mCvKEValue == mCvKEValue) {
+            var barHeightKE = (mCvKEValue / maxHeightValue) * fieldHeight;
+            if (barHeightKE > fieldHeight) { barHeightKE = fieldHeight.toFloat(); }
+            if (barHeightKE < 0) { barHeightKE = 0.0f; }
+
+            dc.setColor(Gfx.COLOR_PURPLE, Gfx.COLOR_TRANSPARENT);
+            dc.fillRectangle(0, (fieldHeight - barHeightKE).toNumber(), BAR_WIDTH, barHeightKE.toNumber());
+
+            // Ticks
+            dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
+            for (var i = 0; i < ticks.size(); i++) {
+                var tickY = (fieldHeight - (ticks[i].toFloat() / maxHeightValue * fieldHeight)).toNumber();
+                dc.drawLine(0, tickY, BAR_WIDTH, tickY);
+            }
+
+            // Text
+            dc.setColor(fgColor, Gfx.COLOR_TRANSPARENT);
+            dc.drawText(mCvKEX, mCvY, mCvFont, mCvKEValue.format("%.0f") + "%", Gfx.TEXT_JUSTIFY_CENTER);
+        }
+
         // 3. Draw the Power Stability (CV) bar on the right edge (Background layer)
         // Drawing this before the text ensures the main power value remains legible.
-        if (mAvg10s > mIgnorePower && mCvValue == mCvValue) {
-            var maxHeightValue = 50.0f;
-            var fieldHeight = dc.getHeight();
+        if (mAvg10s > mIgnorePower && mCvPwrValue == mCvPwrValue) {
             
             // Calculate height relative to 50
-            var barHeight = (mCvValue / maxHeightValue) * fieldHeight;
+            var barHeight = (mCvPwrValue / maxHeightValue) * fieldHeight;
             
             // Clamp the height to field boundaries
             if (barHeight > fieldHeight) { barHeight = fieldHeight.toFloat(); }
@@ -350,7 +440,6 @@ class PowerStabilityFieldViewV2 extends WatchUi.DataField {
 
             // 5. Draw tick marks at CV 10, 20, and 30
             dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
-            var ticks = [10, 20, 30];
             for (var i = 0; i < ticks.size(); i++) {
                 var tickY = (fieldHeight - (ticks[i].toFloat() / maxHeightValue * fieldHeight)).toNumber();
                 dc.drawLine(width - BAR_WIDTH, tickY, width, tickY);
@@ -358,7 +447,7 @@ class PowerStabilityFieldViewV2 extends WatchUi.DataField {
 
             // 6. Draw the CV text centered on the bar
             dc.setColor(fgColor, Gfx.COLOR_TRANSPARENT);
-            dc.drawText(mCvX, mCvY, mCvFont, mCvValue.format("%.0f") + "%", Gfx.TEXT_JUSTIFY_CENTER);
+            dc.drawText(mCvX, mCvY, mCvFont, mCvPwrValue.format("%.0f") + "%", Gfx.TEXT_JUSTIFY_CENTER);
         }
 
         // 4. Draw labels and main power value (Foreground layer)
